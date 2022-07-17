@@ -5,7 +5,6 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
 }
 
 .header {
@@ -31,4 +30,45 @@
 .menus {
     display: flex;
     gap: 1rem;
+}
+
+.main {
+    flex-grow: 1;
+}
+
+.footer {
+    height: 7.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.legal {
+    color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    gap: 1.5rem;
+}
+
+.policy {
+    display: flex;
+    gap: 1.5rem;
+    a {
+        transition: all 0.25s ease-in-out;
+        &:hover {
+            color: #fff;
+        }
+    }
+}
+
+.social {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.5);
+    a {
+        transition: all 0.25s ease-in-out;
+        &:hover {
+            color: #fff;
+        }
+    }
 }

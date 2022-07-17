@@ -4,13 +4,16 @@ import styles from "../styles/components/Layout.module.scss";
 import Logo from "../public/logo.svg";
 import Link from "next/link";
 import Button from "./Button";
+import { SiDiscord, SiGithub } from "react-icons/si";
+import clsx from "clsx";
 
 interface Props {
     page?: string;
+    className?: string;
     children?: ReactNode;
 }
 
-export default function Layout({ page, children }: Props) {
+export default function Layout({ page, className, children }: Props) {
     const title = (page ? `${page} - ` : "") + "InfiniteTeam";
     return (
         <div className={styles.container}>
@@ -43,8 +46,30 @@ export default function Layout({ page, children }: Props) {
                     </Link>
                 </div>
             </header>
-            <main className={styles.main}>{children}</main>
-            <footer className={styles.footer}>Footer</footer>
+            <main className={clsx(styles.main, className)}>{children}</main>
+            <footer className={styles.footer}>
+                <div className={styles.legal}>
+                    <span className={styles.copyright}>
+                        © 2022 InfiniteTeam. All Rights Reserved.
+                    </span>
+                    <div className={styles.policy}>
+                        <Link href="/tos">
+                            <a>이용약관</a>
+                        </Link>
+                        <Link href="/privacy">
+                            <a>개인정보 처리방침</a>
+                        </Link>
+                    </div>
+                </div>
+                <div className={styles.social}>
+                    <a href="https://discord.gg/7aFczQk">
+                        <SiDiscord></SiDiscord>
+                    </a>
+                    <a href="https://github.com/InfiniteTeam">
+                        <SiGithub></SiGithub>
+                    </a>
+                </div>
+            </footer>
         </div>
     );
 }
