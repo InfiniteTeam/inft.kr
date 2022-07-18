@@ -6,6 +6,18 @@ import Link from "next/link";
 import Button from "./Button";
 import { SiDiscord, SiGithub } from "react-icons/si";
 import clsx from "clsx";
+import { motion } from "framer-motion";
+
+const menus = {
+    소개: "/about",
+    프로젝트: "/project",
+};
+
+const variants = {
+    hidden: { opacity: 0, y: 50 },
+    enter: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -50 },
+};
 
 interface Props {
     page?: string;
@@ -24,29 +36,35 @@ export default function Layout({ page, className, children }: Props) {
             </Head>
 
             <header className={styles.header}>
-                <div className={styles.brand}>
-                    <Logo className={styles.logo} />
-                    인피니트팀
-                </div>
+                <Link href="/">
+                    <a>
+                        <div className={styles.brand}>
+                            <Logo className={styles.logo} />
+                            인피니트팀
+                        </div>
+                    </a>
+                </Link>
+
                 <div className={styles.menus}>
-                    <Link href="/">
-                        <a>
-                            <Button>홈</Button>
-                        </a>
-                    </Link>
-                    <Link href="/about">
-                        <a>
-                            <Button link>소개</Button>
-                        </a>
-                    </Link>
-                    <Link href="/project">
-                        <a>
-                            <Button link>프로젝트</Button>
-                        </a>
-                    </Link>
+                    {Object.entries(menus).map(([name, href]) => (
+                        <Link href={href}>
+                            <a>
+                                <Button link={page !== name}>{name}</Button>
+                            </a>
+                        </Link>
+                    ))}
                 </div>
             </header>
-            <main className={clsx(styles.main, className)}>{children}</main>
+            <motion.main
+                className={clsx(styles.main, className)}
+                variants={variants}
+                initial="hidden"
+                animate="enter"
+                exit="exit"
+                transition={{ type: "linear" }}
+            >
+                {children}
+            </motion.main>
             <footer className={styles.footer}>
                 <div className={styles.legal}>
                     <span className={styles.copyright}>
