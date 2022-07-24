@@ -3,6 +3,7 @@ import coin from 'assets/coin.png';
 import dacon from 'assets/dacon.png';
 import gangjun from 'assets/gangjun06.png';
 import filename from 'assets/filename.png';
+import dowon from 'assets/dowon.png';
 
 const members = [
   {
@@ -57,8 +58,19 @@ const members = [
     discord: '__filename#1901',
     github: 'ankhgerel',
     email: null,
-    motto: '이딴게 개발자?',
+    motto: '⬆ 이코인 사세요',
     avatar: filename,
+  },
+  {
+    name: 'DowonLee',
+    kr: '도원',
+    role: ['커뮤니티 매니저'],
+    color: ['#fff', '#aaa'],
+    discord: '도원#5771',
+    github: null,
+    email: 'iamleedowon@gmail.com',
+    motto: '도바원보',
+    avatar: dowon,
   },
 ];
 
