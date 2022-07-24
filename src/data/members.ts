@@ -13,7 +13,7 @@ const members = [
     discord: 'ArpaAP#6558',
     github: 'ArpaAP',
     email: 'arpaap@inft.kr',
-    motto: '±α',
+    motto: '안녕하세요 알 팝니다',
     avatar: arpaap,
   },
   {
