@@ -1,0 +1,89 @@
+.container {
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  @apply px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20;
+}
+
+.header {
+  height: 5.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  background-color: rgba(27, 30, 43, 0.75);
+  backdrop-filter: blur(5px);
+
+  @apply left-0 right-0 top-0;
+  @apply px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20;
+}
+
+.brand {
+  height: 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    filter: brightness(0.8);
+  }
+
+  div {
+    @apply hidden sm:block;
+  }
+}
+
+.logo {
+  height: 85%;
+}
+
+.menus {
+  display: flex;
+
+  @apply gap-1 sm:gap-3;
+}
+
+.main {
+  flex-grow: 1;
+}
+
+.footer {
+  height: 7.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.legal {
+  color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  gap: 1.5rem;
+}
+
+.policy {
+  display: flex;
+  gap: 1.5rem;
+  a {
+    transition: all 0.25s ease-in-out;
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+.social {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.5);
+  a {
+    transition: all 0.25s ease-in-out;
+    &:hover {
+      color: #fff;
+    }
+  }
+}
