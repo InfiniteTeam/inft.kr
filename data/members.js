@@ -38,6 +38,6 @@ export default {
         color: ["#fbeb89", "#c8fff4"],
         discord: "__filename#1901",
         github: "ankhgerel",
-        motto: "이딴게 개발자?",
+        motto: "⬆ 이코인 사세요",
     },
 };
