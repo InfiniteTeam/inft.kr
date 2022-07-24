@@ -42,7 +42,7 @@ const Layout: React.FC<Props> = ({ page, className, children }) => {
           <a>
             <div className={styles.brand}>
               <img className={styles.logo} alt="" src="/logo.svg" />
-              인피니트팀
+              <div>인피니트팀</div>
             </div>
           </a>
         </Link>
@@ -58,14 +58,15 @@ const Layout: React.FC<Props> = ({ page, className, children }) => {
               <Button active={pathname === '/projects'}>프로젝트</Button>
             </a>
           </Link>
-          <a href="https://status.inft.kr/status/servers" target="_blank">
+          <a href="https://status.inft.kr" target="_blank" rel="noreferrer">
             <Button>서비스 상태</Button>
           </a>
-          <a href="https://employment.inft.kr" target="_blank">
+          <a href="https://employment.inft.kr" target="_blank" rel="noreferrer">
             <Button>채용</Button>
           </a>
         </div>
       </header>
+      <div className="h-[88px]" />
       <motion.main
         className={clsx(styles.main, className)}
         variants={variants}
@@ -96,10 +97,14 @@ const Layout: React.FC<Props> = ({ page, className, children }) => {
           </div>
         </div>
         <div className={styles.social}>
-          <a href="https://discord.gg/7aFczQk">
+          <a href="https://discord.gg/7aFczQk" target="_blank" rel="noreferrer">
             <SiDiscord></SiDiscord>
           </a>
-          <a href="https://github.com/InfiniteTeam">
+          <a
+            href="https://github.com/InfiniteTeam"
+            target="_blank"
+            rel="noreferrer"
+          >
             <SiGithub></SiGithub>
           </a>
         </div>

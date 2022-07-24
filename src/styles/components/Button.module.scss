@@ -1,6 +1,4 @@
 .button {
-  height: 2.75rem;
-  padding: 0 1.25rem;
   border-radius: 0.5rem;
   font-size: 1rem;
   display: flex;
@@ -14,6 +12,8 @@
   &:hover {
     background-color: rgba(255, 255, 255, 0.1);
   }
+
+  @apply px-3 py-2 sm:px-4 sm:py-2.5 text-sm sm:text-base;
 }
 
 .active {

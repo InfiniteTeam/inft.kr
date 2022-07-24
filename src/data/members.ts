@@ -1,3 +1,9 @@
+import arpaap from 'assets/arpa.png';
+import coin from 'assets/coin.png';
+import dacon from 'assets/dacon.png';
+import gangjun from 'assets/gangjun06.png';
+import filename from 'assets/filename.png';
+
 const members = [
   {
     name: 'ArpaAP',
@@ -8,6 +14,7 @@ const members = [
     github: 'ArpaAP',
     email: 'arpaap@inft.kr',
     motto: '±α',
+    avatar: arpaap,
   },
   {
     name: 'COiN',
@@ -18,6 +25,7 @@ const members = [
     github: 'kndlr',
     email: 'coin@inft.kr',
     motto: '비트코인 안합니다',
+    avatar: coin,
   },
   {
     name: 'Dacoon',
@@ -27,7 +35,8 @@ const members = [
     discord: '다쿤#4089',
     github: 'dacoonkr',
     email: 'dacoon@inft.kr',
-    motto: '라쿤 아닙니다',
+    motto: '음',
+    avatar: dacon,
   },
   {
     name: 'gangjun06',
@@ -38,6 +47,7 @@ const members = [
     github: 'gangjun06',
     email: null,
     motto: null,
+    avatar: gangjun,
   },
   {
     name: '__filename',
@@ -48,6 +58,7 @@ const members = [
     github: 'ankhgerel',
     email: null,
     motto: '이딴게 개발자?',
+    avatar: filename,
   },
 ];
 

@@ -5,6 +5,8 @@ import { RiDoubleQuotesL, RiDoubleQuotesR } from 'react-icons/ri';
 import { SiDiscord, SiGithub } from 'react-icons/si';
 import { TbMail } from 'react-icons/tb';
 import members from 'data/members';
+import Image from 'next/image';
+import { Popover, Transition } from '@headlessui/react';
 
 const About: NextPage = () => {
   return (
@@ -39,31 +41,58 @@ const About: NextPage = () => {
             ></div>
 
             <div className={styles.description}>
-              <span className={styles.role}>{member.role.join(' & ')}</span>
-              {member.motto && (
-                <span className={styles.motto}>
-                  <RiDoubleQuotesL />
-                  {member.motto}
-                  <RiDoubleQuotesR />
-                </span>
-              )}
+              <Image
+                src={member.avatar}
+                alt={member.name}
+                width={100}
+                height={100}
+                layout="fixed"
+              />
+              <div className="flex flex-col justify-center gap-4">
+                <span className={styles.role}>{member.role.join(' & ')}</span>
+                {member.motto && (
+                  <span className={styles.motto}>
+                    <RiDoubleQuotesL />
+                    {member.motto}
+                    <RiDoubleQuotesR />
+                  </span>
+                )}
 
-              <div className={styles.contact}>
-                {member.discord && (
-                  <a>
-                    <SiDiscord title={member.discord} className={styles.icon} />
-                  </a>
-                )}
-                {member.github && (
-                  <a href={`https://github.com/${member.github}`}>
-                    <SiGithub className={styles.icon} />
-                  </a>
-                )}
-                {member.email && (
-                  <a href={`mailto:${member.email}`}>
-                    <TbMail className={styles.icon} />
-                  </a>
-                )}
+                <div className={styles.contact}>
+                  {member.discord && (
+                    <Popover className="relative">
+                      <Popover.Button className="outline-none">
+                        <SiDiscord
+                          title={member.discord}
+                          className={styles.icon}
+                        />
+                      </Popover.Button>
+
+                      <Transition
+                        enter="transition duration-100 ease-out"
+                        enterFrom="transform scale-95 opacity-0"
+                        enterTo="transform scale-100 opacity-100"
+                        leave="transition duration-75 ease-out"
+                        leaveFrom="transform scale-100 opacity-100"
+                        leaveTo="transform scale-95 opacity-0"
+                      >
+                        <Popover.Panel className="absolute top-2 z-10 bg-gray-800/75 rounded-xl px-3 py-2 text-sm w-fit whitespace-nowrap">
+                          {member.discord}
+                        </Popover.Panel>
+                      </Transition>
+                    </Popover>
+                  )}
+                  {member.github && (
+                    <a href={`https://github.com/${member.github}`}>
+                      <SiGithub className={styles.icon} />
+                    </a>
+                  )}
+                  {member.email && (
+                    <a href={`mailto:${member.email}`}>
+                      <TbMail className={styles.icon} />
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           </div>
