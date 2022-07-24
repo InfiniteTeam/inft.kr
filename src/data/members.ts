@@ -32,7 +32,7 @@ const members = [
     name: 'Dacoon',
     kr: '다쿤',
     role: ['아이디어 크리에이터'],
-    color: ['#ed4245', '#ce54b4'],
+    color: ['rgb(169, 134, 211)', 'rgb(148, 245, 158)'],
     discord: '다쿤#4089',
     github: 'dacoonkr',
     email: 'dacoon@inft.kr',
