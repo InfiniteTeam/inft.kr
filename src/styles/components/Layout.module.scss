@@ -4,20 +4,21 @@
   display: flex;
   flex-direction: column;
 
-  @apply px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20;
+  @apply px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24;
 }
 
 .header {
-  height: 5.5rem;
+  height: 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: fixed;
   background-color: rgba(27, 30, 43, 0.75);
   backdrop-filter: blur(5px);
+  z-index: 99999;
 
   @apply left-0 right-0 top-0;
-  @apply px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20;
+  @apply px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24;
 }
 
 .brand {
@@ -52,14 +53,15 @@
 }
 
 .footer {
-  height: 7.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 2rem 0;
 }
 
 .legal {
   color: rgba(255, 255, 255, 0.5);
+  font-size: 10pt;
   display: flex;
   gap: 1.5rem;
 }
