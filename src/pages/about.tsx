@@ -41,13 +41,15 @@ const About: NextPage = () => {
             ></div>
 
             <div className={styles.description}>
-              <Image
-                src={member.avatar}
-                alt={member.name}
-                width={100}
-                height={100}
-                layout="fixed"
-              />
+              <div className="flex-shrink-0">
+                <Image
+                  src={member.avatar}
+                  alt={member.name}
+                  width={100}
+                  height={100}
+                  layout="fixed"
+                />
+              </div>
               <div className="flex flex-col justify-center gap-4">
                 <span className={styles.role}>{member.role.join(' & ')}</span>
                 {member.motto && (

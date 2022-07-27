@@ -72,9 +72,10 @@
 .members {
   width: 100%;
   display: grid;
-  gap: 3.5rem;
   padding: 2.5rem 0 4rem 0;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+
+  @apply gap-8 md:gap-14;
 }
 
 .member {
@@ -129,6 +130,7 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  line-height: 140%;
   svg {
     color: rgba(255, 255, 255, 0.5);
   }
