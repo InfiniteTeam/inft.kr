@@ -65,7 +65,7 @@ const Layout: React.FC<Props> = ({ page, className, children }) => {
           </a>
         </div>
       </header>
-      <div className="h-[88px]" />
+      <div className="h-[64px]" />
       <motion.main
         className={clsx(styles.main, className)}
         variants={variants}

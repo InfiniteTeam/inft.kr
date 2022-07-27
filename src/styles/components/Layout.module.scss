@@ -3,6 +3,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  max-width: 1480px;
 
   @apply px-6 sm:px-8 md:px-12 lg:px-16 xl:px-24;
 }
@@ -16,6 +17,9 @@
   background-color: rgba(27, 30, 43, 0.75);
   backdrop-filter: blur(5px);
   z-index: 99999;
+  max-width: 1480px;
+
+  margin: 0 auto;
 
   @apply left-0 right-0 top-0;
   @apply px-6 sm:px-8 md:px-12 lg:px-16 xl:px-24;
