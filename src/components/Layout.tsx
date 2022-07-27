@@ -88,9 +88,6 @@ const Layout: React.FC<Props> = ({ page, className, children }) => {
             © 2022 InfiniteTeam. All Rights Reserved.
           </span>
           <div className={styles.policy}>
-            <Link href="/tos">
-              <a>이용약관</a>
-            </Link>
             <Link href="/privacy">
               <a>개인정보 처리방침</a>
             </Link>
