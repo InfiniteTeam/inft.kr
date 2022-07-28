@@ -7,6 +7,7 @@ import { SiDiscord, SiGithub } from 'react-icons/si';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
+import Image from 'next/image';
 
 const variants = {
   hidden: { opacity: 0, y: 50 },
@@ -40,7 +41,13 @@ const Layout: React.FC<Props> = ({ page, className, children }) => {
         <Link href="/">
           <a>
             <div className={styles.brand}>
-              <img className={styles.logo} alt="" src="/logo.svg" />
+              <Image
+                className={styles.logo}
+                alt=""
+                src="/logo.svg"
+                height={27}
+                width={27}
+              />
               <div>인피니트팀</div>
             </div>
           </a>
