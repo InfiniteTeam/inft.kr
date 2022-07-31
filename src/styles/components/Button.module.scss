@@ -12,7 +12,7 @@
     background-color: rgba(255, 255, 255, 0.1);
   }
 
-  @apply px-3 py-2 sm:px-4 sm:py-2 text-sm sm:text-base;
+  @apply px-2.5 py-1.5 text-xs sm:px-3 sm:py-2 sm:text-base md:px-4;
 }
 
 .active {

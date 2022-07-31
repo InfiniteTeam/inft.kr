@@ -64,6 +64,11 @@ const Layout: React.FC<Props> = ({ page, className, children }) => {
               <Button active={pathname === '/projects'}>프로젝트</Button>
             </a>
           </Link>
+          <Link href="/brand" passHref>
+            <a>
+              <Button active={pathname === '/brand'}>브랜드</Button>
+            </a>
+          </Link>
           <a href="https://status.inft.kr" target="_blank" rel="noreferrer">
             <Button>서비스 상태</Button>
           </a>
