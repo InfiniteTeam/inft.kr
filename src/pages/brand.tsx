@@ -42,7 +42,7 @@ const About: NextPage = () => {
       <div className="mt-8">
         <h2 className="text-2xl py-6 font-semibold">브랜드 컬러</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 bg-slate-500/10 p-3 rounded-2xl gap-5 shadow-xl">
-          <div className="col-span-1 bg-[#00CC99] h-48 px-4 md:px-5 pb-4 flex flex-col justify-end rounded-xl">
+          <div className="col-span-1 bg-[#00CC99] shadow-lg shadow-[#00cc996f] h-48 px-4 md:px-5 pb-4 flex flex-col justify-end rounded-xl">
             <div className="leading-7 text-2xl font-bold pb-1">
               Infinite
               <br />
@@ -53,7 +53,7 @@ const About: NextPage = () => {
               <br />= RGB(0, 204, 153)
             </div>
           </div>
-          <div className="col-span-1 bg-[#33CCCC] h-48 px-4 md:px-5 pb-4 flex flex-col justify-end rounded-xl">
+          <div className="col-span-1 bg-[#33CCCC] shadow-lg shadow-[#33cccc6f] h-48 px-4 md:px-5 pb-4 flex flex-col justify-end rounded-xl">
             <div className="leading-7 text-2xl font-bold pb-1">
               Infinite
               <br />
@@ -64,7 +64,7 @@ const About: NextPage = () => {
               <br />= RGB(51, 204, 204)
             </div>
           </div>
-          <div className="col-span-1 bg-[#6D28D9] h-48 px-4 md:px-5 pb-4 flex flex-col justify-end rounded-xl">
+          <div className="col-span-1 bg-[#6D28D9] shadow-lg shadow-[#6c28d9a9] h-48 px-4 md:px-5 pb-4 flex flex-col justify-end rounded-xl">
             <div className="leading-7 text-2xl font-bold pb-1">
               Aztra
               <br />
@@ -75,7 +75,7 @@ const About: NextPage = () => {
               <br />= RGB(109, 40, 217)
             </div>
           </div>
-          <div className="col-span-1 bg-[#131828] h-48 px-4 md:px-5 pb-4 flex flex-col justify-end rounded-xl">
+          <div className="col-span-1 bg-[#131828] shadow-lg shadow-[#131828e2] h-48 px-4 md:px-5 pb-4 flex flex-col justify-end rounded-xl">
             <div className="leading-7 text-2xl font-bold pb-1">
               Infinite
               <br />
