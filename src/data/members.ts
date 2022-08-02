@@ -4,6 +4,7 @@ import dacon from 'assets/dacon.png';
 import gangjun from 'assets/gangjun06.png';
 import filename from 'assets/filename.png';
 import dowon from 'assets/dowon.png';
+import hankaru from 'assets/hankaru.png';
 
 const members = [
   {
@@ -12,7 +13,7 @@ const members = [
     role: ['대표', '주 개발자'],
     color: ['rgb(95, 165, 253)', 'rgb(163, 23, 252)'],
     //color: ['#8468f5', '#f5b868'],
-    discord: 'ArpaAP#6558',
+    discord: 'ArpaAP#0001',
     github: 'ArpaAP',
     email: 'arpaap@inft.kr',
     motto: '안녕하세요 알 팝니다',
@@ -47,7 +48,7 @@ const members = [
     color: ['#22c6fa', '#1c9dca'],
     discord: 'gangjun06#1195',
     github: 'gangjun06',
-    email: null,
+    email: 'gangjun@inft.kr',
     motto: null,
     avatar: gangjun,
   },
@@ -58,7 +59,7 @@ const members = [
     color: ['#fbeb89', '#c8fff4'],
     discord: '__filename#1901',
     github: 'ankhgerel',
-    email: null,
+    email: 'filename@inft.kr',
     motto: '⬆ 이코인 사세요',
     avatar: filename,
   },
@@ -72,6 +73,17 @@ const members = [
     email: 'iamleedowon@gmail.com',
     motto: '도바원보',
     avatar: dowon,
+  },
+  {
+    name: 'Hankaru',
+    kr: '한카루',
+    role: ['커뮤니티 매니저'],
+    color: ['rgb(240, 233, 235)', 'rgb(119, 148, 213)'],
+    discord: '! 한카루#3418',
+    github: null,
+    email: 'hankaru@inft.kr',
+    motto: '캬루 아닙니다',
+    avatar: hankaru,
   },
 ];
 
