@@ -7,8 +7,11 @@ import { TbMail } from 'react-icons/tb';
 import members from 'data/members';
 import Image from 'next/image';
 import { Popover, Transition } from '@headlessui/react';
+import history from 'data/history';
 
 const About: NextPage = () => {
+  let years = history.map((o) => o.year);
+
   return (
     <Layout page="소개" className={styles.page}>
       <div className={styles.info}>
@@ -99,6 +102,40 @@ const About: NextPage = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className={styles.section}>
+        <span className={styles.title}>
+          <span>연혁</span>
+          <small>HISTORY</small>
+        </span>
+      </div>
+      <div className="flex justify-center py-5 mt-12">
+        <table>
+          <thead>
+            <tr>
+              <th />
+              <th />
+            </tr>
+          </thead>
+          <tbody>
+            {history.map((item, i) => (
+              <tr key={i}>
+                <td className="pr-12 border-r-[1px] border-solid border-zinc-700">
+                  <div className="text-2xl pb-3">
+                    {years.indexOf(item.year) === i ? item.year : ''}
+                  </div>
+                </td>
+                <td className="pl-12">
+                  <div className="pb-1 text-gray-400 font-light">
+                    {item.month}월
+                  </div>
+                  <h2 className="text-2xl mb-8">{item.content}</h2>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </Layout>
   );

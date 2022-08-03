@@ -93,8 +93,8 @@ const About: NextPage = () => {
         <h2 className="text-2xl py-6 font-semibold">주의사항</h2>
         <ul className="list-disc gap-2 px-7 flex flex-col">
           <li className="leading-7 font-light">
-            본 브랜드 상징은 InfiniteTeam 및 그 제품을 나타내는 용도로 자유롭게
-            사용하실 수 있습니다.
+            본 브랜드 상징은 InfiniteTeam 및 그 제품을 나타내는 용도로만
+            자유롭게 사용하실 수 있습니다.
           </li>
           <li className="leading-7 font-light">
             InfiniteTeam 브랜드 상징(로고를 비롯한 CI, BI)의 저작권은 모두
