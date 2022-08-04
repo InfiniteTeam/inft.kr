@@ -12,11 +12,11 @@ const members = [
     kr: '알파',
     role: ['대표', '주 개발자'],
     color: ['rgb(95, 165, 253)', 'rgb(163, 23, 252)'],
-    //color: ['#8468f5', '#f5b868'],
     discord: 'ArpaAP#0001',
     github: 'ArpaAP',
     email: 'arpaap@inft.kr',
     motto: '안녕하세요 알 팝니다',
+    solvedac: 'arpaap',
     avatar: arpaap,
   },
   {
@@ -28,17 +28,19 @@ const members = [
     github: 'kndlr',
     email: 'coin@inft.kr',
     motto: '비트코인 안합니다',
+    solvedac: 'coinkr',
     avatar: coin,
   },
   {
     name: 'Dacoon',
     kr: '다쿤',
-    role: ['아이디어 크리에이터'],
+    role: ['알고리즘'],
     color: ['rgb(169, 134, 211)', 'rgb(148, 245, 158)'],
     discord: '다쿤#4089',
     github: 'dacoonkr',
     email: 'dacoon@inft.kr',
     motto: '음',
+    solvedac: 'wjdgud0621',
     avatar: dacon,
   },
   {
@@ -50,6 +52,7 @@ const members = [
     github: 'gangjun06',
     email: 'gangjun@inft.kr',
     motto: null,
+    solvedac: null,
     avatar: gangjun,
   },
   {
@@ -61,6 +64,7 @@ const members = [
     github: 'ankhgerel',
     email: 'filename@inft.kr',
     motto: '⬆ 이코인 사세요',
+    solvedac: null,
     avatar: filename,
   },
   {
@@ -72,6 +76,7 @@ const members = [
     github: null,
     email: 'iamleedowon@gmail.com',
     motto: '도바원보',
+    solvedac: null,
     avatar: dowon,
   },
   {
@@ -83,6 +88,7 @@ const members = [
     github: null,
     email: 'hankaru@inft.kr',
     motto: '캬루 아닙니다',
+    solvedac: null,
     avatar: hankaru,
   },
 ];

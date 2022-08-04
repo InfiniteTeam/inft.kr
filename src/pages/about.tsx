@@ -8,6 +8,7 @@ import members from 'data/members';
 import Image from 'next/image';
 import { Popover, Transition } from '@headlessui/react';
 import history from 'data/history';
+import solvedac from 'assets/solved-ac.png';
 
 const About: NextPage = () => {
   let years = history.map((o) => o.year);
@@ -54,13 +55,13 @@ const About: NextPage = () => {
                 />
               </div>
               <div className="flex flex-col justify-center gap-4">
-                <span className={styles.role}>{member.role.join(' & ')}</span>
+                <div className={styles.role}>{member.role.join(' & ')}</div>
                 {member.motto && (
-                  <span className={styles.motto}>
+                  <div className={styles.motto}>
                     <RiDoubleQuotesL />
                     {member.motto}
                     <RiDoubleQuotesR />
-                  </span>
+                  </div>
                 )}
 
                 <div className={styles.contact}>
@@ -95,6 +96,20 @@ const About: NextPage = () => {
                   {member.email && (
                     <a href={`mailto:${member.email}`}>
                       <TbMail className={styles.icon} />
+                    </a>
+                  )}
+                  {member.solvedac && (
+                    <a
+                      href={`https://solved.ac/profile/${member.solvedac}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Image
+                        src={solvedac}
+                        alt="solved-ac"
+                        width={28}
+                        height={28}
+                      />
                     </a>
                   )}
                 </div>
