@@ -46,7 +46,7 @@ const members = [
   {
     name: 'gangjun06',
     kr: '펭귄',
-    role: ['Aztra 웹 프론트엔드 엔지니어'],
+    role: ['Aztra 웹 풀스택 엔지니어'],
     color: ['#22c6fa', '#1c9dca'],
     discord: 'gangjun06#1195',
     github: 'gangjun06',
