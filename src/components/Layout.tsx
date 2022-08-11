@@ -94,7 +94,7 @@ const Layout: React.FC<Props> = ({ page, className, children }) => {
       </nav>
 
       <div
-        className={`fixed bg-[#1b1e2b]/75 w-full z-[9999] backdrop-blur-[5px] top-16 transition-all duration-300 sm:hidden gap-2.5 flex flex-col ${
+        className={`fixed -mx-2 bg-[#1b1e2b]/75 w-full z-[9999] backdrop-blur-[5px] top-16 transition-all duration-300 sm:hidden gap-2.5 flex flex-col ${
           showMenu ? '' : 'opacity-0 pointer-events-none'
         }`}
       >

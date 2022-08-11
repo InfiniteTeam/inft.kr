@@ -31,7 +31,7 @@ const Projects: NextPage = () => {
             height={100}
           />
         </div>
-        <div className="flex-shrink-0 text-center lg:text-left w-full lg:w-1/4 lg:w-1/3 lg:pr-8 lg:mr-4 lg:border-r-[0.5px] my-5 lg:my-0 border-solid border-zinc-700 py-2.5">
+        <div className="flex-shrink-0 text-center lg:text-left w-full lg:w-1/3 lg:pr-8 lg:mr-4 lg:border-r-[0.5px] my-5 lg:my-0 border-solid border-zinc-700 py-2.5">
           <h2 className="text-4xl font-semibold tracking-wide mb-3">Aztra</h2>
           <div className="text-gray-500 font-light">
             웹 대시보드를 지원하는 한국어 디스코드 관리봇
@@ -108,7 +108,7 @@ const Projects: NextPage = () => {
             height={100}
           />
         </div>
-        <div className="flex-shrink-0 text-center lg:text-left w-full lg:w-1/4 lg:w-1/3 lg:pr-8 lg:mr-4 lg:border-r-[0.5px] my-5 lg:my-0 border-solid border-zinc-700 py-2.5">
+        <div className="flex-shrink-0 text-center lg:text-left w-full lg:w-1/3 lg:pr-8 lg:mr-4 lg:border-r-[0.5px] my-5 lg:my-0 border-solid border-zinc-700 py-2.5">
           <h2 className="text-4xl font-semibold tracking-wide mb-3">2¹²</h2>
           <div className="text-gray-500 font-light">
             디스코드 2048 미니게임 봇
@@ -187,7 +187,7 @@ const Projects: NextPage = () => {
             height={100}
           />
         </div>
-        <div className="flex-shrink-0 text-center lg:text-left w-full lg:w-1/4 lg:w-1/3 lg:pr-8 lg:mr-4 lg:border-r-[0.5px] my-5 lg:my-0 border-solid border-zinc-700 py-2.5">
+        <div className="flex-shrink-0 text-center lg:text-left w-full lg:w-1/3 lg:pr-8 lg:mr-4 lg:border-r-[0.5px] my-5 lg:my-0 border-solid border-zinc-700 py-2.5">
           <h2 className="text-4xl font-semibold tracking-wide mb-3">Azalea</h2>
           <div className="text-gray-500 font-light">디스코드 RPG 게임봇</div>
         </div>
