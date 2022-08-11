@@ -78,8 +78,10 @@
 }
 
 .menuClosed {
-  opacity: 0;
-  pointer-events: none;
+  @media (max-width: 640px) {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 .main {
