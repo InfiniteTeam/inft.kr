@@ -28,6 +28,32 @@ const Layout: React.FC<Props> = ({ page, className, children }) => {
   const [pathname, setPathname] = useState('');
   const [showMenu, setShowMenu] = useState(false);
 
+  const menuBar = (
+    <>
+      <Link href="/about" passHref>
+        <a>
+          <Button active={pathname === '/about'}>소개</Button>
+        </a>
+      </Link>
+      <Link href="/projects" passHref>
+        <a>
+          <Button active={pathname === '/projects'}>프로젝트</Button>
+        </a>
+      </Link>
+      <Link href="/brand" passHref>
+        <a>
+          <Button active={pathname === '/brand'}>브랜드</Button>
+        </a>
+      </Link>
+      <a href="https://status.inft.kr" target="_blank" rel="noreferrer">
+        <Button>서비스 상태</Button>
+      </a>
+      <a href="https://employment.inft.kr" target="_blank" rel="noreferrer">
+        <Button>채용</Button>
+      </a>
+    </>
+  );
+
   useEffect(() => {
     setPathname(window.location.pathname);
   }, []);
@@ -55,34 +81,7 @@ const Layout: React.FC<Props> = ({ page, className, children }) => {
           </a>
         </Link>
 
-        <div
-          className={clsx(
-            styles.menus,
-            showMenu ? styles.menuOpen : styles.menuClosed
-          )}
-        >
-          <Link href="/about" passHref>
-            <a>
-              <Button active={pathname === '/about'}>소개</Button>
-            </a>
-          </Link>
-          <Link href="/projects" passHref>
-            <a>
-              <Button active={pathname === '/projects'}>프로젝트</Button>
-            </a>
-          </Link>
-          <Link href="/brand" passHref>
-            <a>
-              <Button active={pathname === '/brand'}>브랜드</Button>
-            </a>
-          </Link>
-          <a href="https://status.inft.kr" target="_blank" rel="noreferrer">
-            <Button>서비스 상태</Button>
-          </a>
-          <a href="https://employment.inft.kr" target="_blank" rel="noreferrer">
-            <Button>채용</Button>
-          </a>
-        </div>
+        <div className="hidden sm:flex gap-2">{menuBar}</div>
 
         <div
           className="sm:hidden p-2 -mr-2"
@@ -93,6 +92,15 @@ const Layout: React.FC<Props> = ({ page, className, children }) => {
           <TbMenu2 size={28} />
         </div>
       </nav>
+
+      <div
+        className={`fixed bg-[#1b1e2b]/75 w-full z-[9999] backdrop-blur-[5px] top-16 transition-all duration-300 sm:hidden gap-2.5 flex flex-col ${
+          showMenu ? '' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        {menuBar}
+      </div>
+
       <div className="h-[64px]" />
       <motion.main
         className={clsx(styles.main, className)}
