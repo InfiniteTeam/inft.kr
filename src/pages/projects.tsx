@@ -21,24 +21,28 @@ const Projects: NextPage = () => {
         </span>
       </div>
 
-      <div className="md:flex text-center md:text-left rounded-xl hover:bg-black/[0.15] shadow-xl hover:shadow-2xl transition-all duration-500 mt-10 px-6 py-5 gap-5 items-center border-solid border-[1px] border-gray-800">
-        <Image
-          className="rounded-full"
-          src={aztra}
-          alt="aztra"
-          width={100}
-          height={100}
-        />
-        <div className="md:pr-8 md:mr-4 md:border-r-[0.5px] my-8 md:my-0 border-solid border-zinc-700 py-2.5 w-1/3">
+      <div className="lg:flex text-center lg:text-left rounded-xl hover:bg-black/[0.15] shadow-xl hover:shadow-2xl transition-all duration-500 mt-10 px-6 py-5 gap-5 items-center border-solid border-[1px] border-gray-800">
+        <div className="flex-shrink-0">
+          <Image
+            className="rounded-full"
+            src={aztra}
+            alt="aztra"
+            width={100}
+            height={100}
+          />
+        </div>
+        <div className="flex-shrink-0 text-center lg:text-left w-full lg:w-1/4 lg:w-1/3 lg:pr-8 lg:mr-4 lg:border-r-[0.5px] my-5 lg:my-0 border-solid border-zinc-700 py-2.5">
           <h2 className="text-4xl font-semibold tracking-wide mb-3">Aztra</h2>
           <div className="text-gray-500 font-light">
             웹 대시보드를 지원하는 한국어 디스코드 관리봇
           </div>
         </div>
-        <div className="text-gray-200">
+        <div className="text-gray-200 flex-shrink-0">
           <div className="mb-2">2021.01.21 ~ 진행 중</div>
-          <div className="text-sm font-light mt-3.5 mb-2.5">참여 멤버: </div>
-          <div className="flex gap-1.5 items-center">
+          <div className="text-sm font-light mt-3.5 mb-4 lg:mb-2.5">
+            참여 멤버:{' '}
+          </div>
+          <div className="flex gap-1.5 items-center justify-center lg:justify-start">
             {members.map((one) => (
               <Popover
                 key={one.name}
@@ -81,8 +85,8 @@ const Projects: NextPage = () => {
             ))}
           </div>
         </div>
-        <hr className="md:hidden w-full border-b-[0.5px] border-solid border-zinc-700 my-6" />
-        <div className="md:ml-auto">
+        <hr className="lg:hidden w-full border-b-[0.5px] border-solid border-zinc-700 my-6" />
+        <div className="lg:ml-auto">
           <a href="https://aztra.xyz" target="_blank" rel="noreferrer">
             <button
               type="button"
@@ -94,24 +98,28 @@ const Projects: NextPage = () => {
         </div>
       </div>
 
-      <div className="md:flex text-center md:text-left rounded-xl hover:bg-black/[0.15] shadow-xl hover:shadow-2xl transition-all duration-500 mt-5 px-6 py-5 gap-5 items-center border-solid border-[1px] border-gray-800">
-        <Image
-          className="rounded-full"
-          src={bot4096}
-          alt="2¹²"
-          width={100}
-          height={100}
-        />
-        <div className="md:pr-8 md:mr-4 md:border-r-[0.5px] my-8 md:my-0 border-solid border-zinc-700 py-2.5 w-1/3">
+      <div className="lg:flex text-center lg:text-left rounded-xl hover:bg-black/[0.15] shadow-xl hover:shadow-2xl transition-all duration-500 mt-5 px-6 py-5 gap-5 items-center border-solid border-[1px] border-gray-800">
+        <div className="flex-shrink-0">
+          <Image
+            className="rounded-full"
+            src={bot4096}
+            alt="2¹²"
+            width={100}
+            height={100}
+          />
+        </div>
+        <div className="flex-shrink-0 text-center lg:text-left w-full lg:w-1/4 lg:w-1/3 lg:pr-8 lg:mr-4 lg:border-r-[0.5px] my-5 lg:my-0 border-solid border-zinc-700 py-2.5">
           <h2 className="text-4xl font-semibold tracking-wide mb-3">2¹²</h2>
           <div className="text-gray-500 font-light">
             디스코드 2048 미니게임 봇
           </div>
         </div>
-        <div className="text-gray-200">
+        <div className="text-gray-200 flex-shrink-0">
           <div className="mb-2">2022.08.05 ~ 진행 중</div>
-          <div className="text-sm font-light mt-3.5 mb-2.5">참여 멤버: </div>
-          <div className="flex gap-1.5 items-center">
+          <div className="text-sm font-light mt-3.5 mb-4 lg:mb-2.5">
+            참여 멤버:{' '}
+          </div>
+          <div className="flex gap-1.5 items-center justify-center lg:justify-start">
             {members
               .filter((one) => ['ArpaAP', 'COiN', 'Dacoon'].includes(one.name))
               .map((one) => (
@@ -156,8 +164,8 @@ const Projects: NextPage = () => {
               ))}
           </div>
         </div>
-        <hr className="md:hidden w-full border-b-[0.5px] border-solid border-zinc-700 my-6" />
-        <div className="md:ml-auto">
+        <hr className="lg:hidden w-full border-b-[0.5px] border-solid border-zinc-700 my-6" />
+        <div className="lg:ml-auto">
           <a href="https://4096.inft.kr" target="_blank" rel="noreferrer">
             <button
               type="button"
@@ -169,22 +177,26 @@ const Projects: NextPage = () => {
         </div>
       </div>
 
-      <div className="md:flex text-center md:text-left rounded-xl hover:bg-black/[0.15] shadow-xl hover:shadow-2xl transition-all duration-500 mt-5 px-6 py-5 gap-5 items-center border-solid border-[1px] border-gray-800">
-        <Image
-          className="rounded-full"
-          src={azalea}
-          alt="azalea"
-          width={100}
-          height={100}
-        />
-        <div className="md:pr-8 md:mr-4 md:border-r-[0.5px] my-8 md:my-0 border-solid border-zinc-700 py-2.5 w-1/3">
+      <div className="lg:flex text-center lg:text-left rounded-xl hover:bg-black/[0.15] shadow-xl hover:shadow-2xl transition-all duration-500 mt-5 px-6 py-5 gap-5 items-center border-solid border-[1px] border-gray-800">
+        <div className="flex-shrink-0">
+          <Image
+            className="rounded-full"
+            src={azalea}
+            alt="azalea"
+            width={100}
+            height={100}
+          />
+        </div>
+        <div className="flex-shrink-0 text-center lg:text-left w-full lg:w-1/4 lg:w-1/3 lg:pr-8 lg:mr-4 lg:border-r-[0.5px] my-5 lg:my-0 border-solid border-zinc-700 py-2.5">
           <h2 className="text-4xl font-semibold tracking-wide mb-3">Azalea</h2>
           <div className="text-gray-500 font-light">디스코드 RPG 게임봇</div>
         </div>
-        <div className="text-gray-200">
+        <div className="text-gray-200 flex-shrink-0">
           <div className="mb-2">2020.05.04 ~ 개발 일시중단</div>
-          <div className="text-sm font-light mt-3.5 mb-2.5">참여 멤버: </div>
-          <div className="flex gap-1.5 items-center">
+          <div className="text-sm font-light mt-3.5 mb-4 lg:mb-2.5">
+            참여 멤버:{' '}
+          </div>
+          <div className="flex gap-1.5 items-center justify-center lg:justify-start">
             {members
               .filter((one) => ['ArpaAP', 'COiN', 'Dacoon'].includes(one.name))
               .map((one) => (
@@ -229,8 +241,8 @@ const Projects: NextPage = () => {
               ))}
           </div>
         </div>
-        <hr className="md:hidden w-full border-b-[0.5px] border-solid border-zinc-700 my-6" />
-        <div className="md:ml-auto">
+        <hr className="lg:hidden w-full border-b-[0.5px] border-solid border-zinc-700 my-6" />
+        <div className="lg:ml-auto">
           <button
             type="button"
             className="bg-gray-600 w-32 px-5 py-3 rounded-xl text-gray-400"

@@ -4,6 +4,7 @@ import styles from 'styles/components/Layout.module.scss';
 import Link from 'next/link';
 import Button from './Button';
 import { SiDiscord, SiGithub } from 'react-icons/si';
+import { TbMenu2 } from 'react-icons/tb';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
@@ -25,6 +26,7 @@ const Layout: React.FC<Props> = ({ page, className, children }) => {
   const title = (page ? `${page} - ` : '') + 'InfiniteTeam';
 
   const [pathname, setPathname] = useState('');
+  const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
     setPathname(window.location.pathname);
@@ -37,7 +39,7 @@ const Layout: React.FC<Props> = ({ page, className, children }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className={styles.header}>
+      <nav className={styles.header}>
         <Link href="/">
           <a>
             <div className={styles.brand}>
@@ -53,7 +55,12 @@ const Layout: React.FC<Props> = ({ page, className, children }) => {
           </a>
         </Link>
 
-        <div className={styles.menus}>
+        <div
+          className={clsx(
+            styles.menus,
+            showMenu ? styles.menuOpen : styles.menuClosed
+          )}
+        >
           <Link href="/about" passHref>
             <a>
               <Button active={pathname === '/about'}>소개</Button>
@@ -76,7 +83,16 @@ const Layout: React.FC<Props> = ({ page, className, children }) => {
             <Button>채용</Button>
           </a>
         </div>
-      </header>
+
+        <div
+          className="sm:hidden p-2 -mr-2"
+          onClick={() => {
+            setShowMenu(!showMenu);
+          }}
+        >
+          <TbMenu2 size={28} />
+        </div>
+      </nav>
       <div className="h-[64px]" />
       <motion.main
         className={clsx(styles.main, className)}
