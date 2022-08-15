@@ -256,7 +256,7 @@ const Projects: NextPage = () => {
       <div className="flex flex-col gap-3 items-center py-10 mt-12">
         <div className="flex items-center gap-3">
           <hr className="w-8 border-b-[0.1px] border-white border-solid" />
-          <div className="">COMMING SOON</div>
+          <div className="">COMING SOON</div>
           <hr className="w-8 border-b-[0.1px] border-white border-solid" />
         </div>
         <div className="text-sm font-light text-zinc-400">
