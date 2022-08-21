@@ -64,7 +64,7 @@ const members = [
     github: 'ankhgerel',
     email: 'filename@inft.kr',
     motto: '⬆ 이코인 사세요',
-    solvedac: null,
+    solvedac: 'filename',
     avatar: filename,
   },
   {
