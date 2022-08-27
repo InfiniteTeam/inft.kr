@@ -37,7 +37,7 @@ const history = [
   {
     year: 2020,
     month: 8,
-    content: '첫 InfiniteTeam 홈페이지 공개',
+    content: '첫 Infinite Studio 홈페이지 공개',
   },
   {
     year: 2020,

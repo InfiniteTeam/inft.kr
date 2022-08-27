@@ -10,7 +10,7 @@ const Home: NextPage = () => {
           무한한 미래를 만들어갑니다
         </div>
         <div className="text-lg sm:text-xl font-light pt-5 text-gray-400">
-          InfiniteTeam - 디스코드 봇 개발팀
+          Infinite Studio - 디스코드 봇 개발팀
         </div>
       </div>
     </Layout>

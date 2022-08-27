@@ -13,7 +13,7 @@ const About: NextPage = () => {
       </div>
 
       <div className="mt-8 flex flex-col">
-        <h2 className="text-2xl py-6 font-semibold">InfiniteTeam 상징</h2>
+        <h2 className="text-2xl py-6 font-semibold">Infinite Studio 상징</h2>
         <div className="grid grid-cols-4 bg-slate-500/10 rounded-2xl p-3 gap-3 sm:p-4 sm:gap-4 sm:w-2/3 md:w-3/5 lg:p-5 lg:gap-5 lg:w-3/5 mx-auto shadow-xl">
           <div className="col-span-1">
             <img src="/logos/logo_wg.png" alt="logo_wg" />
@@ -93,12 +93,12 @@ const About: NextPage = () => {
         <h2 className="text-2xl py-6 font-semibold">주의사항</h2>
         <ul className="list-disc gap-2 px-7 flex flex-col">
           <li className="leading-7 font-light">
-            본 브랜드 상징은 InfiniteTeam 및 그 제품을 나타내는 용도로만
+            본 브랜드 상징은 Infinite Studio 및 그 제품을 나타내는 용도로만
             자유롭게 사용하실 수 있습니다.
           </li>
           <li className="leading-7 font-light">
-            InfiniteTeam 브랜드 상징(로고를 비롯한 CI, BI)의 저작권은 모두
-            InfiniteTeam에 있습니다.
+            Infinite Studio 브랜드 상징(로고를 비롯한 CI, BI)의 저작권은 모두
+            Infinite Studio에 있습니다.
           </li>
           <li className="leading-7 font-light">
             당사의 상표 또는 디자인을 모조, 모방 또는 날조하여 당사의 상표 또는

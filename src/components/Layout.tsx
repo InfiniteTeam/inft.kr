@@ -23,7 +23,7 @@ interface Props {
 }
 
 const Layout: React.FC<Props> = ({ page, className, children }) => {
-  const title = (page ? `${page} - ` : '') + 'InfiniteTeam';
+  const title = (page ? `${page} - ` : '') + 'Infinite Studio';
 
   const [pathname, setPathname] = useState('');
   const [showMenu, setShowMenu] = useState(false);
@@ -120,7 +120,7 @@ const Layout: React.FC<Props> = ({ page, className, children }) => {
       <footer className={styles.footer}>
         <div className={styles.legal}>
           <span className={styles.copyright}>
-            © 2022 InfiniteTeam. All Rights Reserved.
+            © 2022 Infinite Studio. All Rights Reserved.
           </span>
           <div className={styles.policy}>
             <Link href="/privacy">
