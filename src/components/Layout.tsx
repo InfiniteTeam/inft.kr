@@ -76,7 +76,7 @@ const Layout: React.FC<Props> = ({ page, className, children }) => {
                 height={27}
                 width={27}
               />
-              <div>인피니트팀</div>
+              <div>인피니트 스튜디오</div>
             </div>
           </a>
         </Link>
