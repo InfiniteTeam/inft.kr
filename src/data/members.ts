@@ -5,6 +5,7 @@ import gangjun from 'assets/gangjun06.png';
 import filename from 'assets/filename.png';
 import dowon from 'assets/dowon.png';
 import hankaru from 'assets/hankaru.png';
+import ray from 'assets/ray.png';
 
 const members = [
   {
@@ -58,7 +59,7 @@ const members = [
   {
     name: '__filename',
     kr: '수박',
-    role: ['Aztra 봇 개발자'],
+    role: ['봇 개발자', 'Idle Factory 주 개발자'],
     color: ['#93c5fd', '#fdfdfd'],
     discord: '@__filename',
     github: 'filename24',
@@ -90,6 +91,16 @@ const members = [
     motto: '캬루 아닙니다',
     solvedac: null,
     avatar: hankaru,
+  },
+  {
+    name: 'Ray',
+    kr: '레이',
+    color: ['#fff', '#aaa'],
+    role: ['개발자', '물리서버 관리자'],
+    discord: 'raymix__',
+    github: 'erukim',
+    email: 'erukim@hiplay.kr',
+    avatar: ray,
   },
 ];
 
