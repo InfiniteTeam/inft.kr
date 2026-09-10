@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/.well-known/webfinger",
+      "destination": "https://auth.inft.kr/.well-known/webfinger"
+    }
+  ]
+}
