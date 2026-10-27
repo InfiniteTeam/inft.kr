@@ -37,8 +37,8 @@
 }
 
 /*
- * 로고 뒤의 오로라: 넓게 깔린 청록빛 위로 초록 띠와 보랏빛 띠가 아주 느리게 흔들립니다.
- * 가장자리는 마스크로 지워서 슬로건 뒤까지는 번지지 않습니다.
+ * WebGL을 쓸 수 없을 때만 쓰는 CSS 오로라. 평소에는 캔버스가 오로라를 직접 그리고,
+ * 유리 로고가 그것을 굴절시켜 보여 줍니다.
  */
 .aurora {
   position: absolute;
@@ -139,9 +139,17 @@
   }
 }
 
+/*
+ * 오로라까지 함께 그리는 캔버스. 로고 자리를 중심으로 옆으로 넓게 깔리고,
+ * 가장자리는 페이지 배경과 같은 색이라 경계가 보이지 않습니다.
+ */
 .canvas {
   position: absolute;
-  inset: -35%;
+  left: 50%;
+  top: 50%;
+  width: min(100vw, calc(var(--mark) * 3.4));
+  height: calc(var(--mark) * 1.7);
+  translate: -50% -50%;
   opacity: 0;
   transition: opacity 1.2s var(--ease-out);
 
@@ -197,9 +205,13 @@
   }
 }
 
-.lede {
+/* 슬로건 아래 한 줄: 대문자로, 글자 사이를 조금 띄워 조용하게 */
+.since {
   margin-top: var(--space-lg);
-  font-size: var(--text-lead);
+  font-size: var(--text-md);
+  font-weight: var(--weight-strong);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--color-muted);
   cursor: default;
 }
@@ -216,10 +228,6 @@
   .hero {
     --mark: min(34svh, 66vw);
     padding-block: calc(var(--nav-h) + var(--space-lg)) var(--space-xl);
-  }
-
-  .lede {
-    max-width: 22ch;
   }
 }
 

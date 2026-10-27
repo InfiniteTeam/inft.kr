@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 import { useEffect, useRef, useState } from 'react';
 import { site } from '@/data/site';
+import { DiscordIcon } from '@/components/icons';
 import Button from '@/components/ui/Button';
 import { createHeroStore, type HeroStore } from './store';
 import styles from './Hero.module.scss';
@@ -159,7 +160,6 @@ export default function Hero() {
     >
       <div className={`container ${styles.inner}`}>
         <div className={styles.stage} aria-hidden="true">
-          <div className={styles.aurora} />
           {gl && (
             <div className={styles.canvas}>
               <HeroCanvas
@@ -169,7 +169,12 @@ export default function Hero() {
               />
             </div>
           )}
-          {gl === false && <div className={styles.fallback} />}
+          {gl === false && (
+            <>
+              <div className={styles.aurora} />
+              <div className={styles.fallback} />
+            </>
+          )}
         </div>
 
         <h1 id="hero-title" className={styles.slogan}>
@@ -181,12 +186,12 @@ export default function Hero() {
           </span>
         </h1>
 
-        <p className={styles.lede}>
-          {site.name}는 2018년부터 디스코드 봇과 게임을 만듭니다.
-        </p>
+        <p className={styles.since}>Since {site.founded.year}</p>
 
         <div className={styles.actions}>
-          <Button href={site.links.discord}>디스코드 서버 참여</Button>
+          <Button href={site.links.discord} icon={<DiscordIcon size={20} />}>
+            디스코드 서버 참여
+          </Button>
           <Button href="/projects" variant="secondary">
             프로젝트 보기
           </Button>
