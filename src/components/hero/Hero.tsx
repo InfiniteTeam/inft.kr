@@ -184,9 +184,9 @@ export default function Hero() {
         </p>
 
         <div className={styles.actions}>
-          <Button href="/projects">프로젝트 보기</Button>
-          <Button href={site.links.discord} variant="secondary">
-            디스코드 서버 참여
+          <Button href={site.links.discord}>디스코드 서버 참여</Button>
+          <Button href="/projects" variant="secondary">
+            프로젝트 보기
           </Button>
         </div>
       </div>

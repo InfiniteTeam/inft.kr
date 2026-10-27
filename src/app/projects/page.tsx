@@ -1,140 +1,142 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import clsx from 'clsx';
-import projects, { archive } from '@/data/projects';
+import projects, { archive, type Project } from '@/data/projects';
 import { findMembers } from '@/data/members';
-import Avatar from '@/components/ui/Avatar';
+import AvatarStack from '@/components/ui/AvatarStack';
 import Button from '@/components/ui/Button';
 import PageHeader from '@/components/ui/PageHeader';
-import Reveal from '@/components/ui/Reveal';
 import SectionHeader from '@/components/ui/SectionHeader';
-import Spotlight from '@/components/ui/Spotlight';
 import styles from './page.module.scss';
 
 export const metadata: Metadata = {
   title: '프로젝트',
   description:
-    'Aztra, Idle Factory, 2¹², Azalea — Infinite Studio가 만들고 운영하는 디스코드 봇과 게임을 소개합니다.',
+    'Aztra, Idle Factory, 2¹², Azalea. Infinite Studio가 만들고 운영하는 디스코드 봇과 게임입니다.',
 };
 
+function Facts({ project }: { project: Project }) {
+  return (
+    <dl className={styles.facts}>
+      <div>
+        <dt>분야</dt>
+        <dd>{project.category}</dd>
+      </div>
+      <div>
+        <dt>시작</dt>
+        <dd className="tabular">{project.since}</dd>
+      </div>
+      <div>
+        <dt>상태</dt>
+        <dd>{project.status === 'active' ? '운영 중' : '개발 일시 중단'}</dd>
+      </div>
+      <div>
+        <dt>참여</dt>
+        <dd>
+          <AvatarStack members={findMembers(project.members)} size={24} />
+        </dd>
+      </div>
+    </dl>
+  );
+}
+
 export default function ProjectsPage() {
+  const [lead, ...rest] = projects;
+
   return (
     <>
       <PageHeader
-        eyebrow="프로젝트"
         title={'만들고 있는 것들,\n만들어 온 것들'}
-        lead="운영 중인 서비스부터 지금의 팀을 만든 첫 작품까지, Infinite Studio의 프로젝트를 모았습니다."
+        lead="운영 중인 서비스부터 지금의 팀을 만든 첫 작품까지 모았습니다."
       />
 
-      <section className={styles.list} aria-label="프로젝트 목록">
-        <div className="container">
-          {projects.map((project, i) => {
-            const team = findMembers(project.members);
-            const active = project.status === 'active';
-            return (
-              <Reveal
-                as="article"
-                key={project.slug}
-                id={project.slug}
-                className={clsx(styles.project, i % 2 === 1 && styles.flip)}
-              >
-                <Spotlight
-                  className={styles.visual}
-                  style={{ '--tint': project.tint } as React.CSSProperties}
-                >
-                  <div className={styles.visualAura} aria-hidden="true">
-                    <Image src={project.icon} alt="" fill sizes="400px" />
-                  </div>
-                  <Image
-                    className={styles.visualIcon}
-                    src={project.icon}
-                    alt={`${project.name} 아이콘`}
-                    width={168}
-                    height={168}
-                    sizes="168px"
-                  />
-                </Spotlight>
-
-                <div className={styles.info}>
-                  <p className={styles.meta}>
-                    <span
-                      className={styles.status}
-                      data-status={project.status}
-                    >
-                      {active ? '운영 중' : '일시 중단'}
-                    </span>
-                    <span>{project.category}</span>
-                  </p>
-                  <h2 className={styles.name}>
-                    {project.name}
-                    {project.nameKr && <span>{project.nameKr}</span>}
-                  </h2>
-                  <p className={styles.summary}>{project.summary}</p>
-                  <p className={styles.description}>{project.description}</p>
-
-                  <dl className={styles.facts}>
-                    <div>
-                      <dt>시작</dt>
-                      <dd className="tabular">{project.since}</dd>
-                    </div>
-                    {project.highlight && (
-                      <div>
-                        <dt>{project.highlight.label}</dt>
-                        <dd className="tabular">{project.highlight.value}</dd>
-                      </div>
-                    )}
-                    <div className={styles.team}>
-                      <dt>참여 멤버 {team.length}명</dt>
-                      <dd>
-                        {team.map((member) => (
-                          <span key={member.name} title={member.name}>
-                            <Avatar member={member} size={30} />
-                            <span className="visually-hidden">
-                              {member.name}
-                            </span>
-                          </span>
-                        ))}
-                      </dd>
-                    </div>
-                  </dl>
-
-                  {project.url && (
-                    <Button href={project.url} variant="primary">
-                      {new URL(project.url).host} 방문하기
-                    </Button>
-                  )}
-                </div>
-              </Reveal>
-            );
-          })}
+      <section className={styles.lead} aria-labelledby={lead.slug}>
+        <div className={`container ${styles.split}`}>
+          <div className={styles.visual}>
+            <Image
+              src={lead.icon}
+              alt={`${lead.name} 아이콘`}
+              width={176}
+              height={176}
+              sizes="176px"
+              priority
+            />
+          </div>
+          <div>
+            <h2 id={lead.slug} className={styles.leadName}>
+              {lead.name}
+            </h2>
+            <p className={styles.summary}>{lead.summary}</p>
+            <p className={styles.description}>{lead.description}</p>
+            <Facts project={lead} />
+            {lead.url && (
+              <Button href={lead.url}>{new URL(lead.url).host} 열기</Button>
+            )}
+          </div>
         </div>
       </section>
 
-      <section className={styles.archive} aria-labelledby="archive-title">
+      <section className={styles.section} aria-label="다른 프로젝트">
         <div className="container">
-          <SectionHeader
-            id="archive-title"
-            eyebrow="아카이브"
-            title="그동안 만든 것들"
-            description="연혁에 남아 있는 지난 프로젝트들입니다."
-          />
-          <ul className={styles.archiveList}>
-            {archive.map((item) => (
-              <Reveal as="li" key={item.name}>
-                <span className={styles.archiveYear}>{item.year}</span>
-                <span className={styles.archiveName}>
-                  {item.name}
-                  {'nameKr' in item && item.nameKr && (
-                    <small>{item.nameKr}</small>
-                  )}
-                </span>
-                <span className={styles.archiveDesc}>{item.description}</span>
-                <span className={styles.archiveNote}>{item.note}</span>
-              </Reveal>
+          <ul className={styles.grid}>
+            {rest.map((project) => (
+              <li key={project.slug} id={project.slug} className={styles.card}>
+                <Image
+                  className={styles.icon}
+                  src={project.icon}
+                  alt={`${project.name} 아이콘`}
+                  width={72}
+                  height={72}
+                  sizes="72px"
+                />
+                <h2 className={styles.name}>{project.name}</h2>
+                <p className={styles.summary}>{project.summary}</p>
+                <p className={styles.description}>{project.description}</p>
+                <Facts project={project} />
+                {project.url && (
+                  <a
+                    className={styles.link}
+                    href={project.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {new URL(project.url).host} 열기
+                    <span className="visually-hidden"> (새 창)</span>
+                  </a>
+                )}
+              </li>
             ))}
           </ul>
+        </div>
+      </section>
 
-          <p className={styles.next}>앞으로도 다양한 프로젝트가 이어집니다</p>
+      <section className={styles.section} aria-labelledby="archive-title">
+        <div className="container">
+          <SectionHeader id="archive-title" title="연혁에 남은 지난 프로젝트" />
+          <table className={styles.archive}>
+            <thead>
+              <tr>
+                <th scope="col">연도</th>
+                <th scope="col">이름</th>
+                <th scope="col">무엇</th>
+                <th scope="col">기록</th>
+              </tr>
+            </thead>
+            <tbody>
+              {archive.map((item) => (
+                <tr key={item.name}>
+                  <td className="tabular">{item.year}</td>
+                  <th scope="row">
+                    {item.name}
+                    {'nameKr' in item && item.nameKr && (
+                      <span> {item.nameKr}</span>
+                    )}
+                  </th>
+                  <td>{item.description}</td>
+                  <td>{item.note}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
     </>

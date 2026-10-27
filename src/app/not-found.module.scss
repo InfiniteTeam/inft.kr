@@ -1,67 +1,30 @@
 .page {
-  position: relative;
-  isolation: isolate;
   display: flex;
   align-items: center;
   min-height: 100svh;
-  padding: calc(var(--nav-h) + 64px) 0 96px;
-  overflow: hidden;
-  text-align: center;
-}
-
-.halo {
-  position: absolute;
-  left: 50%;
-  top: 40%;
-  z-index: -1;
-  width: min(760px, 110vw);
-  aspect-ratio: 1;
-  translate: -50% -50%;
-  background: conic-gradient(
-    from 90deg,
-    var(--holo-mint),
-    var(--holo-aqua),
-    var(--holo-periwinkle),
-    var(--holo-lilac),
-    var(--holo-rose),
-    var(--holo-cream),
-    var(--holo-mint)
-  );
-  border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.45;
-  animation: spin 30s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    rotate: 1turn;
-  }
+  padding-block: calc(var(--nav-h) + var(--space-2xl)) var(--space-3xl);
 }
 
 .code {
-  font-family: var(--font-condensed);
-  font-size: clamp(140px, 26vw, 320px);
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 24vw, 18rem);
   line-height: 0.85;
-  letter-spacing: -0.02em;
+  color: var(--color-muted);
 }
 
 .title {
-  margin-top: 32px;
-  font-size: clamp(26px, 3vw, 36px);
-  font-weight: 700;
-  letter-spacing: -0.035em;
+  margin-top: var(--space-xl);
+  font-size: var(--text-section);
 }
 
 .lead {
-  margin-top: 12px;
-  color: var(--ink-2);
+  margin-top: var(--space-sm);
+  color: var(--color-muted);
 }
 
 .actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 36px;
+  gap: var(--space-sm);
+  margin-top: var(--space-xl);
 }

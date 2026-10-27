@@ -1,155 +1,36 @@
-.section {
-  padding-bottom: clamp(80px, 10vw, 140px);
+.band {
+  padding-block: var(--section-gap-s);
+  background: var(--color-paper-2);
+  border-top: 1px solid var(--color-rule-soft);
 }
 
-.panel {
-  --mx: 72%;
-  --my: 40%;
-  position: relative;
-  isolation: isolate;
+.inner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   align-items: end;
-  gap: 40px;
-  min-height: clamp(520px, 52vw, 640px);
-  padding: clamp(32px, 6vw, 80px);
-  overflow: hidden;
-  border-radius: clamp(28px, 3.4vw, 44px);
-  background: var(--night);
-  color: #fff;
+  gap: var(--space-xl) var(--gap-columns);
 
   @media (max-width: 860px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     align-items: start;
   }
 }
 
-/* 천천히 도는 홀로그램 빛 */
-.glow {
-  position: absolute;
-  right: -18%;
-  top: -40%;
-  z-index: -2;
-  width: 80%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: conic-gradient(
-    from 0deg,
-    var(--holo-mint),
-    var(--holo-aqua),
-    var(--holo-periwinkle),
-    var(--holo-lilac),
-    var(--holo-rose),
-    var(--holo-cream),
-    var(--holo-mint)
-  );
-  filter: blur(90px);
-  opacity: 0.32;
-  animation: spin 28s linear infinite;
-
-  @media (max-width: 860px) {
-    width: 140%;
-    top: -30%;
-    right: -60%;
-  }
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(1turn);
-  }
-}
-
-/* 커서를 따라 무지개빛이 미끄러지는 홀로그램 스티커 같은 로고 */
-.foil {
-  position: absolute;
-  right: clamp(32px, 6vw, 80px);
-  top: clamp(32px, 6vw, 80px);
-  z-index: -1;
-  width: clamp(120px, 22vw, 300px);
-  aspect-ratio: 1;
-  background: linear-gradient(
-    115deg,
-    #8df2d2,
-    #a3e6ff 14%,
-    #b7c1ff 28%,
-    #dcc6ff 42%,
-    #ffd0e6 56%,
-    #fff1d6 70%,
-    #8df2d2 84%,
-    #a3e6ff
-  );
-  background-size: 260% 260%;
-  background-position: var(--mx) var(--my);
-  -webkit-mask: url('/brand/Logo_W.svg') center / contain no-repeat;
-  mask: url('/brand/Logo_W.svg') center / contain no-repeat;
-  opacity: 0.9;
-  transition: background-position 0.6s var(--ease);
-
-  @media (max-width: 860px) {
-    width: 76px;
-  }
-}
-
-.copy {
-  max-width: 560px;
-
-  @media (max-width: 860px) {
-    padding-top: 92px;
-  }
-}
-
-.eyebrow {
-  margin-bottom: 20px;
-  font-size: 14px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.56);
-}
-
-.title {
-  font-family: var(--font-condensed);
-  font-weight: 400;
-  font-size: clamp(60px, 8.6vw, 124px);
-  line-height: 0.92;
-  letter-spacing: -0.015em;
-}
-
-.description {
-  margin-top: 28px;
-  max-width: 30em;
-  font-size: 16.5px;
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.68);
+.lead {
+  margin-top: var(--space-md);
+  max-width: 34ch;
+  font-size: var(--text-lead);
+  line-height: 1.55;
+  color: var(--color-muted);
 }
 
 .actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 36px;
-}
-
-.links {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-  font-size: 14px;
-
-  a {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    color: rgba(255, 255, 255, 0.6);
-    transition: color 0.2s var(--ease);
-
-    &:hover {
-      color: #fff;
-    }
-  }
+  justify-content: flex-end;
+  gap: var(--space-sm);
 
   @media (max-width: 860px) {
-    flex-direction: row;
-    gap: 20px;
+    justify-content: flex-start;
   }
 }

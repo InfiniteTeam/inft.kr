@@ -1,232 +1,151 @@
 .header {
   position: fixed;
   inset: 0 0 auto;
-  z-index: 100;
-  height: var(--nav-h);
-  transition:
-    background-color 0.4s var(--ease),
-    box-shadow 0.4s var(--ease),
-    backdrop-filter 0.4s var(--ease);
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: auto 0 0;
-    height: 1px;
-    background: var(--line);
-    opacity: 0;
-    transition: opacity 0.4s var(--ease);
-  }
+  z-index: var(--z-sticky-nav);
+  display: flex;
+  justify-content: center;
+  padding: var(--space-sm) var(--gutter) 0;
+  pointer-events: none;
 }
 
-.scrolled {
-  background: rgba(244, 245, 247, 0.72);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-
-  &::after {
-    opacity: 1;
-  }
-}
-
-.open {
-  background: var(--bg);
-}
-
-.bar {
-  height: 100%;
+/* 가운데 떠 있는 알약 하나: 심볼, 링크 넷, 디스코드 */
+.pill {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: var(--space-2xs);
+  min-height: 48px;
+  padding: var(--space-2xs);
+  border-radius: var(--radius-pill);
+  background: var(--color-scrim);
+  box-shadow: inset 0 0 0 1px var(--color-rule-soft);
+  backdrop-filter: saturate(160%) blur(18px);
+  -webkit-backdrop-filter: saturate(160%) blur(18px);
+  pointer-events: auto;
 }
 
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 15px;
-  font-weight: 680;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  white-space: nowrap;
-  transition: opacity 0.2s var(--ease);
-
-  svg {
-    color: var(--ink);
-  }
+.home,
+.discord {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  color: var(--color-ink);
+  transition: background-color var(--dur-short) var(--ease-out);
 
   &:hover {
-    opacity: 0.7;
+    background: var(--color-veil);
+  }
+}
+
+.discord {
+  color: var(--color-muted);
+
+  &:hover {
+    color: var(--color-ink);
   }
 }
 
 .links {
   display: flex;
   align-items: center;
-  gap: 4px;
-  margin-left: auto;
+  gap: var(--space-3xs);
 
   a {
-    position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 2px;
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-size: 14px;
-    font-weight: 520;
-    color: var(--ink-2);
+    height: 40px;
+    padding-inline: var(--space-md);
+    border-radius: var(--radius-pill);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-strong);
+    letter-spacing: -0.01em;
+    color: var(--color-muted);
+    white-space: nowrap;
     transition:
-      color 0.2s var(--ease),
-      background-color 0.2s var(--ease);
+      color var(--dur-short) var(--ease-out),
+      background-color var(--dur-short) var(--ease-out);
 
     &:hover {
-      color: var(--ink);
-      background: rgba(11, 13, 18, 0.045);
+      color: var(--color-ink);
     }
-  }
 
-  @media (max-width: 860px) {
-    display: none;
-  }
-}
-
-.ext {
-  opacity: 0.45;
-  margin-top: -1px;
-}
-
-.active {
-  color: var(--ink) !important;
-
-  &::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: -3px;
-    width: 4px;
-    height: 4px;
-    margin-left: -2px;
-    border-radius: 50%;
-    background: var(--mint);
-  }
-}
-
-.cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  height: 32px;
-  padding: 0 14px;
-  border-radius: 999px;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: #fff;
-  background: var(--ink);
-  transition:
-    transform 0.3s var(--ease),
-    background-color 0.3s var(--ease);
-
-  &:hover {
-    background: #22252d;
-  }
-
-  &:active {
-    transform: scale(0.97);
-  }
-
-  @media (max-width: 860px) {
-    display: none;
+    &[aria-current='page'] {
+      color: var(--color-ink);
+      background: var(--color-veil-strong);
+    }
   }
 }
 
 .toggle {
   display: none;
-  position: relative;
-  width: 40px;
   height: 40px;
-  margin: 0 -10px 0 auto;
-
-  span {
-    position: absolute;
-    left: 12px;
-    width: 16px;
-    height: 1.5px;
-    border-radius: 1px;
-    background: var(--ink);
-    transition: transform 0.35s var(--ease);
-
-    &:first-child {
-      transform: translateY(-3.5px);
-    }
-
-    &:last-child {
-      transform: translateY(3.5px);
-    }
-  }
-
-  @media (max-width: 860px) {
-    display: block;
-  }
-}
-
-.open .toggle span {
-  &:first-child {
-    transform: rotate(45deg);
-  }
-
-  &:last-child {
-    transform: rotate(-45deg);
-  }
+  padding-inline: var(--space-md);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-strong);
+  color: var(--color-ink);
+  background: var(--color-veil-strong);
 }
 
 .sheet {
   position: fixed;
-  inset: var(--nav-h) 0 0;
-  background: var(--bg);
-  padding-top: 24px;
+  inset: 0;
+  z-index: -1;
+  padding-top: calc(var(--nav-h) + var(--space-xl));
+  background: var(--color-paper);
   overflow-y: auto;
   visibility: hidden;
   opacity: 0;
+  pointer-events: auto;
   transition:
-    opacity 0.35s var(--ease),
-    visibility 0s linear 0.35s;
-
-  @media (min-width: 861px) {
-    display: none;
-  }
-
-  li {
-    opacity: 0;
-    transform: translateY(-8px);
-    transition:
-      opacity 0.5s var(--ease),
-      transform 0.5s var(--ease);
-  }
+    opacity var(--dur-long) var(--ease-out),
+    visibility 0s linear var(--dur-long);
 
   a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 0;
-    font-size: 28px;
-    font-weight: 650;
+    display: block;
+    padding-block: var(--space-md);
+    border-bottom: 1px solid var(--color-rule-soft);
+    font-size: var(--text-title);
+    font-weight: var(--weight-strong);
     letter-spacing: -0.03em;
-    border-bottom: 1px solid var(--line);
+  }
 
-    svg {
-      color: var(--faint);
-    }
+  @media (min-width: 761px) {
+    display: none;
   }
 }
 
 .open .sheet {
   visibility: visible;
   opacity: 1;
-  transition: opacity 0.35s var(--ease);
+  transition: opacity var(--dur-long) var(--ease-out);
 }
 
-.open .sheet li {
-  opacity: 1;
-  transform: none;
+@media (max-width: 760px) {
+  .header {
+    justify-content: stretch;
+  }
+
+  .pill {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .links,
+  .discord {
+    display: none;
+  }
+
+  .toggle {
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet,
+  .open .sheet {
+    transition: none;
+  }
 }

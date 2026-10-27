@@ -1,58 +1,43 @@
 .section {
+  padding-top: var(--section-gap);
   padding-bottom: var(--section-gap);
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  border-top: 1px solid var(--line-strong);
+  gap: var(--space-xl) var(--gap-columns);
 
-  @media (max-width: 960px) {
+  @media (max-width: 1080px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
+  @media (max-width: 520px) {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
 .member {
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 28px 16px 28px 0;
-  border-bottom: 1px solid var(--line);
-
-  &:hover > span::before {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  > span {
-    transition: transform 0.6s var(--ease);
-  }
-
-  &:hover > span {
-    transform: scale(1.04);
-  }
+  gap: var(--space-md);
 }
 
 .name {
-  font-size: 17px;
-  font-weight: 680;
+  font-weight: var(--weight-strong);
   letter-spacing: -0.02em;
 
   span {
-    margin-left: 6px;
-    font-size: 14px;
-    font-weight: 550;
-    color: var(--muted);
+    margin-left: var(--space-xs);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-body);
+    color: var(--color-muted);
   }
 }
 
 .role {
-  margin-top: 2px;
-  font-size: 14px;
+  margin-top: var(--space-3xs);
+  font-size: var(--text-sm);
   line-height: 1.45;
-  color: var(--ink-2);
+  color: var(--color-muted);
 }

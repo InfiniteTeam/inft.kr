@@ -5,23 +5,15 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { navigation, site } from '@/data/site';
-import { ArrowUpRight, DiscordIcon, LogoMark } from '@/components/icons';
+import { DiscordIcon, LogoMark } from '@/components/icons';
 import styles from './Nav.module.scss';
 
 export default function Nav() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   // 메뉴를 연 경로를 기억해 두면, 페이지가 바뀌는 순간 자연스럽게 닫힙니다.
   const [openedAt, setOpenedAt] = useState<string | null>(null);
   const open = openedAt === pathname;
   const close = () => setOpenedAt(null);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   useEffect(() => {
     document.documentElement.style.overflow = open ? 'hidden' : '';
@@ -32,17 +24,15 @@ export default function Nav() {
   }, [open]);
 
   return (
-    <header
-      className={clsx(
-        styles.header,
-        scrolled && styles.scrolled,
-        open && styles.open
-      )}
-    >
-      <nav className={clsx('container', styles.bar)} aria-label="주 메뉴">
-        <Link href="/" className={styles.brand} aria-label={`${site.name} 홈`}>
-          <LogoMark size={19} />
-          <span>{site.name}</span>
+    <header className={clsx(styles.header, open && styles.open)}>
+      <nav className={styles.pill} aria-label="주 메뉴">
+        <Link
+          href="/"
+          className={styles.home}
+          aria-label={`${site.name} 홈`}
+          onClick={close}
+        >
+          <LogoMark size={18} />
         </Link>
 
         <ul className={styles.links}>
@@ -54,13 +44,12 @@ export default function Nav() {
                 {external ? (
                   <a href={item.href} target="_blank" rel="noreferrer">
                     {item.label}
-                    <ArrowUpRight size={12} className={styles.ext} />
+                    <span className="visually-hidden"> (새 창)</span>
                   </a>
                 ) : (
                   <Link
                     href={item.href}
                     aria-current={active ? 'page' : undefined}
-                    className={clsx(active && styles.active)}
                   >
                     {item.label}
                   </Link>
@@ -71,13 +60,13 @@ export default function Nav() {
         </ul>
 
         <a
-          className={styles.cta}
+          className={styles.discord}
           href={site.links.discord}
           target="_blank"
           rel="noreferrer"
+          aria-label="디스코드 서버 (새 창)"
         >
-          <DiscordIcon size={15} />
-          커뮤니티
+          <DiscordIcon size={17} />
         </a>
 
         <button
@@ -85,24 +74,22 @@ export default function Nav() {
           className={styles.toggle}
           aria-expanded={open}
           aria-controls="mobile-menu"
-          aria-label={open ? '메뉴 닫기' : '메뉴 열기'}
           onClick={() => setOpenedAt(open ? null : pathname)}
         >
-          <span />
-          <span />
+          {open ? '닫기' : '메뉴'}
         </button>
       </nav>
 
       <div id="mobile-menu" className={styles.sheet} inert={!open}>
         <ul className="container">
-          {[{ href: '/', label: '홈' }, ...navigation].map((item, i) => {
+          {[{ href: '/', label: '홈' }, ...navigation].map((item) => {
             const external = 'external' in item && item.external;
             return (
-              <li key={item.href} style={{ transitionDelay: `${i * 35}ms` }}>
+              <li key={item.href}>
                 {external ? (
                   <a href={item.href} target="_blank" rel="noreferrer">
                     {item.label}
-                    <ArrowUpRight size={18} />
+                    <span className="visually-hidden"> (새 창)</span>
                   </a>
                 ) : (
                   <Link href={item.href} onClick={close}>
@@ -112,10 +99,10 @@ export default function Nav() {
               </li>
             );
           })}
-          <li style={{ transitionDelay: `${(navigation.length + 1) * 35}ms` }}>
+          <li>
             <a href={site.links.discord} target="_blank" rel="noreferrer">
-              디스코드 커뮤니티
-              <ArrowUpRight size={18} />
+              디스코드 서버
+              <span className="visually-hidden"> (새 창)</span>
             </a>
           </li>
         </ul>

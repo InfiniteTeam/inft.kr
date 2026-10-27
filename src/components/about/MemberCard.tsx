@@ -8,23 +8,15 @@ import styles from './MemberCard.module.scss';
 
 export default function MemberCard({ member }: { member: Member }) {
   return (
-    <article
-      className={styles.card}
-      style={
-        {
-          '--from': member.color[0],
-          '--to': member.color[1],
-        } as React.CSSProperties
-      }
-    >
+    <article className={styles.card}>
       <div className={styles.head}>
-        <Avatar member={member} size={64} ring />
+        <Avatar member={member} size={56} />
         <div>
           <h3 className={styles.name}>
             {member.name}
             <span>{member.kr}</span>
           </h3>
-          <p className={styles.role}>{member.role.join(' · ')}</p>
+          <p className={styles.role}>{member.role.join(', ')}</p>
         </div>
       </div>
 

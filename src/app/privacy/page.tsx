@@ -29,15 +29,12 @@ export default async function PrivacyPage() {
   return (
     <>
       <PageHeader
-        size="md"
-        eyebrow="정책"
         title="개인정보 처리방침"
-        lead={effective ? `시행일 ${effective}` : undefined}
+        lead={effective ? `${effective}부터 시행합니다.` : undefined}
       />
 
       <div className={`container ${styles.layout}`}>
         <nav className={styles.toc} aria-label="목차">
-          <p>목차</p>
           <ol>
             {headings.map((heading) => (
               <li key={heading}>

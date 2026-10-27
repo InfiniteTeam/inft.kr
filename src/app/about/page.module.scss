@@ -1,106 +1,39 @@
-.mission {
-  padding-bottom: var(--section-gap);
+.section {
+  padding-block: var(--section-gap);
 }
 
-.missionInner {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: clamp(64px, 10vw, 140px) 24px;
-  border-radius: clamp(28px, 3.4vw, 44px);
-  background:
-    radial-gradient(
-      60% 80% at 30% 20%,
-      rgba(141, 242, 210, 0.35),
-      transparent 70%
-    ),
-    radial-gradient(
-      50% 70% at 75% 75%,
-      rgba(220, 198, 255, 0.4),
-      transparent 70%
-    ),
-    radial-gradient(
-      40% 60% at 85% 15%,
-      rgba(255, 208, 230, 0.35),
-      transparent 70%
-    ),
-    var(--surface);
-  box-shadow: 0 0 0 1px var(--line);
-  text-align: center;
-  overflow: hidden;
-}
-
-.missionLabel {
-  font-size: 13px;
-  font-weight: 650;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.missionText {
-  margin: 28px 0 32px;
-  font-family: var(--font-condensed);
-  font-size: clamp(64px, 10.5vw, 168px);
-  line-height: 0.92;
-  letter-spacing: -0.018em;
-}
-
-.since {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--muted);
+.well {
+  background: var(--color-paper-2);
 }
 
 .practices {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 32px;
-  margin-top: clamp(48px, 6vw, 80px);
+  border-top: 1px solid var(--color-rule);
 
   li {
-    padding-top: 24px;
-    border-top: 1px solid var(--line-strong);
-  }
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    align-items: baseline;
+    gap: var(--space-sm) var(--gap-columns);
+    padding-block: var(--space-xl);
+    border-bottom: 1px solid var(--color-rule-soft);
 
-  h3 {
-    margin-top: 28px;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: -0.03em;
+    @media (max-width: 760px) {
+      grid-template-columns: minmax(0, 1fr);
+    }
   }
 
   p {
-    margin-top: 12px;
-    font-size: 16px;
-    line-height: 1.65;
-    color: var(--ink-2);
+    max-width: 52ch;
+    font-size: var(--text-lead);
+    line-height: 1.6;
+    color: var(--color-ink-2);
   }
-
-  @media (max-width: 860px) {
-    grid-template-columns: 1fr;
-  }
-}
-
-.index {
-  font-family: var(--font-condensed);
-  font-size: 22px;
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-}
-
-.section {
-  padding-bottom: var(--section-gap);
-  scroll-margin-top: var(--nav-h);
 }
 
 .members {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(12px, 1.4vw, 20px);
+  gap: var(--gap-columns);
 
   > li {
     display: grid;
@@ -111,37 +44,37 @@
   }
 
   @media (max-width: 560px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
 .history {
-  border-top: 1px solid var(--line-strong);
+  border-top: 1px solid var(--color-rule);
 }
 
 .year {
   display: grid;
   grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
-  gap: 16px 48px;
-  padding: clamp(28px, 4vw, 48px) 0;
-  border-bottom: 1px solid var(--line);
+  gap: var(--space-md) var(--gap-columns);
+  padding-block: var(--space-xl);
+  border-bottom: 1px solid var(--color-rule-soft);
 
   @media (max-width: 760px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
 .yearLabel {
-  font-family: var(--font-condensed);
-  font-weight: 400;
-  font-size: clamp(56px, 7vw, 104px);
-  line-height: 0.86;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--text-display-s);
+  line-height: 0.9;
+  letter-spacing: 0;
   font-variant-numeric: tabular-nums;
 
   @media (min-width: 761px) {
     position: sticky;
-    top: calc(var(--nav-h) + 32px);
+    top: calc(var(--nav-h) + var(--space-xl));
     align-self: start;
   }
 }
@@ -149,24 +82,23 @@
 .entries {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding-top: 6px;
+  gap: var(--space-md);
 
   li {
     display: grid;
-    grid-template-columns: 56px minmax(0, 1fr);
-    gap: 16px;
-    font-size: clamp(17px, 1.6vw, 20px);
-    font-weight: 550;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    gap: var(--space-md);
+    font-size: var(--text-lead);
+    font-weight: var(--weight-strong);
     line-height: 1.5;
     letter-spacing: -0.025em;
   }
 }
 
 .month {
-  padding-top: 0.15em;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--muted);
+  padding-top: var(--space-3xs);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-body);
+  color: var(--color-muted);
   font-variant-numeric: tabular-nums;
 }

@@ -1,25 +1,22 @@
 .section {
-  padding-bottom: var(--section-gap);
+  padding-top: var(--section-gap);
 }
 
+/* 7 · 5 위에 5 · 7. 첫 칸이 이끄는 벤토 */
 .grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: clamp(14px, 1.6vw, 22px);
+  gap: var(--gap-columns);
 
   @media (max-width: 860px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
 .cell {
-  display: grid;
+  min-width: 0;
+  min-height: 420px;
 
-  > * {
-    min-width: 0;
-  }
-
-  /* 7 · 5 / 5 · 7 로 엇갈리게 */
   &:nth-child(4n + 1),
   &:nth-child(4n + 4) {
     grid-column: span 7;
@@ -30,9 +27,14 @@
     grid-column: span 5;
   }
 
+  &:first-child {
+    min-height: 520px;
+  }
+
   @media (max-width: 860px) {
     &:nth-child(n) {
       grid-column: auto;
+      min-height: 0;
     }
   }
 }

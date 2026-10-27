@@ -4,8 +4,8 @@
   place-items: center;
   flex-shrink: 0;
   border-radius: 50%;
-  background: var(--bg-deep);
-  box-shadow: 0 0 0 1px var(--line);
+  background: var(--color-paper-3);
+  box-shadow: 0 0 0 1px var(--color-rule-soft);
 
   img {
     width: 100%;
@@ -15,22 +15,8 @@
   }
 }
 
-.ring::before {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  z-index: -1;
-  border-radius: inherit;
-  background: conic-gradient(from 210deg, var(--from), var(--to), var(--from));
-  opacity: 0;
-  transform: scale(0.92);
-  transition:
-    opacity 0.5s var(--ease),
-    transform 0.6s var(--ease);
-}
-
 .monogram {
-  font-weight: 650;
-  color: var(--muted);
+  font-weight: var(--weight-strong);
+  color: var(--color-muted);
   letter-spacing: -0.02em;
 }

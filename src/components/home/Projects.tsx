@@ -1,5 +1,4 @@
 import projects from '@/data/projects';
-import Reveal from '@/components/ui/Reveal';
 import SectionHeader from '@/components/ui/SectionHeader';
 import ProjectCard from './ProjectCard';
 import styles from './Projects.module.scss';
@@ -10,23 +9,18 @@ export default function Projects() {
       <div className="container">
         <SectionHeader
           id="projects-title"
-          eyebrow="프로젝트"
-          title={'디스코드 안에서\n쓰이는 것들을 만듭니다'}
-          description="서버를 관리하는 도구부터 가볍게 즐기는 게임까지. 기획과 개발, 운영까지 팀이 직접 합니다."
-          link={{ href: '/projects', label: '모든 프로젝트' }}
+          title="Aztra부터 Idle Factory까지"
+          lead="관리 봇부터 방치형 게임까지, 디스코드에서 쓰는 서비스를 직접 만들고 운영합니다."
+          link={{ href: '/projects', label: '프로젝트 자세히 보기' }}
         />
 
-        <div className={styles.grid}>
+        <ul className={styles.grid}>
           {projects.map((project, i) => (
-            <Reveal
-              key={project.slug}
-              className={styles.cell}
-              delay={(i % 2) * 90}
-            >
-              <ProjectCard project={project} featured={i === 0} />
-            </Reveal>
+            <li key={project.slug} className={styles.cell}>
+              <ProjectCard project={project} lead={i === 0} />
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
