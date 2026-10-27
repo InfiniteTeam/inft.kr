@@ -8,8 +8,10 @@
   display: inline-flex;
 }
 
+/* 얼굴(Avatar)이 position: relative라서, 겹침 순서를 DOM 순서대로 맞추려면 둘 다 위치를 잡아야 합니다. */
 .face,
 .more {
+  position: relative;
   border-radius: 50%;
   box-shadow: 0 0 0 2px var(--color-paper-2);
 

@@ -2,13 +2,17 @@
   padding-block: var(--section-gap);
 }
 
+/* 제목 바로 아래에 붙는 하는 일 목록 */
+.practice {
+  padding-bottom: var(--section-gap);
+}
+
 .well {
   background: var(--color-paper-2);
 }
 
+/* 위쪽 선은 페이지 머리의 아래 선이 대신합니다. */
 .practices {
-  border-top: 1px solid var(--color-rule);
-
   li {
     display: grid;
     grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);

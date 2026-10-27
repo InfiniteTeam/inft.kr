@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import projects, { archive, type Project } from '@/data/projects';
+import projects, { archive, statusLabel, type Project } from '@/data/projects';
 import { findMembers } from '@/data/members';
+import { ArrowUpRight } from '@/components/icons';
 import AvatarStack from '@/components/ui/AvatarStack';
 import Button from '@/components/ui/Button';
 import PageHeader from '@/components/ui/PageHeader';
@@ -28,7 +29,7 @@ function Facts({ project }: { project: Project }) {
       </div>
       <div>
         <dt>상태</dt>
-        <dd>{project.status === 'active' ? '운영 중' : '개발 일시 중단'}</dd>
+        <dd>{statusLabel[project.status]}</dd>
       </div>
       <div>
         <dt>참여</dt>
@@ -103,6 +104,7 @@ export default function ProjectsPage() {
                     rel="noreferrer"
                   >
                     {new URL(project.url).host} 열기
+                    <ArrowUpRight size={16} />
                     <span className="visually-hidden"> (새 창)</span>
                   </a>
                 )}

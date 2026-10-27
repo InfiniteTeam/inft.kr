@@ -8,11 +8,15 @@
 
 .figures {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   margin-top: var(--space-3xl);
   border-top: 1px solid var(--color-rule);
 
-  @media (max-width: 760px) {
+  @media (max-width: 1080px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 560px) {
     grid-template-columns: minmax(0, 1fr);
   }
 }
@@ -20,9 +24,9 @@
 .figure {
   display: flex;
   flex-direction: column;
-  padding: var(--space-lg) var(--space-lg) 0 0;
+  padding: var(--space-lg) var(--space-lg) var(--space-lg) 0;
 
-  & + & {
+  &:not(:first-child) {
     padding-left: var(--space-lg);
     border-left: 1px solid var(--color-rule-soft);
   }
@@ -32,12 +36,25 @@
     color: var(--color-muted);
   }
 
-  @media (max-width: 760px) {
-    padding: var(--space-lg) 0;
-
-    & + & {
+  /* 두 줄 두 칸: 줄마다 왼쪽 칸은 선 없이 시작하고, 둘째 줄 위에 가는 선 */
+  @media (max-width: 1080px) {
+    &:nth-child(odd) {
       padding-left: 0;
       border-left: 0;
+    }
+
+    &:nth-child(n + 3) {
+      border-top: 1px solid var(--color-rule-soft);
+    }
+  }
+
+  @media (max-width: 560px) {
+    &:nth-child(n) {
+      padding-inline: 0;
+      border-left: 0;
+    }
+
+    & + & {
       border-top: 1px solid var(--color-rule-soft);
     }
   }
@@ -49,7 +66,7 @@
   font-family: var(--font-body);
   font-weight: var(--weight-strong);
   letter-spacing: -0.045em;
-  font-size: var(--text-display-s);
+  font-size: var(--text-figure);
   line-height: 0.9;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;

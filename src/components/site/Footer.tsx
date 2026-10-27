@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { footerLinks, site } from '@/data/site';
-import { LogoMark } from '@/components/icons';
+import { ArrowUpRight, LogoMark } from '@/components/icons';
 import styles from './Footer.module.scss';
 
 export default function Footer() {
@@ -27,6 +27,7 @@ export default function Footer() {
               <li key={link.href}>
                 <a href={link.href} target="_blank" rel="noreferrer">
                   {link.label}
+                  <ArrowUpRight size={14} />
                   <span className="visually-hidden"> (새 창)</span>
                 </a>
               </li>

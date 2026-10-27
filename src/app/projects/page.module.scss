@@ -121,6 +121,10 @@
 }
 
 .link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  align-self: flex-start;
   margin-top: auto;
   font-weight: var(--weight-strong);
   text-decoration: underline;

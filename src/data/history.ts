@@ -34,7 +34,11 @@ const history: HistoryItem[] = [
     content: '디스코드 RPG 게임 봇 Azalea (아젤리아) 개발 시작',
   },
   { year: 2020, month: 8, content: '첫 Infinite Studio 홈페이지 공개' },
-  { year: 2020, month: 8, content: '디스코드 미니게임 봇 RTBOT (알티봇) 운영' },
+  {
+    year: 2020,
+    month: 8,
+    content: '디스코드 미니게임 봇 RTBOT (알티봇) 위탁 운영',
+  },
   {
     year: 2020,
     month: 9,

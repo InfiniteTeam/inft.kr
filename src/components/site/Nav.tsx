@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { navigation, site } from '@/data/site';
-import { DiscordIcon, LogoMark } from '@/components/icons';
+import { ArrowUpRight, DiscordIcon, LogoMark } from '@/components/icons';
 import styles from './Nav.module.scss';
 
 export default function Nav() {
@@ -44,6 +44,7 @@ export default function Nav() {
                 {external ? (
                   <a href={item.href} target="_blank" rel="noreferrer">
                     {item.label}
+                    <ArrowUpRight size={12} className={styles.away} />
                     <span className="visually-hidden"> (새 창)</span>
                   </a>
                 ) : (
@@ -69,14 +70,17 @@ export default function Nav() {
           <DiscordIcon size={17} />
         </a>
 
+        {/* 두 줄(=)이 가운데로 모였다가 돌아 X가 됩니다. */}
         <button
           type="button"
           className={styles.toggle}
           aria-expanded={open}
           aria-controls="mobile-menu"
+          aria-label={open ? '메뉴 닫기' : '메뉴 열기'}
           onClick={() => setOpenedAt(open ? null : pathname)}
         >
-          {open ? '닫기' : '메뉴'}
+          <span />
+          <span />
         </button>
       </nav>
 
@@ -89,6 +93,7 @@ export default function Nav() {
                 {external ? (
                   <a href={item.href} target="_blank" rel="noreferrer">
                     {item.label}
+                    <ArrowUpRight size={20} className={styles.away} />
                     <span className="visually-hidden"> (새 창)</span>
                   </a>
                 ) : (
@@ -102,6 +107,7 @@ export default function Nav() {
           <li>
             <a href={site.links.discord} target="_blank" rel="noreferrer">
               디스코드 서버
+              <ArrowUpRight size={20} className={styles.away} />
               <span className="visually-hidden"> (새 창)</span>
             </a>
           </li>

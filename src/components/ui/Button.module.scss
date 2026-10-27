@@ -24,6 +24,20 @@
   }
 }
 
+/* 다른 사이트로 나가는 버튼 끝의 우상향 화살표. 올리면 그쪽으로 한 걸음 */
+.away {
+  margin-right: calc(var(--space-2xs) * -1);
+  opacity: 0.6;
+  transition:
+    translate var(--dur-short) var(--ease-out),
+    opacity var(--dur-short) var(--ease-out);
+
+  .button:hover & {
+    opacity: 1;
+    translate: 1px -1px;
+  }
+}
+
 .primary {
   color: var(--color-on-ink);
   background: var(--color-ink);

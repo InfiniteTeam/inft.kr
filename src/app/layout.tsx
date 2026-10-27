@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#0b0d12',
+  themeColor: '#07090e',
   colorScheme: 'dark',
 };
 
@@ -65,7 +65,9 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ko" className={beanpole.variable}>
+    // Next 16부터는 페이지를 옮길 때 smooth 스크롤을 알아서 꺼 주지 않습니다.
+    // 이 속성이 있어야 새 페이지가 부드럽게 굴러가다 중간에 멈추지 않고 맨 위에서 시작합니다.
+    <html lang="ko" className={beanpole.variable} data-scroll-behavior="smooth">
       <body>
         <a className="visually-hidden" href="#main">
           본문으로 건너뛰기

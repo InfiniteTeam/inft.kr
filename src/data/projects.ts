@@ -4,7 +4,13 @@ import azalea from '@/assets/azalea.jpeg';
 import bot4096 from '@/assets/4096.png';
 import idlefactory from '@/assets/idlefactory.png';
 
-export type ProjectStatus = 'active' | 'paused';
+export type ProjectStatus = 'active' | 'paused' | 'ended';
+
+export const statusLabel: Record<ProjectStatus, string> = {
+  active: '운영 중',
+  paused: '개발 일시 중단',
+  ended: '프로젝트 종료',
+};
 
 export interface Project {
   slug: string;
@@ -30,9 +36,9 @@ const projects: Project[] = [
     name: 'Aztra',
     nameKr: '아즈트라',
     category: '관리 봇',
-    summary: '웹 대시보드를 지원하는 한국어 디스코드 관리봇',
+    summary: '한국에서 개발된 최초의 대시보드형 디스코드 관리봇',
     description:
-      '서버 관리에 필요한 기능을 한국어로, 그리고 웹 대시보드에서 손쉽게. 2021년 정식 출시 후 2022년 여름 4,000개 서버를 넘어섰습니다.',
+      '서버 관리에 필요한 기능을 한국어로, 그리고 웹 대시보드에서 손쉽게. 한국에서 개발된 최초의 대시보드형 관리봇으로, 2026년 10월 기준 13,000개가 넘는 서버에서 90만 명 이상이 쓰고 있습니다.',
     since: '2021.01.21',
     status: 'active',
     url: 'https://aztra.xyz',
@@ -48,7 +54,7 @@ const projects: Project[] = [
       'Hankaru',
       'Ray',
     ],
-    highlight: { value: '4,000+', label: '도입 서버, 2022년 7월' },
+    highlight: { value: '13,000+', label: '도입 서버, 2026년 10월' },
   },
   {
     slug: 'idle-factory',
@@ -73,7 +79,7 @@ const projects: Project[] = [
     description:
       '익숙한 2048 퍼즐을 디스코드 채팅창 안으로. 2의 12제곱, 4096을 향해 타일을 밀어 보세요.',
     since: '2022.08.05',
-    status: 'active',
+    status: 'ended',
     url: 'https://4096.inft.kr',
     icon: bot4096,
     tint: '#F43F5E',
@@ -111,7 +117,7 @@ export const archive = [
     name: 'RTBOT',
     nameKr: '알티봇',
     description: '디스코드 미니게임 봇',
-    note: '2020.08 운영',
+    note: '2020.08 위탁 운영',
   },
   {
     year: 2020,

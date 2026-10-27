@@ -54,6 +54,7 @@
   a {
     display: inline-flex;
     align-items: center;
+    gap: var(--space-3xs);
     height: 40px;
     padding-inline: var(--space-md);
     border-radius: var(--radius-pill);
@@ -77,15 +78,59 @@
   }
 }
 
+/* 바깥 링크 끝의 우상향 화살표 */
+.away {
+  flex-shrink: 0;
+  opacity: 0.55;
+}
+
+/*
+ * 메뉴 버튼: 두 줄(=). 열면 두 줄이 가운데로 모인 뒤 돌아서 X가 되고,
+ * 닫으면 거꾸로 풀렸다가 벌어집니다.
+ */
 .toggle {
   display: none;
+  position: relative;
+  width: 40px;
   height: 40px;
-  padding-inline: var(--space-md);
   border-radius: var(--radius-pill);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-strong);
   color: var(--color-ink);
-  background: var(--color-veil-strong);
+
+  span {
+    position: absolute;
+    left: calc(50% - 9px);
+    top: calc(50% - 0.75px);
+    width: 18px;
+    height: 1.5px;
+    border-radius: 1px;
+    background: currentColor;
+    transition:
+      rotate var(--dur-short) var(--ease-out),
+      translate var(--dur-short) var(--ease-out) var(--dur-short);
+  }
+
+  span:first-child {
+    translate: 0 -3.5px;
+  }
+
+  span:last-child {
+    translate: 0 3.5px;
+  }
+
+  &[aria-expanded='true'] span {
+    translate: 0 0;
+    transition:
+      translate var(--dur-short) var(--ease-out),
+      rotate var(--dur-short) var(--ease-out) var(--dur-short);
+  }
+
+  &[aria-expanded='true'] span:first-child {
+    rotate: 45deg;
+  }
+
+  &[aria-expanded='true'] span:last-child {
+    rotate: -45deg;
+  }
 }
 
 .sheet {
@@ -103,7 +148,9 @@
     visibility 0s linear var(--dur-long);
 
   a {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
     padding-block: var(--space-md);
     border-bottom: 1px solid var(--color-rule-soft);
     font-size: var(--text-title);
@@ -138,14 +185,15 @@
   }
 
   .toggle {
-    display: inline-flex;
-    align-items: center;
+    display: block;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .sheet,
-  .open .sheet {
+  .open .sheet,
+  .toggle span,
+  .toggle[aria-expanded='true'] span {
     transition: none;
   }
 }

@@ -9,7 +9,7 @@ export default function Team() {
       <div className="container">
         <SectionHeader
           id="team-title"
-          title={`${members.length}명이 만듭니다`}
+          title={`지금은 ${members.length}명이 함께 합니다`}
           link={{ href: '/about#members', label: '팀원 소개 보기' }}
         />
 
@@ -19,8 +19,8 @@ export default function Team() {
               <Avatar member={member} size={56} />
               <div>
                 <p className={styles.name}>
-                  {member.name}
-                  <span>{member.kr}</span>
+                  {member.kr}
+                  <span lang="en">{member.name}</span>
                 </p>
                 <p className={styles.role}>{member.role.join(', ')}</p>
               </div>

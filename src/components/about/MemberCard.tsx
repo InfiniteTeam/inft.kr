@@ -13,8 +13,8 @@ export default function MemberCard({ member }: { member: Member }) {
         <Avatar member={member} size={56} />
         <div>
           <h3 className={styles.name}>
-            {member.name}
-            <span>{member.kr}</span>
+            {member.kr}
+            <span lang="en">{member.name}</span>
           </h3>
           <p className={styles.role}>{member.role.join(', ')}</p>
         </div>

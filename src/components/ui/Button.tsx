@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import clsx from 'clsx';
+import { ArrowUpRight } from '@/components/icons';
 import styles from './Button.module.scss';
 
 interface Props {
@@ -25,7 +26,12 @@ export default function Button({
     <>
       {icon}
       {children}
-      {external && <span className="visually-hidden"> (새 창)</span>}
+      {external && (
+        <>
+          <ArrowUpRight size={16} className={styles.away} />
+          <span className="visually-hidden"> (새 창)</span>
+        </>
+      )}
     </>
   );
 

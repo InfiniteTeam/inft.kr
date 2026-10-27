@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import clsx from 'clsx';
-import type { Project } from '@/data/projects';
+import { statusLabel, type Project } from '@/data/projects';
 import { findMembers } from '@/data/members';
+import { ArrowUpRight } from '@/components/icons';
 import AvatarStack from '@/components/ui/AvatarStack';
 import ProjectAura from '@/components/ui/ProjectAura';
 import styles from './ProjectCard.module.scss';
@@ -13,8 +14,6 @@ interface Props {
 }
 
 export default function ProjectCard({ project, lead, className }: Props) {
-  const active = project.status === 'active';
-
   return (
     <article className={clsx(styles.tile, lead && styles.lead, className)}>
       <ProjectAura icon={project.icon} />
@@ -27,7 +26,7 @@ export default function ProjectCard({ project, lead, className }: Props) {
           height={lead ? 96 : 64}
           sizes={lead ? '96px' : '64px'}
         />
-        <p className={styles.status}>{active ? '운영 중' : '개발 일시 중단'}</p>
+        <p className={styles.status}>{statusLabel[project.status]}</p>
       </div>
 
       <div className={styles.body}>
@@ -60,6 +59,7 @@ export default function ProjectCard({ project, lead, className }: Props) {
             <dd>
               <a href={project.url} target="_blank" rel="noreferrer">
                 {new URL(project.url).host}
+                <ArrowUpRight size={14} />
                 <span className="visually-hidden"> (새 창)</span>
               </a>
             </dd>

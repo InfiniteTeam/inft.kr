@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const practices = [
   {
     title: '디스코드 봇',
-    body: '서버 관리 봇 Aztra부터 2048 미니게임 2¹², 방치형 게임 Idle Factory까지 디스코드 안에서 쓰는 봇을 만듭니다.',
+    body: '한국 최초의 대시보드형 관리봇 Aztra와 방치형 게임 Idle Factory처럼, 디스코드 안에서 쓰는 봇을 만듭니다.',
   },
   {
     title: '웹 서비스',
@@ -32,14 +32,10 @@ export default function AboutPage() {
 
   return (
     <>
-      <PageHeader
-        title={'엔트리에서 시작해\n디스코드로 온 팀'}
-        lead="엔트리 작품을 만들던 청소년 개발팀 InfiniteTeam에서 시작해, 2020년부터 디스코드 봇과 게임을 만들고 운영합니다."
-      />
+      <PageHeader title={'디스코드 봇을 만들고,\n직접 운영합니다'} />
 
-      <section className={styles.section} aria-labelledby="practice">
+      <section className={styles.practice} aria-label="하는 일">
         <div className="container">
-          <SectionHeader id="practice" title="봇을 만들고, 직접 운영합니다" />
           <ul className={styles.practices}>
             {practices.map((item) => (
               <li key={item.title}>
@@ -58,8 +54,7 @@ export default function AboutPage() {
         <div className="container">
           <SectionHeader
             id="members"
-            title={`${members.length}명의 팀원`}
-            lead="디스코드 아이콘을 누르면 아이디가 복사됩니다."
+            title={`지금은 ${members.length}명이 함께 합니다`}
           />
           <ul className={styles.members}>
             {members.map((member) => (
@@ -73,7 +68,7 @@ export default function AboutPage() {
 
       <section className={styles.section} aria-labelledby="history">
         <div className="container">
-          <SectionHeader id="history" title="2018년부터 지금까지" />
+          <SectionHeader id="history" title="우리가 걸어온 발자취" />
           <ol className={styles.history}>
             {years.map(({ year, entries }) => (
               <li key={year} className={styles.year}>
