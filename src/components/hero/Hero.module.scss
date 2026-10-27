@@ -173,6 +173,17 @@
   mask: url('/brand/Logo_W.svg') center / contain no-repeat;
 }
 
+/*
+ * 캔버스는 로고 자리보다 크게 깔려 슬로건 위쪽과 겹칩니다(가장자리는 배경색과 같아 보이지 않음).
+ * 글자가 언제나 그 위에 오도록 슬로건, 한 줄, 버튼을 위치 지정 요소로 둡니다.
+ * 등장 애니메이션이 없는 모션 줄이기 설정에서도 가려지지 않습니다.
+ */
+.slogan,
+.since,
+.actions {
+  position: relative;
+}
+
 .slogan {
   font-family: var(--font-display);
   font-weight: 500;
