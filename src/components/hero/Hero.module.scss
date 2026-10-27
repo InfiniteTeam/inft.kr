@@ -1,0 +1,271 @@
+.hero {
+  --mark: min(35svh, 64vw, 400px);
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-height: 100svh;
+  padding-block: calc(var(--nav-h) + var(--space-lg)) var(--space-2xl);
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+
+  &[data-dragging] {
+    cursor: grabbing;
+  }
+
+  &[data-static] {
+    cursor: auto;
+  }
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* 로고가 놓이는 정사각형 자리. 캔버스는 회전 여유를 두고 이보다 크게 깔립니다. */
+.stage {
+  position: relative;
+  width: var(--mark);
+  aspect-ratio: 1;
+  margin-bottom: var(--space-xl);
+  pointer-events: none;
+}
+
+/*
+ * WebGL을 쓸 수 없을 때만 쓰는 CSS 오로라. 평소에는 캔버스가 오로라를 직접 그리고,
+ * 유리 로고가 그것을 굴절시켜 보여 줍니다.
+ */
+.aurora {
+  position: absolute;
+  inset: -34% -115% -6%;
+  z-index: -1;
+  /* 가늘고 넓은 빛 띠 셋: 초록, 청록, 보랏빛 */
+  background:
+    radial-gradient(
+      ellipse 30% 9% at 34% 40%,
+      var(--aurora-1),
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 28% 8% at 66% 30%,
+      var(--aurora-2),
+      transparent 72%
+    ),
+    radial-gradient(ellipse 24% 8% at 60% 62%, var(--aurora-3), transparent 72%);
+  filter: blur(36px) saturate(1.2);
+  opacity: 0;
+  -webkit-mask: radial-gradient(
+    ellipse 50% 50% at 50% 46%,
+    var(--color-paper) 30%,
+    transparent 100%
+  );
+  mask: radial-gradient(
+    ellipse 50% 50% at 50% 46%,
+    var(--color-paper) 30%,
+    transparent 100%
+  );
+  transition: opacity 2.4s var(--ease-out);
+
+  .hero[data-ready] & {
+    opacity: 0.68;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    animation: sway-a 19s var(--ease-in-out) infinite alternate;
+  }
+
+  /* 초록 띠: 로고 뒤를 비스듬히 가로질러 */
+  &::before {
+    left: 16%;
+    top: 34%;
+    width: 68%;
+    height: 14%;
+    background: radial-gradient(
+      ellipse at 50% 50%,
+      var(--aurora-1),
+      transparent 70%
+    );
+    rotate: -14deg;
+  }
+
+  /* 보랏빛 띠: 반대 방향으로, 조금 아래에 */
+  &::after {
+    left: 30%;
+    top: 50%;
+    width: 52%;
+    height: 12%;
+    background: radial-gradient(
+      ellipse at 50% 50%,
+      var(--aurora-3),
+      transparent 70%
+    );
+    rotate: 10deg;
+    animation-name: sway-b;
+    animation-duration: 23s;
+  }
+
+  .hero[data-idle] &::before,
+  .hero[data-idle] &::after {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes sway-a {
+  from {
+    transform: translate3d(-6%, 4%, 0) scale(0.94);
+  }
+
+  to {
+    transform: translate3d(7%, -5%, 0) scale(1.08);
+  }
+}
+
+@keyframes sway-b {
+  from {
+    transform: translate3d(5%, -3%, 0) scale(1.06);
+  }
+
+  to {
+    transform: translate3d(-8%, 5%, 0) scale(0.92);
+  }
+}
+
+/*
+ * 오로라까지 함께 그리는 캔버스. 로고 자리를 중심으로 옆으로 넓게 깔리고,
+ * 가장자리는 페이지 배경과 같은 색이라 경계가 보이지 않습니다.
+ */
+.canvas {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(100vw, calc(var(--mark) * 3.4));
+  height: calc(var(--mark) * 1.7);
+  translate: -50% -50%;
+  opacity: 0;
+  transition: opacity 1.2s var(--ease-out);
+
+  .hero[data-ready] & {
+    opacity: 1;
+  }
+}
+
+.fallback {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    125deg,
+    var(--holo-1),
+    var(--holo-2) 30%,
+    var(--holo-3) 55%,
+    var(--holo-4) 78%,
+    var(--holo-5)
+  );
+  -webkit-mask: url('/brand/Logo_W.svg') center / contain no-repeat;
+  mask: url('/brand/Logo_W.svg') center / contain no-repeat;
+}
+
+/*
+ * 캔버스는 로고 자리보다 크게 깔려 슬로건 위쪽과 겹칩니다(가장자리는 배경색과 같아 보이지 않음).
+ * 글자가 언제나 그 위에 오도록 슬로건, 한 줄, 버튼을 위치 지정 요소로 둡니다.
+ * 등장 애니메이션이 없는 모션 줄이기 설정에서도 가려지지 않습니다.
+ */
+.slogan,
+.since,
+.actions {
+  position: relative;
+}
+
+.slogan {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--text-display);
+  line-height: 1;
+  letter-spacing: -0.005em;
+  max-width: none;
+  text-wrap: initial;
+  cursor: default;
+}
+
+.line {
+  display: block;
+  overflow: hidden;
+  padding-block: 0.04em;
+
+  > span {
+    display: block;
+    animation: rise 0.8s var(--ease-out) both;
+  }
+
+  & + & > span {
+    animation-delay: 60ms;
+  }
+}
+
+@keyframes rise {
+  from {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+/* 슬로건 아래 한 줄: 대문자로, 글자 사이를 조금 띄워 조용하게 */
+.since {
+  margin-top: var(--space-lg);
+  font-size: var(--text-md);
+  font-weight: var(--weight-strong);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  cursor: default;
+  animation: settle var(--dur-reveal) var(--ease-out) 240ms both;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-xl);
+  animation: settle var(--dur-reveal) var(--ease-out) 340ms both;
+}
+
+/* 다른 블록들처럼 위에서 살짝 내려오며 나타납니다. */
+@keyframes settle {
+  from {
+    opacity: 0;
+    translate: 0 calc(var(--space-md) * -1);
+  }
+}
+
+@media (max-width: 860px) {
+  .hero {
+    --mark: min(34svh, 66vw);
+    padding-block: calc(var(--nav-h) + var(--space-lg)) var(--space-xl);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line > span,
+  .since,
+  .actions {
+    animation: none;
+  }
+
+  .canvas,
+  .aurora {
+    transition: none;
+  }
+
+  .aurora::before,
+  .aurora::after {
+    animation: none;
+  }
+}

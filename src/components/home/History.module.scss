@@ -1,0 +1,45 @@
+.section {
+  padding-top: var(--section-gap);
+}
+
+.rows {
+  border-top: 1px solid var(--color-rule);
+
+  li {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 1fr) minmax(0, 8fr);
+    align-items: baseline;
+    gap: var(--space-md) var(--gap-columns);
+    padding-block: var(--space-lg);
+    border-bottom: 1px solid var(--color-rule-soft);
+
+    @media (max-width: 760px) {
+      grid-template-columns: auto minmax(0, 1fr);
+
+      > :last-child {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+}
+
+.year {
+  font-family: var(--font-body);
+  font-weight: var(--weight-strong);
+  letter-spacing: -0.045em;
+  font-size: calc(var(--text-title) * 1.6);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.month {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.content {
+  font-size: var(--text-lead);
+  font-weight: var(--weight-strong);
+  letter-spacing: -0.025em;
+  color: var(--color-ink-2);
+}

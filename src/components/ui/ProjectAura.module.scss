@@ -1,0 +1,27 @@
+.aura {
+  position: absolute;
+  z-index: -1;
+  aspect-ratio: 1;
+  pointer-events: none;
+  filter: blur(64px) saturate(1.4);
+
+  img {
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+.corner {
+  top: -32%;
+  right: -22%;
+  width: 82%;
+  opacity: 0.38;
+}
+
+.center {
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  translate: -50% -50%;
+  opacity: 0.5;
+}

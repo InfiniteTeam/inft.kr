@@ -1,0 +1,39 @@
+.svg {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.grid line {
+  stroke: var(--color-rule);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.mark {
+  fill: var(--color-ink);
+  opacity: 0.92;
+}
+
+.guides {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.25;
+  stroke-dasharray: 5 5;
+  vector-effect: non-scaling-stroke;
+}
+
+.points circle {
+  fill: var(--color-paper-2);
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.labels text {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--color-muted);
+  letter-spacing: 0;
+}

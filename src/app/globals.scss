@@ -1,0 +1,292 @@
+/* Hallmark · v2.0.0 · redesign: full · theme: custom · idea: "로고가 유일한 광원: 어두운 화면에서 색은 홀로그램 유리 iN 하나에서만 나온다" · vibe: "칠흑 위의 홀로그램 유리, 절제된 애플" · genre: atmospheric · job: join (디스코드 서버, 채용) · hero: Corridor, the glass mark over a centred head and one sentence (centred by request) · nav: floating pill, wordmark mark and four links · footer: statement, the slogan large over one row of links · paper: oklch(14% 0.012 265) · ink: oklch(95% 0.008 265) · accent: focus only, oklch(84% 0.12 170) from Infinite Mint · faces: 빈폴체 display for Hangul only via unicode-range (by request), Pretendard Variable body, Latin and figures (by request) · posture: dark/condensed-geometric/neutral · modes: dark only (by request) */
+/* Hallmark · pre-emit critique: P4 H5 E4 S4 R5 V4 · weakest: P, a team site argues little; the page argues with the real record (2018 엔트리, Aztra 13,000 서버, 90만 사용자) instead of adjectives */
+/* Hallmark · waive 6b · the glass iN, the slogan, one line and two actions share one centred axis · the user asked for the mark and the slogan stacked on one vertical line */
+/* Hallmark · waive motion-loop · the glass mark replays the studio's own logo animation (I unfolds into iN and folds back on a 10s loop that rests on iN for about 5s, paused off-screen, held at iN under reduced motion) · the user asked for the hero mark to move like their Lottie */
+/* Hallmark · waive reveal-on-scroll · blocks slide 16px down while fading in as they enter the viewport and on page change (0.76s, 70ms stagger, off under reduced motion, never hidden without the script) · the user asked for elements to appear smoothly on scroll and page transitions */
+/* Hallmark · waive 29 · one slow aurora drawn in WebGL behind the glass mark (a wash and two ribbons that drift and cycle green, teal, violet and pink over about a minute; paused off-screen, frozen under reduced motion), faded to paper before the canvas edge; plus each project card's own icon blurred into a fixed corner glow, over a faint grid one icon wide that fades out from the icon · the user asked for an aurora behind the logo that keeps moving and slowly changes colour, and for the original project card backgrounds with a subtle grid sized to the icon */
+/* Hallmark · answered F15 · the hero is the one centred head group; every section head below it is left-aligned on column 1 */
+/* Hallmark · waive arrows-on-links · every link and button that leaves the site ends in a small up-right arrow, muted until hover · the user asked for an up-right arrow beside buttons that open another site */
+/* Hallmark · waive tracked-caps · one line under the slogan, "SINCE 2018", uppercase with 0.14em tracking · the user asked for exactly that line */
+
+:root {
+  /* colour: paper, three elevations, ink, neutrals, rules, focus */
+  --color-paper: oklch(14% 0.012 265);
+  --color-paper-2: oklch(17.5% 0.013 265);
+  --color-paper-3: oklch(21% 0.014 265);
+  --color-ink: oklch(95% 0.008 265);
+  --color-ink-2: oklch(82% 0.012 265);
+  --color-muted: oklch(68% 0.014 265);
+  --color-faint: oklch(52% 0.014 265);
+  --color-rule: oklch(30% 0.013 265);
+  --color-rule-soft: oklch(23% 0.013 265);
+  --color-accent: oklch(84% 0.12 170);
+  --color-accent-ink: oklch(20% 0.03 170);
+  --color-focus: oklch(84% 0.12 170);
+  --color-on-ink: oklch(16% 0.012 265);
+  --color-scrim: oklch(14% 0.012 265 / 0.72);
+  --color-veil: oklch(95% 0.008 265 / 0.06);
+  --color-veil-strong: oklch(95% 0.008 265 / 0.1);
+  --color-grid: oklch(95% 0.008 265 / 0.13);
+
+  /* the hologram, used only by the glass mark and its fallback */
+  --holo-1: oklch(86% 0.13 175);
+  --holo-2: oklch(84% 0.11 215);
+  --holo-3: oklch(76% 0.14 290);
+  --holo-4: oklch(82% 0.12 345);
+  --holo-5: oklch(90% 0.1 80);
+
+  /* the aurora behind the glass mark */
+  --aurora-1: oklch(78% 0.17 162);
+  --aurora-2: oklch(70% 0.12 200);
+  --aurora-3: oklch(60% 0.16 305);
+
+  /* faces */
+  --font-body:
+    'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+    'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  --font-display: var(--font-beanpole), var(--font-body);
+
+  /* type scale */
+  --text-display: clamp(3.5rem, min(8.4vw, 11.5svh), 8rem);
+  --text-display-s: clamp(2.75rem, 5.6vw, 5rem);
+  --text-figure: clamp(2.5rem, 4vw, 4rem);
+  --text-section: clamp(2.25rem, 3.6vw, 3.25rem);
+  --text-title: clamp(1.375rem, 1.8vw, 1.5625rem);
+  --text-lead: clamp(1.125rem, 1.5vw, 1.3125rem);
+  --text-md: 1.0625rem;
+  --text-sm: 0.875rem;
+  --weight-body: 400;
+  --weight-strong: 650;
+
+  /* space */
+  --space-3xs: 2px;
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --space-4xl: 144px;
+  --section-gap-s: clamp(88px, 10vw, 120px);
+  --section-gap: clamp(104px, 12vw, 144px);
+  --section-gap-l: clamp(120px, 14vw, 176px);
+
+  /* canvas */
+  --container: 1360px;
+  --gutter: clamp(20px, 5vw, 64px);
+  --gap-columns: clamp(16px, 2.2vw, 32px);
+  --nav-h: 64px;
+
+  /* shape */
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+  --radius-pill: 999px;
+
+  /* motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long: 420ms;
+  --dur-reveal: 760ms;
+
+  /* depth */
+  --z-raised: 10;
+  --z-sticky-nav: 300;
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + var(--space-lg));
+  background: var(--color-paper);
+}
+
+body {
+  min-height: 100svh;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: var(--weight-body);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  caret-color: var(--color-accent);
+  scrollbar-color: var(--color-rule) var(--color-paper);
+}
+
+img,
+svg,
+canvas,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: var(--weight-strong);
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+
+h2 {
+  font-size: var(--text-section);
+  max-width: 30ch;
+}
+
+h3 {
+  font-size: var(--text-title);
+  letter-spacing: -0.025em;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--color-veil-strong);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: var(--space-2xs);
+}
+
+.container {
+  width: 100%;
+  max-width: calc(var(--container) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/*
+ * 프로젝트 카드 바탕의 은은한 격자. 한 칸이 아이콘 크기라 아이콘이 격자 한 칸에 꼭 들어앉고,
+ * 아이콘 자리에서 멀어질수록 옅어집니다. 카드마다 다음 값을 정합니다.
+ *   --grid-cell  칸 크기(아이콘 크기)
+ *   --grid-pos   격자의 기준점(background-position): 아이콘 왼쪽 위 모서리, 가운데면 center
+ *   --grid-focus 가장 선명한 자리: 아이콘 한가운데
+ *   --grid-reach 다 사라지기까지의 거리(칸 수)
+ */
+.icon-grid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--color-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-grid) 1px, transparent 1px);
+  background-size: var(--grid-cell) var(--grid-cell);
+  background-position: var(--grid-pos);
+  -webkit-mask: radial-gradient(
+    circle at var(--grid-focus),
+    var(--color-ink) 0,
+    color-mix(in srgb, var(--color-ink) 45%, transparent)
+      calc(var(--grid-cell) * 1.6),
+    transparent calc(var(--grid-cell) * var(--grid-reach, 4.5))
+  );
+  mask: radial-gradient(
+    circle at var(--grid-focus),
+    var(--color-ink) 0,
+    color-mix(in srgb, var(--color-ink) 45%, transparent)
+      calc(var(--grid-cell) * 1.6),
+    transparent calc(var(--grid-cell) * var(--grid-reach, 4.5))
+  );
+}
+
+/*
+ * 스크롤하거나 페이지를 옮길 때 블록이 위에서 살짝 내려오며 나타납니다.
+ * 숨김은 <head> 스크립트가 data-reveal="on"을 붙였을 때만 걸리므로,
+ * 스크립트가 없거나 모션 줄이기면 처음부터 그대로 보입니다.
+ */
+html[data-reveal='on'] [data-reveal] {
+  opacity: 0;
+  translate: 0 calc(var(--space-md) * -1);
+  transition:
+    opacity var(--dur-reveal) var(--ease-out) var(--reveal-delay, 0ms),
+    translate var(--dur-reveal) var(--ease-out) var(--reveal-delay, 0ms);
+}
+
+html[data-reveal='on'] [data-reveal][data-in] {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

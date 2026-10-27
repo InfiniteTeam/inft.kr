@@ -1,0 +1,37 @@
+.button {
+  position: relative;
+}
+
+.toast {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + var(--space-xs));
+  padding: var(--space-2xs) var(--space-sm);
+  border-radius: var(--space-xs);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-strong);
+  white-space: nowrap;
+  color: var(--color-on-ink);
+  background: var(--color-ink);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, var(--space-2xs));
+  transition:
+    opacity var(--dur-short) var(--ease-out),
+    transform var(--dur-short) var(--ease-out);
+
+  &[data-show] {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  &:empty {
+    padding: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    transition: none;
+  }
+}

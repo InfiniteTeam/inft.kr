@@ -1,0 +1,68 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  min-height: 48px;
+  padding-inline: var(--space-lg);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-md);
+  font-weight: var(--weight-strong);
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+  transition:
+    background-color var(--dur-short) var(--ease-out),
+    box-shadow var(--dur-short) var(--ease-out),
+    transform var(--dur-micro) var(--ease-out);
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+/* 다른 사이트로 나가는 버튼 끝의 우상향 화살표. 올리면 그쪽으로 한 걸음 */
+.away {
+  margin-right: calc(var(--space-2xs) * -1);
+  opacity: 0.6;
+  transition:
+    translate var(--dur-short) var(--ease-out),
+    opacity var(--dur-short) var(--ease-out);
+
+  .button:hover & {
+    opacity: 1;
+    translate: 1px -1px;
+  }
+}
+
+.primary {
+  color: var(--color-on-ink);
+  background: var(--color-ink);
+
+  &:hover {
+    background: var(--color-ink-2);
+  }
+}
+
+.secondary {
+  color: var(--color-ink);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--color-rule);
+
+  &:hover {
+    background: var(--color-veil);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+
+  .button:active {
+    transform: none;
+  }
+}

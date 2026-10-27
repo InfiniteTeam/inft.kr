@@ -1,0 +1,34 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+  max-width: 44rem;
+  margin-bottom: var(--space-2xl);
+}
+
+.title {
+  white-space: pre-line;
+}
+
+.lead {
+  font-size: var(--text-lead);
+  line-height: 1.55;
+  color: var(--color-muted);
+  max-width: 36ch;
+}
+
+.link {
+  margin-top: var(--space-xs);
+  font-weight: var(--weight-strong);
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  text-decoration-color: var(--color-rule);
+  transition: text-decoration-color var(--dur-short) var(--ease-out);
+
+  &:hover {
+    text-decoration-color: var(--color-ink);
+  }
+}

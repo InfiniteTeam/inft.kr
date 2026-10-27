@@ -1,0 +1,147 @@
+/* Hallmark · answered 48 · the colour chips paint the brand colours themselves from page data; every other colour is a token */
+
+.section {
+  padding-block: var(--section-gap) 0;
+
+  &:last-child {
+    padding-bottom: var(--section-gap);
+  }
+}
+
+.symbol {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  align-items: center;
+  gap: var(--space-3xl);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-lg);
+  background: var(--color-paper-2);
+
+  @media (max-width: 860px) {
+    grid-template-columns: minmax(0, 1fr);
+    padding: var(--space-lg);
+    gap: var(--space-xl);
+  }
+}
+
+.construction {
+  width: 100%;
+  max-width: 30rem;
+  margin-inline: auto;
+}
+
+.symbolFacts {
+  border-top: 1px solid var(--color-rule);
+
+  div {
+    display: grid;
+    grid-template-columns: 4rem minmax(0, 1fr);
+    gap: var(--space-md);
+    padding-block: var(--space-md);
+    border-bottom: 1px solid var(--color-rule-soft);
+  }
+
+  dt {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+
+  dd {
+    color: var(--color-ink-2);
+  }
+}
+
+.variants {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap-columns);
+  margin-top: var(--gap-columns);
+
+  @media (max-width: 860px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.tile {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: inset 0 0 0 1px var(--color-rule-soft);
+}
+
+.tileMeta {
+  padding-top: var(--space-sm);
+  font-size: var(--text-sm);
+}
+
+.colors {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap-columns);
+
+  @media (max-width: 860px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+  border-radius: var(--radius-md);
+  background: var(--color-paper-2);
+  transition: background-color var(--dur-short) var(--ease-out);
+
+  &:hover {
+    background: var(--color-paper-3);
+  }
+}
+
+.chip {
+  display: flex;
+  align-items: flex-end;
+  aspect-ratio: 4 / 3;
+  padding: var(--space-md);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  font-weight: var(--weight-strong);
+  box-shadow: inset 0 0 0 1px var(--color-rule-soft);
+
+  &[data-ink='dark'] {
+    color: var(--color-on-ink);
+  }
+
+  &[data-ink='light'] {
+    color: var(--color-ink);
+  }
+}
+
+.values {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+  padding: var(--space-md);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+
+  span:last-child {
+    color: var(--color-muted);
+  }
+}
+
+.rules {
+  border-top: 1px solid var(--color-rule);
+  list-style: decimal inside;
+
+  li {
+    padding-block: var(--space-lg);
+    border-bottom: 1px solid var(--color-rule-soft);
+    color: var(--color-ink-2);
+    max-width: 70ch;
+
+    &::marker {
+      color: var(--color-muted);
+      font-variant-numeric: tabular-nums;
+    }
+  }
+}

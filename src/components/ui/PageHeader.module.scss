@@ -1,0 +1,30 @@
+.header {
+  padding-block: calc(var(--nav-h) + var(--space-3xl)) var(--space-3xl);
+  border-bottom: 1px solid var(--color-rule-soft);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--text-display);
+  line-height: 1;
+  letter-spacing: -0.005em;
+  max-width: 16ch;
+  white-space: pre-line;
+  text-wrap: initial;
+}
+
+.lead {
+  margin-top: var(--space-lg);
+  max-width: 40ch;
+  font-size: var(--text-lead);
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-xl);
+}

@@ -1,0 +1,108 @@
+.section {
+  padding-block: var(--section-gap);
+}
+
+/* 제목 바로 아래에 붙는 하는 일 목록 */
+.practice {
+  padding-bottom: var(--section-gap);
+}
+
+.well {
+  background: var(--color-paper-2);
+}
+
+/* 위쪽 선은 페이지 머리의 아래 선이 대신합니다. */
+.practices {
+  li {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    align-items: baseline;
+    gap: var(--space-sm) var(--gap-columns);
+    padding-block: var(--space-xl);
+    border-bottom: 1px solid var(--color-rule-soft);
+
+    @media (max-width: 760px) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  p {
+    max-width: 52ch;
+    font-size: var(--text-lead);
+    line-height: 1.6;
+    color: var(--color-ink-2);
+  }
+}
+
+.members {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap-columns);
+
+  > li {
+    display: grid;
+  }
+
+  @media (max-width: 1080px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 560px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.history {
+  border-top: 1px solid var(--color-rule);
+}
+
+.year {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: var(--space-md) var(--gap-columns);
+  padding-block: var(--space-xl);
+  border-bottom: 1px solid var(--color-rule-soft);
+
+  @media (max-width: 760px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.yearLabel {
+  font-family: var(--font-body);
+  font-weight: var(--weight-strong);
+  letter-spacing: -0.045em;
+  font-size: var(--text-display-s);
+  line-height: 0.9;
+  font-variant-numeric: tabular-nums;
+
+  @media (min-width: 761px) {
+    position: sticky;
+    top: calc(var(--nav-h) + var(--space-xl));
+    align-self: start;
+  }
+}
+
+.entries {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+
+  li {
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    gap: var(--space-md);
+    font-size: var(--text-lead);
+    font-weight: var(--weight-strong);
+    line-height: 1.5;
+    letter-spacing: -0.025em;
+  }
+}
+
+.month {
+  padding-top: var(--space-3xs);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-body);
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}

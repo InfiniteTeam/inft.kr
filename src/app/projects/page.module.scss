@@ -1,0 +1,218 @@
+.lead {
+  padding-block: var(--section-gap);
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  align-items: center;
+  gap: var(--space-3xl);
+
+  @media (max-width: 860px) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-xl);
+  }
+}
+
+.visual {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  background: var(--color-paper-2);
+  box-shadow: inset 0 0 0 1px var(--color-rule-soft);
+
+  /* 아이콘이 가운데 격자 한 칸에 앉습니다. */
+  --grid-cell: clamp(112px, 14vw, 176px);
+  --grid-pos: center;
+  --grid-focus: 50% 50%;
+  --grid-reach: 3;
+
+  > img {
+    width: var(--grid-cell);
+    height: auto;
+    border-radius: 23%;
+  }
+
+  @media (max-width: 860px) {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.leadName {
+  font-size: var(--text-display-s);
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.summary {
+  margin-top: var(--space-md);
+  font-size: var(--text-lead);
+  font-weight: var(--weight-strong);
+  letter-spacing: -0.025em;
+}
+
+.description {
+  margin-top: var(--space-sm);
+  max-width: 52ch;
+  color: var(--color-ink-2);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, max-content));
+  gap: var(--space-md) var(--space-xl);
+  margin-block: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-rule-soft);
+
+  dt {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+
+  dd {
+    margin-top: var(--space-2xs);
+    font-weight: var(--weight-strong);
+  }
+
+  @media (max-width: 560px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.section {
+  padding-bottom: var(--section-gap);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap-columns);
+
+  @media (max-width: 1080px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  background: var(--color-paper-2);
+  box-shadow: inset 0 0 0 1px var(--color-rule-soft);
+
+  /* 격자는 아이콘(왼쪽 위, 72px)에 맞춥니다. */
+  --grid-cell: 72px;
+  --grid-pos: var(--space-xl) var(--space-xl);
+  --grid-focus: calc(var(--space-xl) + var(--grid-cell) / 2)
+    calc(var(--space-xl) + var(--grid-cell) / 2);
+
+  /* 카드 안에서는 가로 구분선이 바탕 격자와 겹치므로 뺍니다. */
+  .facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-bottom: var(--space-lg);
+    padding-top: 0;
+    border-top: 0;
+  }
+}
+
+.icon {
+  margin-bottom: var(--space-xl);
+  border-radius: 22%;
+}
+
+.name {
+  font-size: calc(var(--text-title) * 1.6);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  align-self: flex-start;
+  margin-top: auto;
+  font-weight: var(--weight-strong);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  text-decoration-color: var(--color-rule);
+  transition: text-decoration-color var(--dur-short) var(--ease-out);
+
+  &:hover {
+    text-decoration-color: var(--color-ink);
+  }
+}
+
+.archive {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+
+  th,
+  td {
+    padding: var(--space-lg) var(--space-md) var(--space-lg) 0;
+    border-bottom: 1px solid var(--color-rule-soft);
+    vertical-align: baseline;
+  }
+
+  thead th {
+    padding-block: var(--space-sm);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-body);
+    color: var(--color-muted);
+    border-bottom-color: var(--color-rule);
+    white-space: nowrap;
+  }
+
+  tbody th {
+    font-size: var(--text-lead);
+    letter-spacing: -0.025em;
+
+    span {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-body);
+      color: var(--color-muted);
+    }
+  }
+
+  td {
+    color: var(--color-ink-2);
+  }
+
+  td:last-child {
+    color: var(--color-muted);
+  }
+
+  @media (max-width: 760px) {
+    thead {
+      display: none;
+    }
+
+    tr {
+      display: grid;
+      grid-template-columns: 4rem minmax(0, 1fr);
+      padding-block: var(--space-md);
+      border-bottom: 1px solid var(--color-rule-soft);
+    }
+
+    th,
+    td {
+      padding: 0;
+      border: 0;
+    }
+
+    td:nth-child(n + 3) {
+      grid-column: 2;
+    }
+  }
+}

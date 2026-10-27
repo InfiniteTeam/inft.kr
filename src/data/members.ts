@@ -1,13 +1,26 @@
-import arpaap from 'assets/arpa.png';
-import coin from 'assets/coin.png';
-import dacon from 'assets/dacon.png';
-import gangjun from 'assets/gangjun06.png';
-import filename from 'assets/filename.png';
-import dowon from 'assets/dowon.png';
-import hankaru from 'assets/hankaru.png';
-import ray from 'assets/ray.png';
+import type { StaticImageData } from 'next/image';
+import arpaap from '@/assets/arpa.png';
+import coin from '@/assets/coin.png';
+import dacon from '@/assets/dacon.png';
+import gangjun from '@/assets/gangjun06.png';
+import filename from '@/assets/filename.png';
+import hankaru from '@/assets/hankaru.png';
+import ray from '@/assets/ray.png';
 
-const members = [
+export interface Member {
+  name: string;
+  kr: string;
+  role: string[];
+  color: [string, string];
+  discord: string | null;
+  github: string | null;
+  email: string | null;
+  motto: string | null;
+  solvedac: string | null;
+  avatar: StaticImageData | null;
+}
+
+const members: Member[] = [
   {
     name: 'ArpaAP',
     kr: '알파',
@@ -72,13 +85,14 @@ const members = [
     name: 'DowonLee',
     kr: '도원',
     role: ['커뮤니티 매니저'],
-    color: ['#fff', '#aaa'],
+    color: ['#ffffff', '#aaaaaa'],
     discord: '@dobawonbo',
     github: null,
     email: 'iamleedowon@gmail.com',
     motto: '도바원보',
     solvedac: null,
-    avatar: dowon,
+    // 기존 dowon.png는 단색 이미지라 모노그램으로 대신 표시합니다.
+    avatar: null,
   },
   {
     name: 'Hankaru',
@@ -95,13 +109,21 @@ const members = [
   {
     name: 'Ray',
     kr: '레이',
-    color: ['#fff', '#aaa'],
     role: ['개발자', '물리서버 관리자'],
-    discord: 'raymix__',
+    color: ['#ffffff', '#aaaaaa'],
+    discord: '@raymix__',
     github: 'erukim',
     email: 'erukim@hiplay.kr',
+    motto: null,
+    solvedac: null,
     avatar: ray,
   },
 ];
+
+export function findMembers(names: string[]) {
+  return names
+    .map((name) => members.find((member) => member.name === name))
+    .filter((member): member is Member => Boolean(member));
+}
 
 export default members;
