@@ -97,3 +97,32 @@ const projects: Project[] = [
 ];
 
 export default projects;
+
+/** 연혁에 기록된 그동안의 프로젝트 */
+export const archive = [
+  {
+    year: 2022,
+    name: 'Aztra Music',
+    description: 'Aztra에 음악 재생을 더한 프로젝트',
+    note: '2022.07 개발 시작',
+  },
+  {
+    year: 2020,
+    name: 'RTBOT',
+    nameKr: '알티봇',
+    description: '디스코드 미니게임 봇',
+    note: '2020.08 운영',
+  },
+  {
+    year: 2020,
+    name: '연어봇',
+    description: '디스코드 검색 봇',
+    note: '2020.02 개발',
+  },
+  {
+    year: 2019,
+    name: 'On-Off',
+    description: '엔트리 퍼즐 게임',
+    note: '2019.06 출시 · 스태프 및 인기 작품 선정',
+  },
+];
