@@ -29,9 +29,10 @@
     var(--holo-cream)
   );
 
-  --font-sans: 'Pretendard Variable', Pretendard, -apple-system,
-    BlinkMacSystemFont, system-ui, 'Apple SD Gothic Neo', 'Noto Sans KR',
-    'Malgun Gothic', sans-serif;
+  --font-sans:
+    'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+    system-ui, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
+    sans-serif;
   --font-condensed: var(--font-korail), var(--font-sans);
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
