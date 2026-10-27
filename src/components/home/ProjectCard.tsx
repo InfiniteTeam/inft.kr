@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import type { Project } from '@/data/projects';
 import { findMembers } from '@/data/members';
 import AvatarStack from '@/components/ui/AvatarStack';
+import ProjectAura from '@/components/ui/ProjectAura';
 import styles from './ProjectCard.module.scss';
 
 interface Props {
@@ -16,6 +17,7 @@ export default function ProjectCard({ project, lead, className }: Props) {
 
   return (
     <article className={clsx(styles.tile, lead && styles.lead, className)}>
+      <ProjectAura icon={project.icon} />
       <div className={styles.top}>
         <Image
           className={styles.icon}

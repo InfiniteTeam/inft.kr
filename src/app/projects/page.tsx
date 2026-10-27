@@ -5,6 +5,7 @@ import { findMembers } from '@/data/members';
 import AvatarStack from '@/components/ui/AvatarStack';
 import Button from '@/components/ui/Button';
 import PageHeader from '@/components/ui/PageHeader';
+import ProjectAura from '@/components/ui/ProjectAura';
 import SectionHeader from '@/components/ui/SectionHeader';
 import styles from './page.module.scss';
 
@@ -52,6 +53,7 @@ export default function ProjectsPage() {
       <section className={styles.lead} aria-labelledby={lead.slug}>
         <div className={`container ${styles.split}`}>
           <div className={styles.visual}>
+            <ProjectAura icon={lead.icon} placement="center" />
             <Image
               src={lead.icon}
               alt={`${lead.name} 아이콘`}
@@ -80,6 +82,7 @@ export default function ProjectsPage() {
           <ul className={styles.grid}>
             {rest.map((project) => (
               <li key={project.slug} id={project.slug} className={styles.card}>
+                <ProjectAura icon={project.icon} />
                 <Image
                   className={styles.icon}
                   src={project.icon}

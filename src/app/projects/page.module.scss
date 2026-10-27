@@ -15,6 +15,9 @@
 }
 
 .visual {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: grid;
   place-items: center;
   aspect-ratio: 4 / 5;
@@ -22,7 +25,7 @@
   background: var(--color-paper-2);
   box-shadow: inset 0 0 0 1px var(--color-rule-soft);
 
-  img {
+  > img {
     width: clamp(112px, 14vw, 176px);
     height: auto;
     border-radius: 23%;
@@ -90,6 +93,9 @@
 }
 
 .card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   padding: var(--space-xl);
