@@ -49,4 +49,4 @@ public/
 ## 서체 라이선스
 
 - Pretendard: SIL Open Font License 1.1
-- 빈폴체: 눈누 배포 무료 서체(`@noonnu/beanpoleot-m00`)의 웹폰트 파일을 그대로 씁니다. 사용 범위는 원 배포처 라이선스를 따릅니다.
+- 빈폴체: © 삼성물산(주)패션부문. 눈누 배포 패키지(`@noonnu/beanpoleot-m00`)의 woff 파일을 고치지 않고 그대로 씁니다. 라이선스 전문은 [`src/fonts/Beanpole-LICENSE.md`](src/fonts/Beanpole-LICENSE.md)에 있고, 사이트 푸터에 출처를 적습니다. 폰트 파일을 수정하거나 변환하지 말고, 인쇄물, 굿즈, 공식 BI/CI에 쓰기 전에는 삼성물산(주)패션부문에 먼저 문의하세요.

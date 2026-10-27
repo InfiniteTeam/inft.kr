@@ -52,8 +52,16 @@
   }
 }
 
-.legal {
-  margin-top: var(--space-2xl);
+.legal,
+.credit {
   font-size: var(--text-sm);
   color: var(--color-muted);
+}
+
+.legal {
+  margin-top: var(--space-2xl);
+}
+
+.credit {
+  margin-top: var(--space-2xs);
 }
