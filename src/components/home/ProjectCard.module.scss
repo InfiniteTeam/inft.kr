@@ -10,6 +10,16 @@
   border-radius: var(--radius-lg);
   background: var(--color-paper-2);
   box-shadow: inset 0 0 0 1px var(--color-rule-soft);
+
+  /* 격자는 아이콘(왼쪽 위, 64px)에 맞춥니다. */
+  --grid-cell: 64px;
+  --grid-pos: var(--space-xl) var(--space-xl);
+  --grid-focus: calc(var(--space-xl) + var(--grid-cell) / 2)
+    calc(var(--space-xl) + var(--grid-cell) / 2);
+
+  &.lead {
+    --grid-cell: 96px;
+  }
 }
 
 .top {

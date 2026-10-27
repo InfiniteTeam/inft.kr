@@ -3,7 +3,7 @@
 /* Hallmark · waive 6b · the glass iN, the slogan, one line and two actions share one centred axis · the user asked for the mark and the slogan stacked on one vertical line */
 /* Hallmark · waive motion-loop · the glass mark replays the studio's own logo animation (I unfolds into iN and folds back on a 10s loop that rests on iN for about 5s, paused off-screen, held at iN under reduced motion) · the user asked for the hero mark to move like their Lottie */
 /* Hallmark · waive reveal-on-scroll · blocks slide 16px down while fading in as they enter the viewport and on page change (0.76s, 70ms stagger, off under reduced motion, never hidden without the script) · the user asked for elements to appear smoothly on scroll and page transitions */
-/* Hallmark · waive 29 · one slow aurora drawn in WebGL behind the glass mark (a wash and two ribbons that drift and cycle green, teal, violet and pink over about a minute; paused off-screen, frozen under reduced motion), faded to paper before the canvas edge; plus each project card's own icon blurred into a fixed corner glow · the user asked for an aurora behind the logo that keeps moving and slowly changes colour, and for the original project card backgrounds */
+/* Hallmark · waive 29 · one slow aurora drawn in WebGL behind the glass mark (a wash and two ribbons that drift and cycle green, teal, violet and pink over about a minute; paused off-screen, frozen under reduced motion), faded to paper before the canvas edge; plus each project card's own icon blurred into a fixed corner glow, over a faint grid one icon wide that fades out from the icon · the user asked for an aurora behind the logo that keeps moving and slowly changes colour, and for the original project card backgrounds with a subtle grid sized to the icon */
 /* Hallmark · answered F15 · the hero is the one centred head group; every section head below it is left-aligned on column 1 */
 /* Hallmark · waive arrows-on-links · every link and button that leaves the site ends in a small up-right arrow, muted until hover · the user asked for an up-right arrow beside buttons that open another site */
 /* Hallmark · waive tracked-caps · one line under the slogan, "SINCE 2018", uppercase with 0.14em tracking · the user asked for exactly that line */
@@ -26,6 +26,7 @@
   --color-scrim: oklch(14% 0.012 265 / 0.72);
   --color-veil: oklch(95% 0.008 265 / 0.06);
   --color-veil-strong: oklch(95% 0.008 265 / 0.1);
+  --color-grid: oklch(95% 0.008 265 / 0.13);
 
   /* the hologram, used only by the glass mark and its fallback */
   --holo-1: oklch(86% 0.13 175);
@@ -221,6 +222,41 @@ p {
 
 .tabular {
   font-variant-numeric: tabular-nums;
+}
+
+/*
+ * 프로젝트 카드 바탕의 은은한 격자. 한 칸이 아이콘 크기라 아이콘이 격자 한 칸에 꼭 들어앉고,
+ * 아이콘 자리에서 멀어질수록 옅어집니다. 카드마다 다음 값을 정합니다.
+ *   --grid-cell  칸 크기(아이콘 크기)
+ *   --grid-pos   격자의 기준점(background-position): 아이콘 왼쪽 위 모서리, 가운데면 center
+ *   --grid-focus 가장 선명한 자리: 아이콘 한가운데
+ *   --grid-reach 다 사라지기까지의 거리(칸 수)
+ */
+.icon-grid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--color-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-grid) 1px, transparent 1px);
+  background-size: var(--grid-cell) var(--grid-cell);
+  background-position: var(--grid-pos);
+  -webkit-mask: radial-gradient(
+    circle at var(--grid-focus),
+    var(--color-ink) 0,
+    color-mix(in srgb, var(--color-ink) 45%, transparent)
+      calc(var(--grid-cell) * 1.6),
+    transparent calc(var(--grid-cell) * var(--grid-reach, 4.5))
+  );
+  mask: radial-gradient(
+    circle at var(--grid-focus),
+    var(--color-ink) 0,
+    color-mix(in srgb, var(--color-ink) 45%, transparent)
+      calc(var(--grid-cell) * 1.6),
+    transparent calc(var(--grid-cell) * var(--grid-reach, 4.5))
+  );
 }
 
 /*

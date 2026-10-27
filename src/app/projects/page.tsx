@@ -53,7 +53,7 @@ export default function ProjectsPage() {
 
       <section className={styles.lead} aria-labelledby={lead.slug}>
         <div className={`container ${styles.split}`}>
-          <div className={styles.visual} data-reveal>
+          <div className={`${styles.visual} icon-grid`} data-reveal>
             <ProjectAura icon={lead.icon} placement="center" />
             <Image
               src={lead.icon}
@@ -85,7 +85,7 @@ export default function ProjectsPage() {
               <li
                 key={project.slug}
                 id={project.slug}
-                className={styles.card}
+                className={`${styles.card} icon-grid`}
                 data-reveal
               >
                 <ProjectAura icon={project.icon} />

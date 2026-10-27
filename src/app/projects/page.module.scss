@@ -25,8 +25,14 @@
   background: var(--color-paper-2);
   box-shadow: inset 0 0 0 1px var(--color-rule-soft);
 
+  /* 아이콘이 가운데 격자 한 칸에 앉습니다. */
+  --grid-cell: clamp(112px, 14vw, 176px);
+  --grid-pos: center;
+  --grid-focus: 50% 50%;
+  --grid-reach: 3;
+
   > img {
-    width: clamp(112px, 14vw, 176px);
+    width: var(--grid-cell);
     height: auto;
     border-radius: 23%;
   }
@@ -102,6 +108,12 @@
   border-radius: var(--radius-lg);
   background: var(--color-paper-2);
   box-shadow: inset 0 0 0 1px var(--color-rule-soft);
+
+  /* 격자는 아이콘(왼쪽 위, 72px)에 맞춥니다. */
+  --grid-cell: 72px;
+  --grid-pos: var(--space-xl) var(--space-xl);
+  --grid-focus: calc(var(--space-xl) + var(--grid-cell) / 2)
+    calc(var(--space-xl) + var(--grid-cell) / 2);
 
   .facts {
     grid-template-columns: repeat(2, minmax(0, 1fr));

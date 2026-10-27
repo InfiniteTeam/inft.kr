@@ -16,7 +16,7 @@ interface Props {
 export default function ProjectCard({ project, lead, className }: Props) {
   return (
     <article
-      className={clsx(styles.tile, lead && styles.lead, className)}
+      className={clsx(styles.tile, lead && styles.lead, 'icon-grid', className)}
       data-reveal
     >
       <ProjectAura icon={project.icon} />
