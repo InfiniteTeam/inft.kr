@@ -4,7 +4,7 @@ export const site = {
   url: 'https://inft.kr',
   slogan: '무한한 미래를 만들어 갑니다',
   description:
-    'Infinite Studio는 2018년부터 디스코드 봇과 게임을 만들어 온 개발팀입니다.',
+    'Infinite Studio는 2018년부터 디스코드 봇과 게임을 만들어 온 개발팀입니다. 한국 최초의 대시보드형 디스코드 관리봇 Aztra를 만들고 운영합니다.',
   founded: { year: 2018, month: 8 },
   links: {
     discord: 'https://discord.gg/7aFczQk',

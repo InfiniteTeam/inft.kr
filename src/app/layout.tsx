@@ -8,6 +8,7 @@ import Footer from '@/components/site/Footer';
 import Reveal from '@/components/site/Reveal';
 import { REVEAL_SCRIPT } from '@/components/site/revealScript';
 import { site } from '@/data/site';
+import { sharedOpenGraph } from '@/lib/metadata';
 
 const beanpole = localFont({
   src: '../fonts/Beanpole-M00.woff',
@@ -37,15 +38,15 @@ export const metadata: Metadata = {
     'Infinite Studio',
     '인피니트 스튜디오',
     '디스코드 봇',
+    '디스코드 관리봇',
     'Aztra',
+    '아즈트라',
     'Idle Factory',
-    '2¹²',
   ],
+  alternates: { canonical: '/' },
   openGraph: {
-    type: 'website',
-    locale: 'ko_KR',
-    url: site.url,
-    siteName: site.name,
+    ...sharedOpenGraph,
+    url: '/',
     title: `${site.slogan} | ${site.name}`,
     description: site.description,
   },

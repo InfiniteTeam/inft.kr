@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import members from '@/data/members';
 import history, { groupByYear } from '@/data/history';
 import MemberCard from '@/components/about/MemberCard';
@@ -6,11 +7,11 @@ import PageHeader from '@/components/ui/PageHeader';
 import SectionHeader from '@/components/ui/SectionHeader';
 import styles from './page.module.scss';
 
-export const metadata: Metadata = {
-  title: '소개',
-  description:
-    'Infinite Studio는 2018년 청소년 엔트리 개발팀으로 시작해 디스코드 봇과 게임을 만드는 팀입니다.',
-};
+export const metadata: Metadata = pageMetadata(
+  '소개',
+  '디스코드 봇을 만들고 직접 운영하는 Infinite Studio의 팀원과, 2018년 엔트리에서 시작해 걸어온 발자취입니다.',
+  '/about'
+);
 
 const practices = [
   {

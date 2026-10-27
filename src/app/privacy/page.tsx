@@ -1,14 +1,16 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import ReactMarkdown from 'react-markdown';
 import PageHeader from '@/components/ui/PageHeader';
 import styles from './page.module.scss';
 
-export const metadata: Metadata = {
-  title: '개인정보 처리방침',
-  description: 'Infinite Studio 개인정보 처리방침',
-};
+export const metadata: Metadata = pageMetadata(
+  '개인정보 처리방침',
+  'Infinite Studio가 서비스를 운영하며 개인정보를 어떻게 수집하고 이용하는지 안내합니다.',
+  '/privacy'
+);
 
 const slug = (text: string) => `section-${text.split('.')[0].trim()}`;
 

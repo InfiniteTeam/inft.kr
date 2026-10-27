@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import Image from 'next/image';
 import projects, { archive, statusLabel, type Project } from '@/data/projects';
 import { findMembers } from '@/data/members';
@@ -10,11 +11,11 @@ import ProjectAura from '@/components/ui/ProjectAura';
 import SectionHeader from '@/components/ui/SectionHeader';
 import styles from './page.module.scss';
 
-export const metadata: Metadata = {
-  title: '프로젝트',
-  description:
-    'Aztra, Idle Factory, 2¹², Azalea. Infinite Studio가 만들고 운영하는 디스코드 봇과 게임입니다.',
-};
+export const metadata: Metadata = pageMetadata(
+  '프로젝트',
+  '한국 최초의 대시보드형 디스코드 관리봇 Aztra와 방치형 게임 Idle Factory를 비롯해, Infinite Studio가 만들어 온 디스코드 봇과 게임입니다.',
+  '/projects'
+);
 
 function Facts({ project }: { project: Project }) {
   return (

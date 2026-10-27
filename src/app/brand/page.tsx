@@ -1,14 +1,16 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import Construction from '@/components/brand/Construction';
 import CopyButton from '@/components/ui/CopyButton';
 import PageHeader from '@/components/ui/PageHeader';
 import SectionHeader from '@/components/ui/SectionHeader';
 import styles from './page.module.scss';
 
-export const metadata: Metadata = {
-  title: '브랜드',
-  description: 'Infinite Studio의 심볼과 컬러, 사용 규정을 안내합니다.',
-};
+export const metadata: Metadata = pageMetadata(
+  '브랜드',
+  'Infinite Studio 심볼의 구성과 브랜드 컬러, 사용 규정을 안내합니다.',
+  '/brand'
+);
 
 const variants = [
   { file: 'Logo_NG', label: '네이비 위 민트' },
