@@ -60,7 +60,6 @@ export default function BrandPage() {
         <Button
           href="/assets/logo.zip"
           download
-          size="lg"
           icon={<DownloadIcon size={16} />}
         >
           로고 패키지 다운로드

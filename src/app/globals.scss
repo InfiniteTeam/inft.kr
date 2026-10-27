@@ -1,52 +1,91 @@
+/* Hallmark · v2.0.0 · redesign: full · theme: custom · idea: "로고가 유일한 광원: 어두운 화면에서 색은 홀로그램 유리 iN 하나에서만 나온다" · vibe: "칠흑 위의 홀로그램 유리, 절제된 애플" · genre: atmospheric · job: join (디스코드 서버, 채용) · hero: Corridor, the glass mark over a centred head and one sentence (centred by request) · nav: floating pill, wordmark mark and four links · footer: statement, the slogan large over one row of links · paper: oklch(14% 0.012 265) · ink: oklch(95% 0.008 265) · accent: focus only, oklch(84% 0.12 170) from Infinite Mint · faces: 빈폴체 display (by request), Pretendard Variable body (by request) · posture: dark/condensed-geometric/neutral · modes: dark only (by request) */
+/* Hallmark · pre-emit critique: P4 H5 E4 S4 R5 V4 · weakest: P, a team site argues little; the page argues with the real record (2018 엔트리, Aztra 4,000 서버) instead of adjectives */
+/* Hallmark · waive 6b · the glass iN, the slogan, one sentence and two actions share one centred axis · the user asked for the mark and the slogan stacked on one vertical line */
+/* Hallmark · answered F15 · the hero is the one centred head group; every section head below it is left-aligned on column 1 */
+
 :root {
-  --bg: #f4f5f7;
-  --bg-deep: #eceef2;
-  --surface: #ffffff;
-  --ink: #0b0d12;
-  --ink-2: #3b404b;
-  --muted: #6e7380;
-  --faint: #a4a9b3;
-  --line: rgba(11, 13, 18, 0.08);
-  --line-strong: rgba(11, 13, 18, 0.14);
-  --mint: #00cc99;
-  --mint-ink: #00805c;
-  --turquoise: #33cccc;
-  --night: #07080c;
+  /* colour: paper, three elevations, ink, neutrals, rules, focus */
+  --color-paper: oklch(14% 0.012 265);
+  --color-paper-2: oklch(17.5% 0.013 265);
+  --color-paper-3: oklch(21% 0.014 265);
+  --color-ink: oklch(95% 0.008 265);
+  --color-ink-2: oklch(82% 0.012 265);
+  --color-muted: oklch(68% 0.014 265);
+  --color-faint: oklch(52% 0.014 265);
+  --color-rule: oklch(30% 0.013 265);
+  --color-rule-soft: oklch(23% 0.013 265);
+  --color-accent: oklch(84% 0.12 170);
+  --color-accent-ink: oklch(20% 0.03 170);
+  --color-focus: oklch(84% 0.12 170);
+  --color-on-ink: oklch(16% 0.012 265);
+  --color-scrim: oklch(14% 0.012 265 / 0.72);
+  --color-veil: oklch(95% 0.008 265 / 0.06);
+  --color-veil-strong: oklch(95% 0.008 265 / 0.1);
 
-  --holo-mint: #8df2d2;
-  --holo-aqua: #a3e6ff;
-  --holo-periwinkle: #b7c1ff;
-  --holo-lilac: #dcc6ff;
-  --holo-rose: #ffd0e6;
-  --holo-cream: #fff1d6;
-  --holo: linear-gradient(
-    100deg,
-    var(--holo-mint),
-    var(--holo-aqua) 22%,
-    var(--holo-periwinkle) 44%,
-    var(--holo-lilac) 62%,
-    var(--holo-rose) 80%,
-    var(--holo-cream)
-  );
+  /* the hologram, used only by the glass mark and its fallback */
+  --holo-1: oklch(86% 0.13 175);
+  --holo-2: oklch(84% 0.11 215);
+  --holo-3: oklch(76% 0.14 290);
+  --holo-4: oklch(82% 0.12 345);
+  --holo-5: oklch(90% 0.1 80);
 
-  --font-sans:
+  /* faces */
+  --font-body:
     'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
-    system-ui, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
-    sans-serif;
-  --font-condensed: var(--font-korail), var(--font-sans);
+    'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  --font-display: var(--font-beanpole), var(--font-body);
 
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  /* type scale */
+  --text-display: clamp(3.5rem, min(8.4vw, 11.5svh), 8rem);
+  --text-display-s: clamp(2.75rem, 5.6vw, 5rem);
+  --text-section: clamp(2.25rem, 3.6vw, 3.25rem);
+  --text-title: clamp(1.375rem, 1.8vw, 1.5625rem);
+  --text-lead: clamp(1.125rem, 1.5vw, 1.3125rem);
+  --text-md: 1.0625rem;
+  --text-sm: 0.875rem;
+  --weight-body: 400;
+  --weight-strong: 650;
 
-  --page-max: 1240px;
+  /* space */
+  --space-3xs: 2px;
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --space-4xl: 144px;
+  --section-gap-s: clamp(88px, 10vw, 120px);
+  --section-gap: clamp(104px, 12vw, 144px);
+  --section-gap-l: clamp(120px, 14vw, 176px);
+
+  /* canvas */
+  --container: 1360px;
   --gutter: clamp(20px, 5vw, 64px);
-  --section-gap: clamp(120px, 16vw, 220px);
-  --nav-h: 56px;
+  --gap-columns: clamp(16px, 2.2vw, 32px);
+  --nav-h: 64px;
+
+  /* shape */
   --radius-lg: 28px;
   --radius-md: 18px;
   --radius-sm: 12px;
+  --radius-pill: 999px;
 
-  color-scheme: light;
+  /* motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long: 420ms;
+
+  /* depth */
+  --z-raised: 10;
+  --z-sticky-nav: 300;
+
+  color-scheme: dark;
 }
 
 *,
@@ -57,29 +96,35 @@
   padding: 0;
 }
 
+html,
+body {
+  overflow-x: clip;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scroll-behavior: smooth;
-  background: var(--bg);
+  scroll-padding-top: calc(var(--nav-h) + var(--space-lg));
+  background: var(--color-paper);
 }
 
 body {
   min-height: 100svh;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-sans);
-  font-size: 17px;
-  font-weight: 450;
-  line-height: 1.65;
-  letter-spacing: -0.012em;
-  font-feature-settings: 'ss06';
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: var(--weight-body);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  font-synthesis: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
   word-break: keep-all;
   overflow-wrap: break-word;
-  overflow-x: clip;
+  caret-color: var(--color-accent);
+  scrollbar-color: var(--color-rule) var(--color-paper);
 }
 
 img,
@@ -110,12 +155,23 @@ ol {
 
 h1,
 h2,
-h3,
-h4 {
-  font-weight: 650;
+h3 {
+  font-weight: var(--weight-strong);
   letter-spacing: -0.035em;
-  line-height: 1.15;
+  line-height: 1.12;
   text-wrap: balance;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+
+h2 {
+  font-size: var(--text-section);
+  max-width: 30ch;
+}
+
+h3 {
+  font-size: var(--text-title);
+  letter-spacing: -0.025em;
 }
 
 p {
@@ -123,19 +179,19 @@ p {
 }
 
 ::selection {
-  background: rgba(0, 204, 153, 0.22);
-  color: var(--ink);
+  background: var(--color-veil-strong);
+  color: var(--color-ink);
 }
 
 :focus-visible {
-  outline: 2px solid var(--mint);
+  outline: 2px solid var(--color-focus);
   outline-offset: 3px;
-  border-radius: 6px;
+  border-radius: var(--space-2xs);
 }
 
 .container {
   width: 100%;
-  max-width: calc(var(--page-max) + var(--gutter) * 2);
+  max-width: calc(var(--container) + var(--gutter) * 2);
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
@@ -144,7 +200,6 @@ p {
   position: absolute !important;
   width: 1px;
   height: 1px;
-  padding: 0;
   margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);

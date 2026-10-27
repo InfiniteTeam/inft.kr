@@ -1,15 +1,32 @@
 .hero {
-  --progress: 0;
+  --mark: min(38svh, 64vw, 420px);
   position: relative;
-  height: 100svh;
-  min-height: 640px;
-  max-height: 1200px;
-  overflow: hidden;
   isolation: isolate;
+  display: grid;
+  min-height: 100svh;
+  padding-block: calc(var(--nav-h) + var(--space-xl)) var(--space-2xl);
   cursor: grab;
   touch-action: pan-y;
   user-select: none;
   -webkit-user-select: none;
+
+  /* 로고 아래에 깔린 무채색의 낮은 빛 하나 (고정, 움직이지 않음) */
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: calc(var(--nav-h) + var(--space-xl) + var(--mark) * 0.5);
+    z-index: -1;
+    width: calc(var(--mark) * 2.6);
+    aspect-ratio: 1;
+    translate: -50% -50%;
+    background: radial-gradient(
+      closest-side,
+      var(--color-paper-3),
+      var(--color-paper) 100%
+    );
+    pointer-events: none;
+  }
 
   &[data-dragging] {
     cursor: grabbing;
@@ -20,17 +37,28 @@
   }
 }
 
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* 로고가 놓이는 정사각형 자리. 캔버스는 회전 여유를 두고 이보다 크게 깔립니다. */
 .stage {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
+  position: relative;
+  width: var(--mark);
+  aspect-ratio: 1;
+  margin-bottom: var(--space-xl);
+  pointer-events: none;
 }
 
 .canvas {
   position: absolute;
-  inset: 0;
+  inset: -35%;
   opacity: 0;
-  transition: opacity 1.4s var(--ease);
+  transition: opacity 1.2s var(--ease-out);
 
   .hero[data-ready] & {
     opacity: 1;
@@ -39,287 +67,83 @@
 
 .fallback {
   position: absolute;
-  left: 62%;
-  top: 40%;
-  translate: -50% -50%;
-  width: min(30vw, 40svh);
-  aspect-ratio: 1;
-  color: transparent;
-
-  svg {
-    width: 100%;
-    height: 100%;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: -40%;
-    z-index: -1;
-    background: radial-gradient(
-      closest-side,
-      rgba(183, 193, 255, 0.55),
-      rgba(141, 242, 210, 0.3) 55%,
-      transparent
-    );
-    filter: blur(20px);
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--holo);
-    mask: url('/brand/Logo_W.svg') center / contain no-repeat;
-    -webkit-mask: url('/brand/Logo_W.svg') center / contain no-repeat;
-  }
-
-  @media (max-aspect-ratio: 1/1) {
-    left: 50%;
-    top: 34%;
-    width: min(62vw, 30svh);
-  }
-}
-
-.content {
-  position: absolute;
-  inset: auto 0 0;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: 32px 48px;
-  padding-bottom: clamp(36px, 7svh, 84px);
-  pointer-events: none;
-  opacity: calc(1 - var(--progress) * 1.6);
-  transform: translate3d(0, calc(var(--progress) * -60px), 0);
-
-  > * {
-    pointer-events: auto;
-  }
-
-  @media (max-width: 860px) {
-    grid-template-columns: 1fr;
-    gap: 28px;
-    padding-bottom: clamp(28px, 5svh, 48px);
-  }
+  inset: 0;
+  background: linear-gradient(
+    125deg,
+    var(--holo-1),
+    var(--holo-2) 30%,
+    var(--holo-3) 55%,
+    var(--holo-4) 78%,
+    var(--holo-5)
+  );
+  -webkit-mask: url('/brand/Logo_W.svg') center / contain no-repeat;
+  mask: url('/brand/Logo_W.svg') center / contain no-repeat;
 }
 
 .slogan {
-  font-family: var(--font-condensed);
-  font-weight: 400;
-  font-size: clamp(60px, min(9.4vw, 16svh), 156px);
-  line-height: 0.92;
-  letter-spacing: -0.018em;
-  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--text-display);
+  line-height: 1;
+  letter-spacing: -0.005em;
+  max-width: none;
+  text-wrap: initial;
   cursor: default;
-
-  @media (max-width: 860px) {
-    font-size: clamp(64px, 19vw, 120px);
-  }
 }
 
 .line {
   display: block;
   overflow: hidden;
-  padding-bottom: 0.04em;
-  margin-bottom: -0.04em;
+  padding-block: 0.04em;
 
   > span {
     display: block;
-    animation: rise 1.25s var(--ease) both;
-    animation-delay: calc(0.2s + var(--i) * 0.1s);
+    animation: rise 0.8s var(--ease-out) both;
+  }
+
+  & + & > span {
+    animation-delay: 60ms;
   }
 }
 
 @keyframes rise {
   from {
-    transform: translate3d(0, 108%, 0);
+    transform: translate3d(0, 100%, 0);
   }
 }
 
-.aside {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  max-width: 360px;
-  padding-bottom: 0.6em;
+.lede {
+  margin-top: var(--space-lg);
+  font-size: var(--text-lead);
+  color: var(--color-muted);
   cursor: default;
-  animation: fade 1.2s var(--ease) 0.55s both;
-
-  p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--ink-2);
-  }
-
-  @media (max-width: 860px) {
-    padding-bottom: 0;
-  }
-}
-
-@keyframes fade {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 12px, 0);
-  }
 }
 
 .actions {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-xl);
 }
 
-.primary,
-.secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  height: 44px;
-  padding: 0 20px;
-  border-radius: 999px;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  transition:
-    transform 0.35s var(--ease),
-    background-color 0.35s var(--ease),
-    box-shadow 0.35s var(--ease);
-
-  svg {
-    transition: transform 0.35s var(--ease);
+@media (max-width: 860px) {
+  .hero {
+    --mark: min(34svh, 66vw);
+    padding-block: calc(var(--nav-h) + var(--space-lg)) var(--space-xl);
   }
 
-  &:hover svg {
-    transform: translateX(2px);
-  }
-
-  &:active {
-    transform: scale(0.97);
+  .lede {
+    max-width: 22ch;
   }
 }
 
-.primary {
-  color: #fff;
-  background: var(--ink);
-  box-shadow: 0 8px 24px -12px rgba(11, 13, 18, 0.5);
-
-  &:hover {
-    background: #22252d;
-  }
-}
-
-.secondary {
-  color: var(--ink);
-  background: rgba(255, 255, 255, 0.55);
-  box-shadow: inset 0 0 0 1px var(--line-strong);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.85);
+@media (prefers-reduced-motion: reduce) {
+  .line > span {
+    animation: none;
   }
 
-  &:hover svg {
-    transform: translate(1px, -1px);
-  }
-}
-
-.hint {
-  position: absolute;
-  left: 62%;
-  top: calc(40% + min(20svh, 15vw) + 36px);
-  translate: -50% 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12.5px;
-  font-weight: 550;
-  color: var(--muted);
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.6s var(--ease);
-
-  .hero[data-ready] & {
-    opacity: calc(1 - var(--progress) * 3);
-    transition-delay: 1.4s;
-  }
-
-  @media (max-width: 860px), (hover: none) {
-    display: none;
-  }
-
-  .hero[data-static] & {
-    display: none;
-  }
-}
-
-.hintHidden {
-  .hero[data-ready] & {
-    opacity: 0;
-    transition-delay: 0s;
-  }
-}
-
-.hintDot {
-  position: relative;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--mint);
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    border-radius: 50%;
-    border: 1px solid var(--mint);
-    animation: ping 2.4s var(--ease) infinite;
-  }
-}
-
-@keyframes ping {
-  from {
-    transform: scale(0.4);
-    opacity: 1;
-  }
-
-  to {
-    transform: scale(1.6);
-    opacity: 0;
-  }
-}
-
-.scrollCue {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 1px;
-  height: clamp(28px, 5svh, 56px);
-  overflow: hidden;
-  background: var(--line);
-
-  span {
-    position: absolute;
-    inset: 0;
-    background: var(--ink);
-    animation: drip 2.4s var(--ease-in-out) infinite;
-  }
-
-  @media (max-width: 860px) {
-    display: none;
-  }
-}
-
-@keyframes drip {
-  0% {
-    transform: translateY(-100%);
-  }
-
-  60%,
-  100% {
-    transform: translateY(100%);
+  .canvas {
+    transition: none;
   }
 }

@@ -26,10 +26,10 @@ export default function Join() {
                 디스코드 서버에서 가장 먼저 만날 수 있어요.
               </p>
               <div className={styles.actions}>
-                <Button href={site.links.careers} variant="light" size="lg">
+                <Button href={site.links.careers} variant="primary">
                   채용 페이지
                 </Button>
-                <Button href={site.links.discord} variant="ghost" size="lg">
+                <Button href={site.links.discord} variant="secondary">
                   디스코드 서버 참여
                 </Button>
               </div>

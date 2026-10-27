@@ -2,13 +2,12 @@
 
 import { Suspense, useState, type RefObject } from 'react';
 import * as THREE from 'three';
-import { Canvas, useThree } from '@react-three/fiber';
+import { Canvas } from '@react-three/fiber';
 import {
   Environment,
   Lightformer,
   PerformanceMonitor,
 } from '@react-three/drei';
-import Backdrop from './Backdrop';
 import GlassLogo from './GlassLogo';
 import type { HeroStore } from './store';
 
@@ -18,115 +17,61 @@ interface Props {
   onReady: () => void;
 }
 
+/** 어두운 스튜디오: 가는 흰 조명이 유리 가장자리를 긋고, 색광 몇 개가 박막에 색을 싣습니다. */
 function Studio() {
   return (
     <Environment resolution={256} frames={1}>
-      <color attach="background" args={['#15171e']} />
-      {/* 위에서 내려오는 넓은 소프트박스 */}
+      <color attach="background" args={['#050609']} />
       <Lightformer
         form="rect"
-        intensity={2.4}
+        intensity={2.2}
         color="#ffffff"
-        position={[0, 5, -1]}
-        scale={[12, 4, 1]}
-      />
-      {/* 정면 위쪽의 넓은 반사 — 앞면에 부드러운 광택 그라데이션 */}
-      <Lightformer
-        form="rect"
-        intensity={1.1}
-        color="#ffffff"
-        position={[0, 3.2, 6]}
-        scale={[9, 2.6, 1]}
-      />
-      {/* 좌우의 가늘고 긴 반사광 — 유리 가장자리의 선을 만듭니다 */}
-      <Lightformer
-        form="rect"
-        intensity={3}
-        color="#ffffff"
-        position={[-5, 0.5, 1]}
-        scale={[6, 0.5, 1]}
+        position={[0, 5, 1]}
+        scale={[10, 2.5, 1]}
       />
       <Lightformer
         form="rect"
-        intensity={2}
+        intensity={5}
         color="#ffffff"
-        position={[5, -0.5, 1]}
-        scale={[6, 0.35, 1]}
+        position={[-4.5, 0.6, 1.5]}
+        scale={[0.35, 7, 1]}
       />
-      {/* 홀로그램 색을 싣는 색광 */}
+      <Lightformer
+        form="rect"
+        intensity={4}
+        color="#ffffff"
+        position={[4.5, -0.4, 1.5]}
+        scale={[0.25, 7, 1]}
+      />
+      <Lightformer
+        form="rect"
+        intensity={1.4}
+        color="#ffffff"
+        position={[0, 2.6, 5]}
+        scale={[6, 1.2, 1]}
+      />
       <Lightformer
         form="ring"
-        intensity={3.2}
-        color="#8df2d2"
-        position={[-3.5, 2.5, 3]}
-        scale={2.4}
+        intensity={3}
+        color="#7ef2cf"
+        position={[-3, -2.5, 2.5]}
+        scale={2.2}
       />
       <Lightformer
         form="circle"
         intensity={2.6}
-        color="#dcc6ff"
-        position={[3.5, 1.5, 2.5]}
-        scale={2.2}
+        color="#f58bd6"
+        position={[3.2, 2.4, 2]}
+        scale={2}
       />
       <Lightformer
         form="rect"
-        intensity={2.2}
-        color="#ffd0e6"
-        position={[2, -3.5, 2]}
-        scale={[5, 1.2, 1]}
-      />
-      <Lightformer
-        form="rect"
-        intensity={1.8}
-        color="#a3e6ff"
-        position={[-2.5, -3, 2.5]}
+        intensity={2}
+        color="#9d8cff"
+        position={[2.6, -3, 2.5]}
         scale={[4, 1, 1]}
       />
-      {/* 정면 아래쪽 어두운 면 — 형태감을 위한 대비 */}
-      <Lightformer
-        form="rect"
-        intensity={1}
-        color="#2a2d38"
-        position={[0, -1.5, 6]}
-        scale={[10, 3, 1]}
-      />
     </Environment>
-  );
-}
-
-function Scene({
-  storeRef,
-  quality,
-}: {
-  storeRef: RefObject<HeroStore>;
-  quality: 'high' | 'low';
-}) {
-  const viewport = useThree((state) => state.viewport);
-  const landscape = viewport.aspect >= 1;
-
-  // 오브젝트를 놓을 화면 위치 (왼쪽 아래 기준 0 ~ 1)
-  const focus: [number, number] = landscape ? [0.62, 0.6] : [0.5, 0.66];
-  const size = landscape
-    ? Math.min(viewport.height * 0.4, viewport.width * 0.3)
-    : Math.min(viewport.width * 0.62, viewport.height * 0.3);
-
-  const position: [number, number, number] = [
-    (focus[0] - 0.5) * viewport.width,
-    (focus[1] - 0.5) * viewport.height,
-    0,
-  ];
-
-  return (
-    <>
-      <Backdrop storeRef={storeRef} focus={focus} />
-      <GlassLogo
-        storeRef={storeRef}
-        position={position}
-        scale={size}
-        quality={quality}
-      />
-      <Studio />
-    </>
   );
 }
 
@@ -134,30 +79,31 @@ export default function HeroCanvas({ storeRef, active, onReady }: Props) {
   const [quality, setQuality] = useState<'high' | 'low'>(() =>
     typeof window !== 'undefined' && window.innerWidth < 760 ? 'low' : 'high'
   );
-  const [dpr, setDpr] = useState(1.75);
+  const [dpr, setDpr] = useState(2);
 
   return (
     <Canvas
       frameloop={active ? 'always' : 'never'}
       dpr={[1, dpr]}
-      camera={{ position: [0, 0, 6], fov: 30, near: 0.1, far: 40 }}
+      camera={{ position: [0, 0, 3.2], fov: 30, near: 0.1, far: 20 }}
       gl={{
         antialias: true,
-        alpha: false,
+        alpha: true,
         powerPreference: 'high-performance',
         toneMapping: THREE.NeutralToneMapping,
-        toneMappingExposure: 1,
+        toneMappingExposure: 1.05,
       }}
       onCreated={() => requestAnimationFrame(() => onReady())}
     >
       <PerformanceMonitor
         onDecline={() => {
-          setDpr(1);
+          setDpr(1.25);
           setQuality('low');
         }}
       />
       <Suspense fallback={null}>
-        <Scene storeRef={storeRef} quality={quality} />
+        <GlassLogo storeRef={storeRef} quality={quality} />
+        <Studio />
       </Suspense>
     </Canvas>
   );

@@ -1,11 +1,9 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import clsx from 'clsx';
 import { site } from '@/data/site';
-import { ArrowRight, ArrowUpRight, LogoMark } from '@/components/icons';
+import Button from '@/components/ui/Button';
 import { createHeroStore, type HeroStore } from './store';
 import styles from './Hero.module.scss';
 
@@ -20,7 +18,7 @@ function supportsWebGL() {
   }
 }
 
-const INTERACTIVE = 'a, button, input, textarea, select, [data-no-drag]';
+const INTERACTIVE = 'a, button, input, textarea, select';
 
 export default function Hero() {
   const section = useRef<HTMLElement>(null);
@@ -28,7 +26,6 @@ export default function Hero() {
   const [gl, setGl] = useState<boolean | null>(null);
   const [active, setActive] = useState(true);
   const [ready, setReady] = useState(false);
-  const [touched, setTouched] = useState(false);
 
   // WebGL 지원 여부와 모션 설정은 브라우저에서만 알 수 있습니다.
   useEffect(() => {
@@ -67,12 +64,7 @@ export default function Hero() {
       store.pointer.y = (e.clientY / window.innerHeight) * 2 - 1;
     };
     const onScroll = () => {
-      const progress = Math.min(
-        Math.max(window.scrollY / el.offsetHeight, 0),
-        1
-      );
-      store.scroll = progress;
-      el.style.setProperty('--progress', progress.toFixed(4));
+      store.scroll = Math.min(Math.max(window.scrollY / el.offsetHeight, 0), 1);
     };
 
     onScroll();
@@ -142,7 +134,6 @@ export default function Hero() {
         store.spin.vy = 0;
         store.spin.vx = 0;
       }
-      setTouched(true);
     };
 
     el.addEventListener('pointerdown', down);
@@ -165,65 +156,39 @@ export default function Hero() {
       data-static={gl === false ? 'true' : undefined}
       aria-labelledby="hero-title"
     >
-      <div className={styles.stage} aria-hidden="true">
-        {gl && (
-          <div className={styles.canvas}>
-            <HeroCanvas
-              storeRef={storeRef}
-              active={active}
-              onReady={() => setReady(true)}
-            />
-          </div>
-        )}
-        {gl === false && (
-          <div className={styles.fallback}>
-            <LogoMark size={240} />
-          </div>
-        )}
-      </div>
+      <div className={`container ${styles.inner}`}>
+        <div className={styles.stage} aria-hidden="true">
+          {gl && (
+            <div className={styles.canvas}>
+              <HeroCanvas
+                storeRef={storeRef}
+                active={active}
+                onReady={() => setReady(true)}
+              />
+            </div>
+          )}
+          {gl === false && <div className={styles.fallback} />}
+        </div>
 
-      <p className={clsx(styles.hint, touched && styles.hintHidden)}>
-        <span className={styles.hintDot} />
-        드래그해서 돌려 보세요
-      </p>
-
-      <div className={clsx('container', styles.content)}>
         <h1 id="hero-title" className={styles.slogan}>
-          <span
-            className={styles.line}
-            style={{ '--i': 0 } as React.CSSProperties}
-          >
+          <span className={styles.line}>
             <span>무한한 미래를</span>
           </span>
-          <span
-            className={styles.line}
-            style={{ '--i': 1 } as React.CSSProperties}
-          >
+          <span className={styles.line}>
             <span>만들어 갑니다</span>
           </span>
         </h1>
 
-        <div className={styles.aside} data-no-drag>
-          <p>
-            {site.name}는 2018년 여름부터
-            <br />
-            디스코드 봇과 게임을 만들어 온 개발팀입니다.
-          </p>
-          <div className={styles.actions}>
-            <Link href="/projects" className={styles.primary}>
-              프로젝트 보기
-              <ArrowRight size={15} />
-            </Link>
-            <Link href="/about" className={styles.secondary}>
-              팀 소개
-              <ArrowUpRight size={14} />
-            </Link>
-          </div>
-        </div>
-      </div>
+        <p className={styles.lede}>
+          {site.name}는 2018년부터 디스코드 봇과 게임을 만듭니다.
+        </p>
 
-      <div className={styles.scrollCue} aria-hidden="true">
-        <span />
+        <div className={styles.actions}>
+          <Button href="/projects">프로젝트 보기</Button>
+          <Button href={site.links.discord} variant="secondary">
+            디스코드 서버 참여
+          </Button>
+        </div>
       </div>
     </section>
   );
