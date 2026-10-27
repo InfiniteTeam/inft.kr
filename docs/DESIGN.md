@@ -30,7 +30,7 @@ v2는 [Hallmark](https://github.com/Nutlope/hallmark)의 규칙(Floor, gates)을
 
 ## 서체
 
-- **빈폴체** (`@noonnu/beanpoleot-m00`): 슬로건과 페이지 제목의 **한글에만**. `unicode-range`로 한글 음절과 자모만 맡기 때문에, 같은 문장 안의 영문과 숫자는 자동으로 Pretendard로 그려집니다.
+- **빈폴체** (`@noonnu/beanpoleot-m00`): 슬로건과 페이지 제목의 **한글에만**. `unicode-range`로 한글 음절과 자모만 맡기 때문에, 같은 문장 안의 영문과 숫자는 자동으로 Pretendard로 그려집니다. 라이선스(`src/fonts/Beanpole-LICENSE.md`)에 따라 파일은 고치지 않고, 푸터에 출처를 적습니다.
 - **Pretendard Variable**: 그 밖의 모든 글자와 영문, 숫자. 큰 숫자(통계, 연도, 404)도 Pretendard 650. 굵기는 400과 650 두 가지.
 
 ## 3D 로고
