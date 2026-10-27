@@ -107,7 +107,7 @@
 .slogan {
   font-family: var(--font-condensed);
   font-weight: 400;
-  font-size: clamp(68px, 9.4vw, 156px);
+  font-size: clamp(60px, min(9.4vw, 16svh), 156px);
   line-height: 0.92;
   letter-spacing: -0.018em;
   color: var(--ink);
