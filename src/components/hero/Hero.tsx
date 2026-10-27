@@ -162,6 +162,7 @@ export default function Hero() {
       ref={section}
       className={styles.hero}
       data-ready={ready || gl === false ? 'true' : undefined}
+      data-static={gl === false ? 'true' : undefined}
       aria-labelledby="hero-title"
     >
       <div className={styles.stage} aria-hidden="true">

@@ -1,0 +1,128 @@
+.section {
+  padding-bottom: var(--section-gap);
+}
+
+.track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0 20px;
+
+  /* 노드들을 잇는 선 */
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(clamp(44px, 5vw, 72px) * 0.86 + 28px);
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      var(--line-strong),
+      var(--line-strong) 80%,
+      rgba(0, 204, 153, 0.6)
+    );
+  }
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-left: 28px;
+
+    &::before {
+      left: 4px;
+      right: auto;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      height: auto;
+      background: linear-gradient(
+        180deg,
+        var(--line-strong),
+        var(--line-strong) 80%,
+        rgba(0, 204, 153, 0.6)
+      );
+    }
+  }
+}
+
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 860px) {
+    padding-bottom: 36px;
+  }
+}
+
+.year {
+  font-family: var(--font-condensed);
+  font-size: clamp(44px, 5vw, 72px);
+  line-height: 0.86;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.node {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  margin: 24px 0 22px;
+  border-radius: 50%;
+  background: var(--bg);
+  box-shadow: inset 0 0 0 1.5px var(--ink);
+
+  .item:last-child & {
+    background: var(--mint);
+    box-shadow: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 1px solid var(--mint);
+      animation: ping 2.6s var(--ease) infinite;
+    }
+  }
+
+  @media (max-width: 860px) {
+    position: absolute;
+    left: -28px;
+    top: 0.32em;
+    margin: 0;
+  }
+}
+
+@keyframes ping {
+  from {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.month {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+
+  @media (max-width: 860px) {
+    margin-top: 8px;
+  }
+}
+
+.content {
+  margin-top: 6px;
+  padding-right: 8px;
+  font-size: 15.5px;
+  font-weight: 550;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: var(--ink-2);
+}

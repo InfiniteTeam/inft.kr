@@ -1,0 +1,25 @@
+.text {
+  --p: 0;
+  font-size: clamp(28px, 3.7vw, 54px);
+  font-weight: 650;
+  line-height: 1.34;
+  letter-spacing: -0.04em;
+  color: #8a909c;
+  text-wrap: pretty;
+
+  span {
+    opacity: clamp(0.16, calc((var(--p) * (var(--n) + 6) - var(--i)) / 6), 1);
+    transition: opacity 0.2s linear;
+  }
+}
+
+.strong {
+  font-weight: inherit;
+  color: var(--ink);
+}
+
+@media (scripting: none) {
+  .text span {
+    opacity: 1;
+  }
+}

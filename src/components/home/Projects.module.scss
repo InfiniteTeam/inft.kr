@@ -1,0 +1,38 @@
+.section {
+  padding-bottom: var(--section-gap);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 22px);
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cell {
+  display: grid;
+
+  > * {
+    min-width: 0;
+  }
+
+  /* 7 · 5 / 5 · 7 로 엇갈리게 */
+  &:nth-child(4n + 1),
+  &:nth-child(4n + 4) {
+    grid-column: span 7;
+  }
+
+  &:nth-child(4n + 2),
+  &:nth-child(4n + 3) {
+    grid-column: span 5;
+  }
+
+  @media (max-width: 860px) {
+    &:nth-child(n) {
+      grid-column: auto;
+    }
+  }
+}

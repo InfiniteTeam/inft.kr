@@ -20,7 +20,8 @@ export interface Project {
   /** 카드 광택에 쓰는 프로젝트 고유 색 */
   tint: string;
   members: string[];
-  facts: { label: string; value: string }[];
+  /** 카드에 크게 보여 줄 대표 수치 */
+  highlight?: { value: string; label: string };
 }
 
 const projects: Project[] = [
@@ -47,10 +48,7 @@ const projects: Project[] = [
       'Hankaru',
       'Ray',
     ],
-    facts: [
-      { label: '도입 서버', value: '4,000+' },
-      { label: '정식 출시', value: '2021.01' },
-    ],
+    highlight: { value: '4,000+', label: '도입 서버 · 2022년 7월' },
   },
   {
     slug: 'idle-factory',
@@ -66,7 +64,6 @@ const projects: Project[] = [
     icon: idlefactory,
     tint: '#F59E0B',
     members: ['__filename', 'ArpaAP', 'COiN'],
-    facts: [{ label: '개발 시작', value: '2026.07' }],
   },
   {
     slug: '2-12',
@@ -81,7 +78,6 @@ const projects: Project[] = [
     icon: bot4096,
     tint: '#F43F5E',
     members: ['ArpaAP', 'COiN', 'Dacoon'],
-    facts: [{ label: '개발 시작', value: '2022.08' }],
   },
   {
     slug: 'azalea',
@@ -97,7 +93,6 @@ const projects: Project[] = [
     icon: azalea,
     tint: '#64748B',
     members: ['ArpaAP', 'COiN', 'Dacoon'],
-    facts: [{ label: '개발 시작', value: '2020.05' }],
   },
 ];
 
