@@ -1,10 +1,10 @@
 .hero {
-  --mark: min(38svh, 64vw, 420px);
+  --mark: min(35svh, 64vw, 400px);
   position: relative;
   isolation: isolate;
   display: grid;
   min-height: 100svh;
-  padding-block: calc(var(--nav-h) + var(--space-xl)) var(--space-2xl);
+  padding-block: calc(var(--nav-h) + var(--space-lg)) var(--space-2xl);
   cursor: grab;
   touch-action: pan-y;
   user-select: none;
@@ -15,7 +15,7 @@
     content: '';
     position: absolute;
     left: 50%;
-    top: calc(var(--nav-h) + var(--space-xl) + var(--mark) * 0.5);
+    top: calc(var(--nav-h) + var(--space-lg) + var(--mark) * 0.5);
     z-index: -1;
     width: calc(var(--mark) * 2.6);
     aspect-ratio: 1;

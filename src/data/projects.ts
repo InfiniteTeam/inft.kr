@@ -48,7 +48,7 @@ const projects: Project[] = [
       'Hankaru',
       'Ray',
     ],
-    highlight: { value: '4,000+', label: '도입 서버 · 2022년 7월' },
+    highlight: { value: '4,000+', label: '도입 서버, 2022년 7월' },
   },
   {
     slug: 'idle-factory',
@@ -123,6 +123,6 @@ export const archive = [
     year: 2019,
     name: 'On-Off',
     description: '엔트리 퍼즐 게임',
-    note: '2019.06 출시 · 스태프 및 인기 작품 선정',
+    note: '2019.06 출시, 스태프 및 인기 작품 선정',
   },
 ];
