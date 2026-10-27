@@ -15,8 +15,8 @@ const COLORS = ['#09d895', '#00b4bc', '#9763cc', '#e97ab2'];
 const CAMERA_Z = 3.2;
 const PLANE_Z = -1.6;
 const TAN_HALF_FOV = Math.tan(THREE.MathUtils.degToRad(15));
-/** 첫 펼침은 0.8초 뒤에: 들어오자마자 "I"가 잠깐 보이고 iN으로 펼쳐집니다. */
-const MORPH_START = 1.2;
+/** 들어오자마자 "I"가 0.4초쯤 보이고 iN으로 펼쳐집니다. */
+const MORPH_START = 0.4;
 
 /**
  * CSS의 --color-paper를 브라우저가 실제로 칠하는 sRGB 값으로 읽습니다.
@@ -54,17 +54,11 @@ function applyMorph(u: Record<string, THREE.IUniform>, m: MorphState) {
   u.uTop.value = lerp(0, 75, s);
   (u.uMc.value as THREE.Vector2).set(256, lerp(267, 293.5, s));
   (u.uMrot.value as THREE.Vector2).set(Math.cos(-angle), Math.sin(-angle));
-  // 다 펼쳐지면 대각선을 화면 밖까지 늘려, 아래 모서리가 대각선 하나로만 둥글게 맺히게 합니다.
-  u.uMhl.value = 245 + 120 * smooth(0.6, 1, s);
-  u.uMr.value = 40 * (1 - smooth(0.5, 1, s));
   u.uDc.value = lerp(-128, 64, s);
   (u.uDot.value as THREE.Vector2).set(
     lerp(256, 64, m.dotX),
     lerp(256, 64, m.dotY)
   );
-  // 겹쳐 있을 때(I)는 이어 붙이지 않아야 가장자리가 부풀지 않습니다.
-  u.uKj.value = 21 * smooth(0, 0.12, s);
-  u.uKl.value = 47 * smooth(0, 0.2, s) + 1;
   // 점이 기둥에서 빠져나오는 순간에만 살짝 이어졌다 떨어집니다.
   u.uKd.value = 20 * smooth(0, 0.35, m.dotY);
 }
@@ -107,12 +101,8 @@ export default function HeroScene({ storeRef, quality, paper }: Props) {
       uTop: { value: 0 },
       uMc: { value: new THREE.Vector2() },
       uMrot: { value: new THREE.Vector2() },
-      uMhl: { value: 0 },
-      uMr: { value: 0 },
       uDc: { value: 0 },
       uDot: { value: new THREE.Vector2() },
-      uKj: { value: 0 },
-      uKl: { value: 0 },
       uKd: { value: 0 },
       uFilm: { value: new THREE.Vector2() },
       uFilmRot: { value: 0 },

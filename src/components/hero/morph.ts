@@ -1,11 +1,12 @@
 /**
- * 로고 애니메이션(Lottie, 60fps 480프레임)의 시간표를 그대로 옮긴 것입니다.
+ * 로고 애니메이션(Lottie)의 움직임을 옮긴 시간표. 동작과 이징은 Lottie 그대로이고,
+ * 머무는 시간만 바꿨습니다: iN은 오래, 접힌 "I"는 잠깐.
  *
- * 0~2초 "I" 한 줄 → 2~3초 기둥 둘과 대각선이 펼쳐짐 → 3~4초 점이 왼쪽 기둥에서 솟아오름
- * → 4~6초 iN → 6~7초 점이 다시 가라앉음 → 7~8초 "I"로 접힘.
+ * 0~0.8초 "I" → 0.8~1.8초 기둥 둘과 대각선이 펼쳐짐 → 1.8~2.8초 점이 왼쪽 기둥에서 솟아오름
+ * → 2.8~7.6초 iN → 7.6~8.6초 점이 가라앉음 → 8.6~9.6초 "I"로 접힘 → 9.6~10초 "I".
  * 모든 구간은 Lottie와 같은 cubic-bezier(0.33, 1, 0.68, 1)로 움직입니다.
  */
-export const CYCLE = 8;
+export const CYCLE = 10;
 
 export interface MorphState {
   /** 기둥과 대각선이 펼쳐진 정도 0 ~ 1 */
@@ -43,7 +44,7 @@ function segment(t: number, from: number, to: number) {
 
 export function morphAt(seconds: number): MorphState {
   const t = ((seconds % CYCLE) + CYCLE) % CYCLE;
-  const open = segment(t, 2, 3) * (1 - segment(t, 7, 8));
-  const dotY = segment(t, 3, 4) * (1 - segment(t, 6, 7));
+  const open = segment(t, 0.8, 1.8) * (1 - segment(t, 8.6, 9.6));
+  const dotY = segment(t, 1.8, 2.8) * (1 - segment(t, 7.6, 8.6));
   return { open, dotX: open, dotY };
 }

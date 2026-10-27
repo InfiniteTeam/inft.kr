@@ -2,7 +2,7 @@
  * 히어로 전체를 그리는 셰이더 하나: 뒤의 오로라와, 그 앞에 떠 있는 유리 로고.
  *
  * 로고는 메시가 아니라 거리장(SDF)입니다. 그래서 "I"에서 "iN"으로 펼쳐지는 동안에도
- * 부품끼리 둥글게 녹아 붙고, 접히거나 이음매가 생기지 않습니다.
+ * 한 덩어리로 둥글게 움직이고, 접히거나 이음매가 생기지 않습니다.
  * 유리는 같은 셰이더 안에서 오로라를 직접 굴절시키므로, 유리 너머로 실제 배경이 비칩니다.
  *
  * 2D 로고 좌표는 SVG와 같이 512 기준, y축이 아래로 향합니다.
@@ -37,19 +37,13 @@ export const fragmentShader = /* glsl */ `
   uniform float uTop;
   uniform vec2 uMc;
   uniform vec2 uMrot;
-  uniform float uMhl;
-  uniform float uMr;
   uniform float uDc;
   uniform vec2 uDot;
-  uniform float uKj;
-  uniform float uKl;
   uniform float uKd;
 
   uniform vec2 uFilm;
   uniform float uFilmRot;
 
-  const float KB = 47.0;   // 위아래 끝 모서리 (반지름 약 40)
-  const float KC = 54.0;   // 점 둘레 곡선이 기둥과 만나는 모서리 (약 46)
   const float DEPTH = 72.0; // 두께의 절반
   const float BEVEL = 30.0; // 앞뒤 가장자리 둥글기
   const float IOR = 1.5;
@@ -151,50 +145,54 @@ export const fragmentShader = /* glsl */ `
     return min(a, b) - h * h * k * 0.25;
   }
 
-  float smax(float a, float b, float k) {
-    return -smin(-a, -b, k);
-  }
-
-  float sdBox(vec2 p, vec2 c, vec2 h) {
-    vec2 q = abs(p - c) - h;
-    return length(max(q, 0.0)) + min(max(q.x, q.y), 0.0);
-  }
-
   float sdRoundBox(vec2 p, vec2 h, float r) {
     vec2 q = abs(p) - h + r;
     return length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - r;
   }
 
+  // 둥근 교집합과 합집합(hg_sdf): 모서리는 반지름 r의 원호로, 안쪽 거리는 그대로 정확합니다.
+  float rint(float a, float b, float r) {
+    return min(-r, max(a, b)) + length(max(vec2(r + a, r + b), 0.0));
+  }
+
+  float runi(float a, float b, float r) {
+    return max(r, min(a, b)) - length(max(vec2(r - a, r - b), 0.0));
+  }
+
   /*
-   * 왼쪽 기둥(L), 대각선(M), 오른쪽 기둥(R), 점(dot).
-   * 위아래 끝은 부품마다 먼저 잘라 둥글리고(KB), 안쪽 모서리만 부드럽게 이어 붙입니다(uKj).
-   * 점 둘레 곡선은 Lottie처럼 큰 원으로 L과 M만 도려냅니다.
+   * 막대를 합치지 않고 깎아 냅니다. 왼쪽 기둥 끝부터 오른쪽 기둥 끝까지 이르는 둥근 사각형 하나에서
+   *  - 왼쪽 기둥 위쪽과 대각선 윗변 너머(오른쪽 기둥은 빼고),
+   *  - 대각선 아랫변 너머(왼쪽 기둥은 빼고),
+   *  - 점을 둘러싼 큰 원을
+   * 차례로 도려냅니다. 합친 막대 사이의 이음새가 처음부터 없어서 표면이 한 덩어리로 매끄럽고,
+   * 큰 원은 두 막대를 한 번에 잘라 먹습니다. Lottie의 트랙매트가 가리던 대각선 끝도 저절로 가려집니다.
    */
   float logo2(vec2 q) {
-    float slab = abs(q.y - 256.0) - 256.0;
-
-    float L = smax(sdBox(q, vec2(uLx, 250.0), vec2(64.0, 550.0)), slab, KB);
-
+    // 대각선을 가로지르는 좌표: 윗변 쪽이 +64, 아랫변 쪽이 -64
     vec2 m = q - uMc;
-    m = vec2(uMrot.x * m.x - uMrot.y * m.y, uMrot.y * m.x + uMrot.x * m.y);
-    float M = sdRoundBox(m, vec2(64.0, uMhl), uMr);
-    M = smax(M, slab, KB);
-    M = smax(M, q.x - (uRx + 64.0), KB);
-    M = smax(M, -q.x, KB);
+    float across = uMrot.x * m.x - uMrot.y * m.y;
 
-    float R = smax(sdBox(q, vec2(uRx, 250.0), vec2(64.0, 550.0)), slab, KB);
+    float d = sdRoundBox(
+      q - vec2((uLx + uRx) * 0.5, 256.0),
+      vec2((uRx - uLx) * 0.5 + 64.0, 256.0),
+      40.0
+    );
 
-    // 위아래 끝 가까이에서는 이어 붙이지 않습니다. 대각선 끝이 기둥 끝선과 겹치는 곳이라,
-    // 부드럽게 붙이면 Lottie의 트랙매트가 가리던 대각선 끝이 불룩 튀어나옵니다.
-    float kj = uKj * clamp((440.0 - q.y) / 40.0, 0.0, 1.0) * clamp((q.y - uTop - 60.0) / 40.0, 0.0, 1.0);
+    // 위: 왼쪽 기둥 윗선 위쪽, 또는 대각선 윗변 너머. 오른쪽 기둥 안으로는 들어가지 않습니다.
+    float beyondTop = rint(64.0 - across, uLx + 64.0 - q.x, 18.0);
+    float above = runi(q.y - uTop, beyondTop, 18.0);
+    d = rint(d, -rint(q.x - (uRx - 64.0), above, 18.0), 40.0);
 
-    float lm = smin(L, M, kj);
-    lm = smax(lm, uTop - q.y, uKl);
-    lm = smax(lm, 128.0 - length(q - vec2(uDc)), KC);
+    // 아래: 대각선 아랫변 너머, 왼쪽 기둥 오른쪽. 대각선 발끝(135°)은 작은 반지름으로.
+    float below = rint(across + 64.0, uLx + 64.0 - q.x, 18.0);
+    float foot = mix(40.0, 16.0, clamp((q.x - (uLx + 104.0)) / max(uRx - uLx - 208.0, 1.0), 0.0, 1.0));
+    d = rint(d, -below, foot);
 
-    float body = smin(lm, R, kj);
+    // 점을 둘러싼 큰 원이 두 막대를 함께 잘라 먹습니다.
+    d = rint(d, 128.0 - length(q - vec2(uDc)), 30.0);
+
     float dot2 = length(q - uDot) - 64.0;
-    return smin(body, dot2, uKd);
+    return smin(d, dot2, uKd);
   }
 
   // 물체 공간(로고 한 변이 1)에서 둥근 모서리로 압출한 거리장
@@ -246,7 +244,7 @@ export const fragmentShader = /* glsl */ `
     c += vec3(1.2) * panel(d, vec3(-4.5, 0.6, 1.5), vec2(1.6, 7.0), 0.0, 0.9);
     c += vec3(0.7) * panel(d, vec3(4.5, -0.4, 1.5), vec2(1.4, 7.0), 0.0, 1.0);
     c += vec3(1.0) * panel(d, vec3(0.0, 2.6, 5.0), vec2(6.0, 1.2), 0.0, 0.8);
-    c += vec3(0.55) * panel(d, vec3(1.2, 1.6, 6.0), vec2(3.0, 0.0), 1.0, 1.4);
+    c += vec3(0.3) * panel(d, vec3(1.2, 1.6, 6.0), vec2(3.0, 0.0), 1.0, 1.4);
     c += vec3(0.21, 0.89, 0.62) * 2.2 * panel(d, vec3(-3.0, -2.5, 2.5), vec2(0.55, 1.1), 2.0, 0.5);
     c += vec3(0.91, 0.26, 0.67) * 2.0 * panel(d, vec3(3.2, 2.4, 2.0), vec2(1.0, 0.0), 1.0, 0.6);
     c += vec3(0.34, 0.26, 1.0) * 1.6 * panel(d, vec3(2.6, -3.0, 2.5), vec2(4.0, 1.0), 0.0, 0.6);
@@ -292,7 +290,7 @@ export const fragmentShader = /* glsl */ `
   vec3 transmit(vec3 tW, vec3 n2, vec3 qW, float eta) {
     vec3 o = refract(tW, -n2, eta);
     if (dot(o, o) < 1e-4) return uPaper + env(reflect(tW, -n2)) * 0.35;
-    return background(qW, o, 0.45);
+    return background(qW, o, 0.85);
   }
 
   vec3 shade(vec3 pO, vec3 rd) {
@@ -302,10 +300,10 @@ export const fragmentShader = /* glsl */ `
     float cosI = clamp(dot(n, -rd), 0.0, 1.0);
     float F = fresnel(cosI);
 
-    // 겉면 반사: 투명 코팅 한 겹과 박막 한 겹
+    // 겉면 반사: 투명 코팅 한 겹과 아주 얇은 박막 한 겹. 맑게 보이도록 반사는 가볍게 둡니다.
     vec3 refl = env(reflect(rd, n));
     vec3 film = thinFilm(cosI, filmThickness(pO.xy + 0.5));
-    vec3 spec = refl * F * (0.45 + 1.4 * film);
+    vec3 spec = refl * F * (0.28 + 0.9 * film);
 
     // 들어가며 꺾이고, 안을 지나, 나오며 다시 꺾입니다.
     vec3 tW = refract(rd, n, 1.0 / IOR);
@@ -331,11 +329,11 @@ export const fragmentShader = /* glsl */ `
     }
 
     // 아주 옅은 물빛: 두꺼운 곳일수록 조금 더 푸르게
-    trans *= exp(-path * vec3(0.32, 0.12, 0.08));
+    trans *= exp(-path * vec3(0.16, 0.06, 0.04));
 
     // 뒷면에서 안으로 비치는 반사 한 번
     float F2 = fresnel(clamp(dot(-tW, n2), 0.0, 1.0));
-    vec3 inner = env(reflect(tW, -n2)) * F2 * 0.35;
+    vec3 inner = env(reflect(tW, -n2)) * F2 * 0.18;
 
     return trans * (1.0 - F) + knee(spec + inner);
   }
