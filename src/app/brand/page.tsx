@@ -45,7 +45,7 @@ export default function BrandPage() {
       <section className={styles.section} aria-labelledby="symbol">
         <div className="container">
           <SectionHeader id="symbol" title="i와 N을 한 획으로 이은 심볼" />
-          <div className={styles.symbol}>
+          <div className={styles.symbol} data-reveal>
             <div className={styles.construction}>
               <Construction />
             </div>
@@ -70,7 +70,7 @@ export default function BrandPage() {
 
           <ul className={styles.variants}>
             {variants.map((variant) => (
-              <li key={variant.file}>
+              <li key={variant.file} data-reveal>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   className={styles.tile}
@@ -95,7 +95,7 @@ export default function BrandPage() {
           />
           <ul className={styles.colors}>
             {colors.map((color) => (
-              <li key={color.hex}>
+              <li key={color.hex} data-reveal>
                 <CopyButton
                   value={color.hex}
                   label={`${color.name} ${color.hex} 복사`}
@@ -124,7 +124,9 @@ export default function BrandPage() {
           <SectionHeader id="rules" title="쓰기 전에 지켜 주세요" />
           <ol className={styles.rules}>
             {rules.map((rule) => (
-              <li key={rule}>{rule}</li>
+              <li key={rule} data-reveal>
+                {rule}
+              </li>
             ))}
           </ol>
         </div>

@@ -53,7 +53,7 @@ export default function ProjectsPage() {
 
       <section className={styles.lead} aria-labelledby={lead.slug}>
         <div className={`container ${styles.split}`}>
-          <div className={styles.visual}>
+          <div className={styles.visual} data-reveal>
             <ProjectAura icon={lead.icon} placement="center" />
             <Image
               src={lead.icon}
@@ -64,7 +64,7 @@ export default function ProjectsPage() {
               priority
             />
           </div>
-          <div>
+          <div data-reveal>
             <h2 id={lead.slug} className={styles.leadName}>
               {lead.name}
             </h2>
@@ -82,7 +82,12 @@ export default function ProjectsPage() {
         <div className="container">
           <ul className={styles.grid}>
             {rest.map((project) => (
-              <li key={project.slug} id={project.slug} className={styles.card}>
+              <li
+                key={project.slug}
+                id={project.slug}
+                className={styles.card}
+                data-reveal
+              >
                 <ProjectAura icon={project.icon} />
                 <Image
                   className={styles.icon}
@@ -128,7 +133,7 @@ export default function ProjectsPage() {
             </thead>
             <tbody>
               {archive.map((item) => (
-                <tr key={item.name}>
+                <tr key={item.name} data-reveal>
                   <td className="tabular">{item.year}</td>
                   <th scope="row">
                     {item.name}

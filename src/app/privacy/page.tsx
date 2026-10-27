@@ -34,7 +34,7 @@ export default async function PrivacyPage() {
       />
 
       <div className={`container ${styles.layout}`}>
-        <nav className={styles.toc} aria-label="목차">
+        <nav data-reveal className={styles.toc} aria-label="목차">
           <ol>
             {headings.map((heading) => (
               <li key={heading}>
@@ -44,7 +44,7 @@ export default async function PrivacyPage() {
           </ol>
         </nav>
 
-        <article className={styles.prose}>
+        <article className={styles.prose} data-reveal>
           <ReactMarkdown
             components={{
               h3: ({ children }) => (

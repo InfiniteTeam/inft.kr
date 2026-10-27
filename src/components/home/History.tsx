@@ -16,7 +16,7 @@ export default function History() {
 
         <ol className={styles.rows}>
           {highlights.map((item) => (
-            <li key={`${item.year}-${item.month}-${item.content}`}>
+            <li key={`${item.year}-${item.month}-${item.content}`} data-reveal>
               <time
                 className={styles.year}
                 dateTime={`${item.year}-${String(item.month).padStart(2, '0')}`}

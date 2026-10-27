@@ -15,7 +15,7 @@ export default function Team() {
 
         <ul className={styles.grid}>
           {members.map((member) => (
-            <li key={member.name} className={styles.member}>
+            <li key={member.name} className={styles.member} data-reveal>
               <Avatar member={member} size={56} />
               <div>
                 <p className={styles.name}>

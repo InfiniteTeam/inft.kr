@@ -10,7 +10,7 @@ interface Props {
 export default function PageHeader({ title, lead, children }: Props) {
   return (
     <header className={styles.header}>
-      <div className="container">
+      <div className="container" data-reveal>
         <h1 className={styles.title}>{title}</h1>
         {lead && <p className={styles.lead}>{lead}</p>}
         {children && <div className={styles.actions}>{children}</div>}

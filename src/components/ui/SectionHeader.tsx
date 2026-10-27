@@ -19,7 +19,7 @@ export default function SectionHeader({
   className,
 }: Props) {
   return (
-    <div className={clsx(styles.header, className)}>
+    <div className={clsx(styles.header, className)} data-reveal>
       <h2 id={id} className={styles.title}>
         {title}
       </h2>

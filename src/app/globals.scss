@@ -1,7 +1,8 @@
 /* Hallmark · v2.0.0 · redesign: full · theme: custom · idea: "로고가 유일한 광원: 어두운 화면에서 색은 홀로그램 유리 iN 하나에서만 나온다" · vibe: "칠흑 위의 홀로그램 유리, 절제된 애플" · genre: atmospheric · job: join (디스코드 서버, 채용) · hero: Corridor, the glass mark over a centred head and one sentence (centred by request) · nav: floating pill, wordmark mark and four links · footer: statement, the slogan large over one row of links · paper: oklch(14% 0.012 265) · ink: oklch(95% 0.008 265) · accent: focus only, oklch(84% 0.12 170) from Infinite Mint · faces: 빈폴체 display for Hangul only via unicode-range (by request), Pretendard Variable body, Latin and figures (by request) · posture: dark/condensed-geometric/neutral · modes: dark only (by request) */
 /* Hallmark · pre-emit critique: P4 H5 E4 S4 R5 V4 · weakest: P, a team site argues little; the page argues with the real record (2018 엔트리, Aztra 13,000 서버, 90만 사용자) instead of adjectives */
 /* Hallmark · waive 6b · the glass iN, the slogan, one line and two actions share one centred axis · the user asked for the mark and the slogan stacked on one vertical line */
-/* Hallmark · waive motion-loop · the glass mark replays the studio's own logo animation (I unfolds into iN and folds back, 8s, paused off-screen, held at iN under reduced motion) · the user asked for the hero mark to move like their Lottie */
+/* Hallmark · waive motion-loop · the glass mark replays the studio's own logo animation (I unfolds into iN and folds back on a 10s loop that rests on iN for about 5s, paused off-screen, held at iN under reduced motion) · the user asked for the hero mark to move like their Lottie */
+/* Hallmark · waive reveal-on-scroll · blocks slide 16px down while fading in as they enter the viewport and on page change (0.76s, 70ms stagger, off under reduced motion, never hidden without the script) · the user asked for elements to appear smoothly on scroll and page transitions */
 /* Hallmark · waive 29 · one slow aurora drawn in WebGL behind the glass mark (a wash and two ribbons that drift and cycle green, teal, violet and pink over about a minute; paused off-screen, frozen under reduced motion), faded to paper before the canvas edge; plus each project card's own icon blurred into a fixed corner glow · the user asked for an aurora behind the logo that keeps moving and slowly changes colour, and for the original project card backgrounds */
 /* Hallmark · answered F15 · the hero is the one centred head group; every section head below it is left-aligned on column 1 */
 /* Hallmark · waive arrows-on-links · every link and button that leaves the site ends in a small up-right arrow, muted until hover · the user asked for an up-right arrow beside buttons that open another site */
@@ -90,6 +91,7 @@
   --dur-micro: 120ms;
   --dur-short: 220ms;
   --dur-long: 420ms;
+  --dur-reveal: 760ms;
 
   /* depth */
   --z-raised: 10;
@@ -219,6 +221,24 @@ p {
 
 .tabular {
   font-variant-numeric: tabular-nums;
+}
+
+/*
+ * 스크롤하거나 페이지를 옮길 때 블록이 위에서 살짝 내려오며 나타납니다.
+ * 숨김은 <head> 스크립트가 data-reveal="on"을 붙였을 때만 걸리므로,
+ * 스크립트가 없거나 모션 줄이기면 처음부터 그대로 보입니다.
+ */
+html[data-reveal='on'] [data-reveal] {
+  opacity: 0;
+  translate: 0 calc(var(--space-md) * -1);
+  transition:
+    opacity var(--dur-reveal) var(--ease-out) var(--reveal-delay, 0ms),
+    translate var(--dur-reveal) var(--ease-out) var(--reveal-delay, 0ms);
+}
+
+html[data-reveal='on'] [data-reveal][data-in] {
+  opacity: 1;
+  translate: 0 0;
 }
 
 @media (prefers-reduced-motion: reduce) {

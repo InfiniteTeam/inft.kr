@@ -5,6 +5,8 @@ import 'pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css';
 import './globals.scss';
 import Nav from '@/components/site/Nav';
 import Footer from '@/components/site/Footer';
+import Reveal from '@/components/site/Reveal';
+import { REVEAL_SCRIPT } from '@/components/site/revealScript';
 import { site } from '@/data/site';
 
 const beanpole = localFont({
@@ -67,7 +69,16 @@ export default function RootLayout({
   return (
     // Next 16부터는 페이지를 옮길 때 smooth 스크롤을 알아서 꺼 주지 않습니다.
     // 이 속성이 있어야 새 페이지가 부드럽게 굴러가다 중간에 멈추지 않고 맨 위에서 시작합니다.
-    <html lang="ko" className={beanpole.variable} data-scroll-behavior="smooth">
+    // data-reveal은 아래 <head> 스크립트가 그리기 전에 붙이므로 수화(hydration) 경고를 끕니다.
+    <html
+      lang="ko"
+      className={beanpole.variable}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: REVEAL_SCRIPT }} />
+      </head>
       <body>
         <a className="visually-hidden" href="#main">
           본문으로 건너뛰기
@@ -75,6 +86,7 @@ export default function RootLayout({
         <Nav />
         <main id="main">{children}</main>
         <Footer />
+        <Reveal />
 
         <Script
           strategy="afterInteractive"

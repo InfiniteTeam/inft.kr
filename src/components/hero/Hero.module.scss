@@ -214,6 +214,7 @@
   text-transform: uppercase;
   color: var(--color-muted);
   cursor: default;
+  animation: settle var(--dur-reveal) var(--ease-out) 240ms both;
 }
 
 .actions {
@@ -222,6 +223,15 @@
   justify-content: center;
   gap: var(--space-sm);
   margin-top: var(--space-xl);
+  animation: settle var(--dur-reveal) var(--ease-out) 340ms both;
+}
+
+/* 다른 블록들처럼 위에서 살짝 내려오며 나타납니다. */
+@keyframes settle {
+  from {
+    opacity: 0;
+    translate: 0 calc(var(--space-md) * -1);
+  }
 }
 
 @media (max-width: 860px) {
@@ -232,7 +242,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .line > span {
+  .line > span,
+  .since,
+  .actions {
     animation: none;
   }
 

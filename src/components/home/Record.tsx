@@ -32,7 +32,7 @@ export default function Record() {
 
         <dl className={styles.figures}>
           {figures.map((figure) => (
-            <div key={figure.label} className={styles.figure}>
+            <div key={figure.label} className={styles.figure} data-reveal>
               <dt>{figure.label}</dt>
               <dd className={styles.value}>{figure.value}</dd>
               {figure.note && <dd className={styles.note}>{figure.note}</dd>}

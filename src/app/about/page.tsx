@@ -38,7 +38,7 @@ export default function AboutPage() {
         <div className="container">
           <ul className={styles.practices}>
             {practices.map((item) => (
-              <li key={item.title}>
+              <li key={item.title} data-reveal>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
               </li>
@@ -58,7 +58,7 @@ export default function AboutPage() {
           />
           <ul className={styles.members}>
             {members.map((member) => (
-              <li key={member.name}>
+              <li key={member.name} data-reveal>
                 <MemberCard member={member} />
               </li>
             ))}
@@ -71,7 +71,7 @@ export default function AboutPage() {
           <SectionHeader id="history" title="우리가 걸어온 발자취" />
           <ol className={styles.history}>
             {years.map(({ year, entries }) => (
-              <li key={year} className={styles.year}>
+              <li key={year} className={styles.year} data-reveal>
                 <h3 className={styles.yearLabel}>{year}</h3>
                 <ul className={styles.entries}>
                   {entries.map((entry, i) => (
