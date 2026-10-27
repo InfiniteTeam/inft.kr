@@ -19,7 +19,7 @@ Node.js 20.9 이상이 필요합니다.
 - **Next.js 16** (App Router, Turbopack) · React 19 · TypeScript
 - **three.js + React Three Fiber + drei**: 메인 화면의 홀로그램 유리 로고
 - SCSS Modules, 디자인 토큰은 `src/app/globals.scss`
-- 서체: Pretendard Variable (본문), 빈폴체 (슬로건, 페이지 제목, 큰 숫자)
+- 서체: Pretendard Variable (본문, 영문, 숫자), 빈폴체 (슬로건과 제목의 한글만)
 
 ## 구조
 

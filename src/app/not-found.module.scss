@@ -6,7 +6,9 @@
 }
 
 .code {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
+  font-weight: var(--weight-strong);
+  letter-spacing: -0.045em;
   font-size: clamp(8rem, 24vw, 18rem);
   line-height: 0.85;
   color: var(--color-muted);

@@ -46,7 +46,9 @@
 .value {
   order: -1;
   margin-bottom: var(--space-sm);
-  font-family: var(--font-display);
+  font-family: var(--font-body);
+  font-weight: var(--weight-strong);
+  letter-spacing: -0.045em;
   font-size: var(--text-display-s);
   line-height: 0.9;
   font-variant-numeric: tabular-nums;

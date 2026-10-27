@@ -14,6 +14,13 @@ const beanpole = localFont({
   weight: '500',
   adjustFontFallback: false,
   fallback: ['Pretendard Variable', 'sans-serif'],
+  // 빈폴체는 한글에만 씁니다. 영문, 숫자, 기호는 그대로 Pretendard로 넘어갑니다.
+  declarations: [
+    {
+      prop: 'unicode-range',
+      value: 'U+1100-11FF, U+3130-318F, U+A960-A97F, U+AC00-D7A3, U+D7B0-D7FF',
+    },
+  ],
 });
 
 export const metadata: Metadata = {

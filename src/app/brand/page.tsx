@@ -151,7 +151,8 @@ export default function BrandPage() {
             <figure className={styles.specimen}>
               <p className={styles.display}>무한한 미래를 만들어 갑니다</p>
               <figcaption>
-                빈폴체. 슬로건과 큰 숫자처럼 짧고 큰 글자에만 씁니다.
+                빈폴체. 슬로건과 제목의 한글에만 씁니다. 영문과 숫자는
+                Pretendard로 씁니다.
               </figcaption>
             </figure>
           </div>

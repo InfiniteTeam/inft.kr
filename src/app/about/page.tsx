@@ -33,7 +33,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHeader
-        title={'2018년부터\n만들어 온 팀'}
+        title={'엔트리에서 시작해\n디스코드로 온 팀'}
         lead="엔트리 작품을 만들던 청소년 개발팀 InfiniteTeam에서 시작해, 2020년부터 디스코드 봇과 게임을 만들고 운영합니다."
       />
 
