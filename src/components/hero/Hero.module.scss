@@ -10,24 +10,6 @@
   user-select: none;
   -webkit-user-select: none;
 
-  /* 로고 아래에 깔린 무채색의 낮은 빛 하나 (고정, 움직이지 않음) */
-  &::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: calc(var(--nav-h) + var(--space-lg) + var(--mark) * 0.5);
-    z-index: -1;
-    width: calc(var(--mark) * 2.6);
-    aspect-ratio: 1;
-    translate: -50% -50%;
-    background: radial-gradient(
-      closest-side,
-      var(--color-paper-3),
-      var(--color-paper) 100%
-    );
-    pointer-events: none;
-  }
-
   &[data-dragging] {
     cursor: grabbing;
   }
@@ -52,6 +34,109 @@
   aspect-ratio: 1;
   margin-bottom: var(--space-xl);
   pointer-events: none;
+}
+
+/*
+ * 로고 뒤의 오로라: 넓게 깔린 청록빛 위로 초록 띠와 보랏빛 띠가 아주 느리게 흔들립니다.
+ * 가장자리는 마스크로 지워서 슬로건 뒤까지는 번지지 않습니다.
+ */
+.aurora {
+  position: absolute;
+  inset: -34% -115% -6%;
+  z-index: -1;
+  /* 가늘고 넓은 빛 띠 셋: 초록, 청록, 보랏빛 */
+  background:
+    radial-gradient(
+      ellipse 30% 9% at 34% 40%,
+      var(--aurora-1),
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 28% 8% at 66% 30%,
+      var(--aurora-2),
+      transparent 72%
+    ),
+    radial-gradient(ellipse 24% 8% at 60% 62%, var(--aurora-3), transparent 72%);
+  filter: blur(36px) saturate(1.2);
+  opacity: 0;
+  -webkit-mask: radial-gradient(
+    ellipse 50% 50% at 50% 46%,
+    var(--color-paper) 30%,
+    transparent 100%
+  );
+  mask: radial-gradient(
+    ellipse 50% 50% at 50% 46%,
+    var(--color-paper) 30%,
+    transparent 100%
+  );
+  transition: opacity 2.4s var(--ease-out);
+
+  .hero[data-ready] & {
+    opacity: 0.68;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    animation: sway-a 19s var(--ease-in-out) infinite alternate;
+  }
+
+  /* 초록 띠: 로고 뒤를 비스듬히 가로질러 */
+  &::before {
+    left: 16%;
+    top: 34%;
+    width: 68%;
+    height: 14%;
+    background: radial-gradient(
+      ellipse at 50% 50%,
+      var(--aurora-1),
+      transparent 70%
+    );
+    rotate: -14deg;
+  }
+
+  /* 보랏빛 띠: 반대 방향으로, 조금 아래에 */
+  &::after {
+    left: 30%;
+    top: 50%;
+    width: 52%;
+    height: 12%;
+    background: radial-gradient(
+      ellipse at 50% 50%,
+      var(--aurora-3),
+      transparent 70%
+    );
+    rotate: 10deg;
+    animation-name: sway-b;
+    animation-duration: 23s;
+  }
+
+  .hero[data-idle] &::before,
+  .hero[data-idle] &::after {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes sway-a {
+  from {
+    transform: translate3d(-6%, 4%, 0) scale(0.94);
+  }
+
+  to {
+    transform: translate3d(7%, -5%, 0) scale(1.08);
+  }
+}
+
+@keyframes sway-b {
+  from {
+    transform: translate3d(5%, -3%, 0) scale(1.06);
+  }
+
+  to {
+    transform: translate3d(-8%, 5%, 0) scale(0.92);
+  }
 }
 
 .canvas {
@@ -143,7 +228,13 @@
     animation: none;
   }
 
-  .canvas {
+  .canvas,
+  .aurora {
     transition: none;
+  }
+
+  .aurora::before,
+  .aurora::after {
+    animation: none;
   }
 }

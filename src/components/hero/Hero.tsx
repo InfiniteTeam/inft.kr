@@ -154,10 +154,12 @@ export default function Hero() {
       className={styles.hero}
       data-ready={ready || gl === false ? 'true' : undefined}
       data-static={gl === false ? 'true' : undefined}
+      data-idle={active ? undefined : 'true'}
       aria-labelledby="hero-title"
     >
       <div className={`container ${styles.inner}`}>
         <div className={styles.stage} aria-hidden="true">
+          <div className={styles.aurora} />
           {gl && (
             <div className={styles.canvas}>
               <HeroCanvas
