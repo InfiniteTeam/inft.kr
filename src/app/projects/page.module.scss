@@ -115,9 +115,12 @@
   --grid-focus: calc(var(--space-xl) + var(--grid-cell) / 2)
     calc(var(--space-xl) + var(--grid-cell) / 2);
 
+  /* 카드 안에서는 가로 구분선이 바탕 격자와 겹치므로 뺍니다. */
   .facts {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     margin-bottom: var(--space-lg);
+    padding-top: 0;
+    border-top: 0;
   }
 }
 

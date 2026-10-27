@@ -27,7 +27,7 @@ Node.js 20.9 이상이 필요합니다.
 src/
   app/              라우트 (/, /about, /projects, /brand, /privacy)
   components/
-    hero/           3D 히어로 (로고 지오메트리, 홀로그램 필름, 인터랙션)
+    hero/           3D 히어로 (유리 로고 셰이더, 로고 애니메이션 시간표, 인터랙션)
     home/           메인 화면 섹션
     site/           내비게이션, 푸터
     ui/             공용 컴포넌트
@@ -35,7 +35,6 @@ src/
   data/             사이트 정보, 프로젝트, 멤버, 연혁
   fonts/            빈폴체
 public/
-  assets/logo.zip   로고 패키지 (SVG · PNG)
   brand/            로고 SVG 개별 파일
 ```
 
