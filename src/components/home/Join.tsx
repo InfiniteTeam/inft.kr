@@ -9,7 +9,7 @@ export default function Join() {
     <section className={styles.band} aria-labelledby="join-title">
       <div className={`container ${styles.inner}`}>
         <div className={styles.copy}>
-          <h2 id="join-title">함께 성장할 사람을 찾습니다</h2>
+          <h2 id="join-title">함께 성장해 나갈 사람을 찾습니다</h2>
           <p className={styles.lead}>
             채용 소식은 채용 페이지에, 서비스 문의와 새 소식은 디스코드 서버에
             올라옵니다.

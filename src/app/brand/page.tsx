@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
 import Construction from '@/components/brand/Construction';
-import { DownloadIcon } from '@/components/icons';
-import Button from '@/components/ui/Button';
 import CopyButton from '@/components/ui/CopyButton';
 import PageHeader from '@/components/ui/PageHeader';
 import SectionHeader from '@/components/ui/SectionHeader';
@@ -9,8 +7,7 @@ import styles from './page.module.scss';
 
 export const metadata: Metadata = {
   title: '브랜드',
-  description:
-    'Infinite Studio의 심볼, 컬러, 서체와 사용 규정을 안내하고 로고 파일을 제공합니다.',
+  description: 'Infinite Studio의 심볼과 컬러, 사용 규정을 안내합니다.',
 };
 
 const variants = [
@@ -43,18 +40,7 @@ const rules = [
 export default function BrandPage() {
   return (
     <>
-      <PageHeader
-        title="브랜드 가이드"
-        lead="심볼과 컬러, 서체, 사용 규정입니다. 로고 패키지에는 SVG와 PNG 파일 20종이 들어 있습니다."
-      >
-        <Button
-          href="/assets/logo.zip"
-          download
-          icon={<DownloadIcon size={16} />}
-        >
-          로고 패키지 받기
-        </Button>
-      </PageHeader>
+      <PageHeader title="브랜드 가이드" lead="심볼과 컬러, 사용 규정입니다." />
 
       <section className={styles.section} aria-labelledby="symbol">
         <div className="container">
@@ -93,12 +79,7 @@ export default function BrandPage() {
                   width={512}
                   height={512}
                 />
-                <p className={styles.tileMeta}>
-                  <span>{variant.label}</span>
-                  <a href={`/brand/${variant.file}.svg`} download>
-                    SVG 받기
-                  </a>
-                </p>
+                <p className={styles.tileMeta}>{variant.label}</p>
               </li>
             ))}
           </ul>
@@ -135,27 +116,6 @@ export default function BrandPage() {
               </li>
             ))}
           </ul>
-        </div>
-      </section>
-
-      <section className={styles.section} aria-labelledby="type">
-        <div className="container">
-          <SectionHeader id="type" title="본문은 Pretendard, 제목은 빈폴체" />
-          <div className={styles.type}>
-            <figure className={styles.specimen}>
-              <p className={styles.sans}>무한한 미래를 만들어 갑니다</p>
-              <figcaption>
-                Pretendard. 본문과 인터페이스 전체에 씁니다.
-              </figcaption>
-            </figure>
-            <figure className={styles.specimen}>
-              <p className={styles.display}>무한한 미래를 만들어 갑니다</p>
-              <figcaption>
-                빈폴체. 슬로건과 제목의 한글에만 씁니다. 영문과 숫자는
-                Pretendard로 씁니다.
-              </figcaption>
-            </figure>
-          </div>
         </div>
       </section>
 

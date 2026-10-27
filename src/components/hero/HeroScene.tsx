@@ -65,8 +65,8 @@ function applyMorph(u: Record<string, THREE.IUniform>, m: MorphState) {
   // 겹쳐 있을 때(I)는 이어 붙이지 않아야 가장자리가 부풀지 않습니다.
   u.uKj.value = 21 * smooth(0, 0.12, s);
   u.uKl.value = 47 * smooth(0, 0.2, s) + 1;
-  // 점이 기둥에서 빠져나올 때만 물방울처럼 늘어나 붙습니다.
-  u.uKd.value = 40 * smooth(0, 0.35, m.dotY);
+  // 점이 기둥에서 빠져나오는 순간에만 살짝 이어졌다 떨어집니다.
+  u.uKd.value = 20 * smooth(0, 0.35, m.dotY);
 }
 
 interface Scratch {

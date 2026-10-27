@@ -8,7 +8,6 @@ interface Props {
   children: React.ReactNode;
   variant?: 'primary' | 'secondary';
   icon?: React.ReactNode;
-  download?: boolean;
   className?: string;
 }
 
@@ -17,7 +16,6 @@ export default function Button({
   children,
   variant = 'primary',
   icon,
-  download,
   className,
 }: Props) {
   const external = /^https?:\/\//.test(href);
@@ -35,14 +33,9 @@ export default function Button({
     </>
   );
 
-  if (external || download) {
+  if (external) {
     return (
-      <a
-        href={href}
-        className={classes}
-        {...(external && { target: '_blank', rel: 'noreferrer' })}
-        {...(download && { download: true })}
-      >
+      <a href={href} className={classes} target="_blank" rel="noreferrer">
         {content}
       </a>
     );

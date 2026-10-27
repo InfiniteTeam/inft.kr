@@ -184,12 +184,15 @@ export const fragmentShader = /* glsl */ `
 
     float R = smax(sdBox(q, vec2(uRx, 250.0), vec2(64.0, 550.0)), slab, KB);
 
-    float lm = smin(L, M, uKj);
+    // 위아래 끝 가까이에서는 이어 붙이지 않습니다. 대각선 끝이 기둥 끝선과 겹치는 곳이라,
+    // 부드럽게 붙이면 Lottie의 트랙매트가 가리던 대각선 끝이 불룩 튀어나옵니다.
+    float kj = uKj * clamp((440.0 - q.y) / 40.0, 0.0, 1.0) * clamp((q.y - uTop - 60.0) / 40.0, 0.0, 1.0);
+
+    float lm = smin(L, M, kj);
     lm = smax(lm, uTop - q.y, uKl);
     lm = smax(lm, 128.0 - length(q - vec2(uDc)), KC);
 
-    // 대각선과 오른쪽 기둥이 바닥선을 함께 쓰는 곳에서는 이어 붙이지 않습니다.
-    float body = smin(lm, R, uKj * clamp((440.0 - q.y) / 40.0, 0.0, 1.0));
+    float body = smin(lm, R, kj);
     float dot2 = length(q - uDot) - 64.0;
     return smin(body, dot2, uKd);
   }
