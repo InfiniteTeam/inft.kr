@@ -186,7 +186,10 @@ export default function Hero() {
           </span>
         </h1>
 
-        <p className={styles.since}>Since {site.founded.year}</p>
+        <p className={styles.team}>
+          {site.name}
+          <span>Since {site.founded.year}</span>
+        </p>
 
         <div className={styles.actions}>
           <Button href={site.links.discord} icon={<DiscordIcon size={20} />}>

@@ -8,6 +8,7 @@ import AvatarStack from '@/components/ui/AvatarStack';
 import Button from '@/components/ui/Button';
 import PageHeader from '@/components/ui/PageHeader';
 import ProjectAura from '@/components/ui/ProjectAura';
+import ProjectName from '@/components/ui/ProjectName';
 import SectionHeader from '@/components/ui/SectionHeader';
 import styles from './page.module.scss';
 
@@ -47,10 +48,7 @@ export default function ProjectsPage() {
 
   return (
     <>
-      <PageHeader
-        title={'만들고 있는 것들,\n만들어 온 것들'}
-        lead="운영 중인 서비스부터 지금의 팀을 만든 첫 작품까지 모았습니다."
-      />
+      <PageHeader title={'만들고 있는 것들,\n만들어 온 것들'} />
 
       <section className={styles.lead} aria-labelledby={lead.slug}>
         <div className={`container ${styles.split}`}>
@@ -98,7 +96,9 @@ export default function ProjectsPage() {
                   height={72}
                   sizes="72px"
                 />
-                <h2 className={styles.name}>{project.name}</h2>
+                <h2 className={styles.name}>
+                  <ProjectName name={project.name} />
+                </h2>
                 <p className={styles.summary}>{project.summary}</p>
                 <p className={styles.description}>{project.description}</p>
                 <Facts project={project} />
@@ -122,13 +122,13 @@ export default function ProjectsPage() {
 
       <section className={styles.section} aria-labelledby="archive-title">
         <div className="container">
-          <SectionHeader id="archive-title" title="연혁에 남은 지난 프로젝트" />
+          <SectionHeader id="archive-title" title="지난 프로젝트" />
           <table className={styles.archive}>
             <thead>
               <tr>
                 <th scope="col">연도</th>
                 <th scope="col">이름</th>
-                <th scope="col">무엇</th>
+                <th scope="col">설명</th>
                 <th scope="col">기록</th>
               </tr>
             </thead>

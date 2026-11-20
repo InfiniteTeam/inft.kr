@@ -1,4 +1,5 @@
 import projects from '@/data/projects';
+import { site } from '@/data/site';
 import SectionHeader from '@/components/ui/SectionHeader';
 import ProjectCard from './ProjectCard';
 import styles from './Projects.module.scss';
@@ -9,8 +10,8 @@ export default function Projects() {
       <div className="container">
         <SectionHeader
           id="projects-title"
-          title="Aztra부터 Idle Factory까지"
-          lead="관리 봇부터 방치형 게임까지, 디스코드에서 쓰는 서비스를 직접 만들고 운영합니다."
+          title={site.mission}
+          lead={site.missionLead}
           link={{ href: '/projects', label: '프로젝트 자세히 보기' }}
         />
 

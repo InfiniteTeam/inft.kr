@@ -1,4 +1,5 @@
 import history from '@/data/history';
+import { yearsSinceFounding } from '@/data/site';
 import SectionHeader from '@/components/ui/SectionHeader';
 import styles from './History.module.scss';
 
@@ -10,7 +11,7 @@ export default function History() {
       <div className="container">
         <SectionHeader
           id="history-title"
-          title="2018년, 엔트리에서 시작했습니다"
+          title={`우리의 여정은 ${yearsSinceFounding()}년째 진행 중입니다`}
           link={{ href: '/about#history', label: '전체 연혁 보기' }}
         />
 
@@ -19,11 +20,17 @@ export default function History() {
             <li key={`${item.year}-${item.month}-${item.content}`} data-reveal>
               <time
                 className={styles.year}
-                dateTime={`${item.year}-${String(item.month).padStart(2, '0')}`}
+                dateTime={
+                  item.month
+                    ? `${item.year}-${String(item.month).padStart(2, '0')}`
+                    : String(item.year)
+                }
               >
                 {item.year}
               </time>
-              <span className={styles.month}>{item.month}월</span>
+              <span className={styles.month}>
+                {item.month && `${item.month}월`}
+              </span>
               <span className={styles.content}>{item.content}</span>
             </li>
           ))}

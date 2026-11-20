@@ -8,13 +8,18 @@
   flex-direction: column;
   gap: var(--space-lg);
   font-family: var(--font-display);
-  font-size: var(--text-display-s);
+  font-weight: var(--weight-display);
   line-height: 1;
-  letter-spacing: -0.005em;
+  letter-spacing: 0;
 }
 
+/* 심볼 하나, 그 아래 큰 슬로건 */
 .mark {
   color: var(--color-muted);
+}
+
+.slogan {
+  font-size: var(--text-display-s);
 }
 
 .rows {
@@ -52,16 +57,8 @@
   }
 }
 
-.legal,
-.credit {
-  font-size: var(--text-sm);
-  color: var(--color-muted);
-}
-
 .legal {
   margin-top: var(--space-2xl);
-}
-
-.credit {
-  margin-top: var(--space-2xs);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
 }

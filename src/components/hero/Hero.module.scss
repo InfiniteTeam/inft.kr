@@ -178,18 +178,32 @@
  * 글자가 언제나 그 위에 오도록 슬로건, 한 줄, 버튼을 위치 지정 요소로 둡니다.
  * 등장 애니메이션이 없는 모션 줄이기 설정에서도 가려지지 않습니다.
  */
+.team,
 .slogan,
-.since,
 .actions {
   position: relative;
 }
 
-.slogan {
+/* 슬로건 아래 한 줄: INFINITE STUDIO와 SINCE 2018. 대문자로, 글자 사이를 조금 띄워 조용하게 */
+.team {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2xs) var(--space-lg);
+  margin-top: var(--space-lg);
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: var(--weight-display);
+  font-size: var(--text-md);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  cursor: default;
+  animation: settle var(--dur-reveal) var(--ease-out) 240ms both;
+}
+
+.slogan {
   font-size: var(--text-display);
   line-height: 1;
-  letter-spacing: -0.005em;
   max-width: none;
   text-wrap: initial;
   cursor: default;
@@ -214,18 +228,6 @@
   from {
     transform: translate3d(0, 100%, 0);
   }
-}
-
-/* 슬로건 아래 한 줄: 대문자로, 글자 사이를 조금 띄워 조용하게 */
-.since {
-  margin-top: var(--space-lg);
-  font-size: var(--text-md);
-  font-weight: var(--weight-strong);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-  cursor: default;
-  animation: settle var(--dur-reveal) var(--ease-out) 240ms both;
 }
 
 .actions {
@@ -254,7 +256,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .line > span,
-  .since,
+  .team,
   .actions {
     animation: none;
   }

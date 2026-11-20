@@ -3,6 +3,10 @@ export const site = {
   nameKr: '인피니트 스튜디오',
   url: 'https://inft.kr',
   slogan: '무한한 미래를 만들어 갑니다',
+  /** 홈 프로젝트 섹션과 소개 페이지 첫 화면이 함께 쓰는 문장. 두 제목 모두 \n에서 줄을 바꿉니다. */
+  mission: '디스코드를 더 유용하게\n만드는 작업을 진행합니다',
+  missionLead:
+    '관리 봇 Aztra부터 방치형 게임 Idle Factory까지, 디스코드에서 쓰는 서비스를 직접 만들고 운영합니다.',
   description:
     'Infinite Studio는 2018년부터 디스코드 봇과 게임을 만들어 온 개발팀입니다. 한국 최초의 대시보드형 디스코드 관리봇 Aztra를 만들고 운영합니다.',
   founded: { year: 2018, month: 8 },
@@ -15,7 +19,13 @@ export const site = {
   gaTrackingId: 'G-M2LQ8FE356',
 } as const;
 
-/** 상단 내비게이션. 브랜드 페이지는 푸터에서만 엽니다. */
+/** 설립(2018년 8월) 뒤로 꽉 채운 햇수 */
+export function yearsSinceFounding(now = new Date()) {
+  const { year, month } = site.founded;
+  return now.getFullYear() - year - (now.getMonth() + 1 < month ? 1 : 0);
+}
+
+/** 상단 내비게이션 */
 export const navigation = [
   { href: '/about', label: '소개' },
   { href: '/projects', label: '프로젝트' },
@@ -28,7 +38,6 @@ export const footerLinks = {
   inside: [
     { href: '/about', label: '소개' },
     { href: '/projects', label: '프로젝트' },
-    { href: '/brand', label: '브랜드' },
     { href: '/privacy', label: '개인정보 처리방침' },
   ],
   outside: [

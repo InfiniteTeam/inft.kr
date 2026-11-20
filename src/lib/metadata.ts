@@ -15,7 +15,7 @@ export const sharedOpenGraph = {
 const shareImage = {
   width: 1200,
   height: 630,
-  alt: '어두운 바탕의 오로라 앞에 떠 있는 유리 iN 심볼과, 그 아래 슬로건 무한한 미래를 만들어 갑니다, SINCE 2018',
+  alt: '어두운 바탕의 오로라 앞에 떠 있는 유리 iN 심볼과, 그 아래 슬로건 무한한 미래를 만들어 갑니다, INFINITE STUDIO SINCE 2018',
 };
 
 /**
