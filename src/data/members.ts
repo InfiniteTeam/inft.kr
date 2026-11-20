@@ -1,6 +1,6 @@
 import type { StaticImageData } from 'next/image';
 import arpaap from '@/assets/arpa.png';
-import coin from '@/assets/coin.png';
+import coin from '@/assets/coin.jpg';
 import dacon from '@/assets/dacon.png';
 import gangjun from '@/assets/gangjun06.png';
 import filename from '@/assets/filename.png';
@@ -36,13 +36,13 @@ const members: Member[] = [
   {
     name: 'COiN',
     kr: '코인',
-    role: ['개발자', '디자이너'],
+    role: ['디자이너', '개발자'],
     color: ['#9ccfe8', '#fbb826'],
     discord: '@tltb',
     github: 'kndlr',
     email: 'coin@inft.kr',
     motto: '비트코인 안합니다',
-    solvedac: 'coinkr',
+    solvedac: null,
     avatar: coin,
   },
   {

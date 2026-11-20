@@ -9,10 +9,13 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className="container">
-        <p className={styles.closing}>
-          <LogoMark size={28} className={styles.mark} />
-          {site.slogan}
-        </p>
+        <div className={styles.closing}>
+          <p className={styles.team}>
+            <LogoMark size={28} className={styles.mark} />
+            {site.name}
+          </p>
+          <p className={styles.slogan}>{site.slogan}</p>
+        </div>
 
         <div className={styles.rows}>
           <ul className={styles.links} aria-label="사이트">
@@ -37,11 +40,6 @@ export default function Footer() {
 
         <p className={styles.legal}>
           © {year} {site.name}
-        </p>
-        {/* 빈폴체 라이선스가 요구하는 출처 표기. src/fonts/Beanpole-LICENSE.md */}
-        <p className={styles.credit}>
-          이 사이트에는 삼성물산(주)패션부문이 제공한 빈폴체가 적용되어
-          있습니다.
         </p>
       </div>
     </footer>

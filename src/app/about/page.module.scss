@@ -69,9 +69,9 @@
 }
 
 .yearLabel {
-  font-family: var(--font-body);
-  font-weight: var(--weight-strong);
-  letter-spacing: -0.045em;
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  letter-spacing: 0;
   font-size: var(--text-display-s);
   line-height: 0.9;
   font-variant-numeric: tabular-nums;

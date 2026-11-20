@@ -5,6 +5,9 @@ import History from '@/components/home/History';
 import Team from '@/components/home/Team';
 import Join from '@/components/home/Join';
 
+// 연혁 제목의 "N년 동안"이 다시 배포하지 않아도 해마다 맞도록 하루에 한 번 새로 그립니다.
+export const revalidate = 86400;
+
 export default function Home() {
   return (
     <>

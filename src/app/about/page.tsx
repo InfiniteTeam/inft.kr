@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/metadata';
+import { site, yearsSinceFounding } from '@/data/site';
 import members from '@/data/members';
 import history, { groupByYear } from '@/data/history';
 import MemberCard from '@/components/about/MemberCard';
@@ -9,9 +10,12 @@ import styles from './page.module.scss';
 
 export const metadata: Metadata = pageMetadata(
   '소개',
-  '디스코드 봇을 만들고 직접 운영하는 Infinite Studio의 팀원과, 2018년 엔트리에서 시작해 걸어온 발자취입니다.',
+  `디스코드 봇을 만들고 직접 운영하는 Infinite Studio의 팀원과, ${yearsSinceFounding()}년 동안 걸어온 발자취입니다.`,
   '/about'
 );
+
+// 설명의 "N년 동안"이 다시 배포하지 않아도 맞도록 하루에 한 번 새로 그립니다.
+export const revalidate = 86400;
 
 const practices = [
   {
@@ -24,7 +28,7 @@ const practices = [
   },
   {
     title: '직접 운영',
-    body: '서버를 직접 관리하며 서비스를 운영합니다. 서비스 상태는 status.inft.kr에서 누구나 볼 수 있습니다.',
+    body: '24시간 자동으로 서비스를 점검하고, 문제가 생기면 바로 해결합니다. 서버도 팀이 직접 관리합니다.',
   },
 ];
 
@@ -33,7 +37,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <PageHeader title={'디스코드 봇을 만들고,\n직접 운영합니다'} />
+      <PageHeader title={site.mission} lead={site.missionLead} />
 
       <section className={styles.practice} aria-label="하는 일">
         <div className="container">
@@ -77,7 +81,9 @@ export default function AboutPage() {
                 <ul className={styles.entries}>
                   {entries.map((entry, i) => (
                     <li key={i}>
-                      <span className={styles.month}>{entry.month}월</span>
+                      <span className={styles.month}>
+                        {entry.month && `${entry.month}월`}
+                      </span>
                       <span>{entry.content}</span>
                     </li>
                   ))}

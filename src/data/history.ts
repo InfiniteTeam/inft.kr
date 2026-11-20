@@ -1,6 +1,7 @@
 export interface HistoryItem {
   year: number;
-  month: number;
+  /** 아직 달이 정해지지 않은 예정 항목은 비워 둡니다. */
+  month?: number;
   content: string;
   /** 홈 화면 요약 타임라인에 노출할 항목 */
   highlight?: boolean;
@@ -68,6 +69,11 @@ const history: HistoryItem[] = [
     highlight: true,
   },
   { year: 2026, month: 10, content: '팀 홈페이지 리뉴얼' },
+  {
+    year: 2027,
+    content: 'AI 기능을 더한, Aztra 2.0 출시 예정',
+    highlight: true,
+  },
 ];
 
 export function groupByYear(items: HistoryItem[]) {

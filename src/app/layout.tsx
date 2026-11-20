@@ -10,20 +10,15 @@ import { REVEAL_SCRIPT } from '@/components/site/revealScript';
 import { site } from '@/data/site';
 import { sharedOpenGraph } from '@/lib/metadata';
 
-const beanpole = localFont({
-  src: '../fonts/Beanpole-M00.woff',
-  variable: '--font-beanpole',
+// 큰 제목과 숫자에만 쓰는 Cafe24 PRO Slim Max(700). 라이선스: src/fonts/Cafe24PROSlim-OFL.txt
+// 이 서체에 없는 드문 한글 음절은 글자 단위로 Pretendard가 대신 그립니다.
+const cafe24 = localFont({
+  src: '../fonts/Cafe24PROSlim-Bold.woff2',
+  variable: '--font-cafe24',
   display: 'swap',
-  weight: '500',
+  weight: '700',
   adjustFontFallback: false,
   fallback: ['Pretendard Variable', 'sans-serif'],
-  // 빈폴체는 한글에만 씁니다. 영문, 숫자, 기호는 그대로 Pretendard로 넘어갑니다.
-  declarations: [
-    {
-      prop: 'unicode-range',
-      value: 'U+1100-11FF, U+3130-318F, U+A960-A97F, U+AC00-D7A3, U+D7B0-D7FF',
-    },
-  ],
 });
 
 export const metadata: Metadata = {
@@ -73,7 +68,7 @@ export default function RootLayout({
     // data-reveal은 아래 <head> 스크립트가 그리기 전에 붙이므로 수화(hydration) 경고를 끕니다.
     <html
       lang="ko"
-      className={beanpole.variable}
+      className={cafe24.variable}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
