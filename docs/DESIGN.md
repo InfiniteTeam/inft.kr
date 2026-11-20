@@ -12,7 +12,7 @@ v2는 [Hallmark](https://github.com/Nutlope/hallmark)의 규칙(Floor, gates)을
 
 - 히어로: 로고, 슬로건, "INFINITE STUDIO SINCE 2018" 한 줄, 동작 둘을 **하나의 세로축**에 쌓습니다 (요청에 따른 가운데 정렬).
 - 히어로 아래의 섹션 제목은 전부 **1열 왼쪽 끝**에 맞춥니다.
-- 홈 순서: 히어로 → 프로젝트(벤토) → 소개 문장과 Aztra 숫자 둘 → 연혁(행) → 팀(그리드) → 합류 띠 → 푸터(팀 이름과 슬로건)
+- 홈 순서: 히어로 → 프로젝트(벤토) → 소개 문장과 Aztra 숫자 둘 → 연혁(행) → 팀(그리드) → 합류 띠 → 푸터(팀 이름과 슬로건, 심볼 없이)
 - 내비게이션: 가운데 떠 있는 알약.
 
 ## 컬러 (OKLCH, 다크 전용)
@@ -30,7 +30,7 @@ v2는 [Hallmark](https://github.com/Nutlope/hallmark)의 규칙(Floor, gates)을
 
 ## 서체
 
-- **Cafe24 PRO Slim Max (700)**: 큰 제목형 글자와 숫자. 모든 `h1`, `h2`(슬로건, 페이지와 섹션 제목, 합류 띠 제목, 프로젝트 이름), 카드의 프로젝트 이름, 푸터의 팀 이름, 히어로의 INFINITE STUDIO SINCE 2018, 통계 숫자, 연혁의 연도, 404. 좁은 글자라 자간을 줄이지 않습니다(`letter-spacing: 0`). 이 서체에 없는 글자(드문 한글 음절, 2¹²의 위첨자)는 그 글자만 Pretendard로 그려집니다. 라이선스는 SIL OFL 1.1(`src/fonts/Cafe24PROSlim-OFL.txt`).
+- **Cafe24 PRO Slim Max (700)**: 큰 제목형 글자와 숫자. 모든 `h1`, `h2`(슬로건, 페이지와 섹션 제목, 합류 띠 제목, 프로젝트 이름), 카드의 프로젝트 이름, 푸터의 팀 이름, 히어로의 INFINITE STUDIO SINCE 2018, 통계 숫자, 연혁의 연도, 404. 좁은 글자라 자간을 줄이지 않습니다(`letter-spacing: 0`). 이 서체에 없는 드문 한글 음절은 그 글자만 Pretendard로 그려집니다. 2¹²처럼 이름에 든 위첨자는 이 서체에 없어서, 같은 서체의 작은 숫자를 위로 올려 씁니다(`ProjectName`). 라이선스는 SIL OFL 1.1(`src/fonts/Cafe24PROSlim-OFL.txt`).
 - **Pretendard Variable**: 그 밖의 모든 글자. 개인정보 처리방침의 소제목처럼 작은 제목도 Pretendard 650. 굵기는 400과 650 두 가지.
 
 ## 3D 로고

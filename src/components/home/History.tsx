@@ -11,7 +11,7 @@ export default function History() {
       <div className="container">
         <SectionHeader
           id="history-title"
-          title={`${yearsSinceFounding()}년 동안 만들어 왔습니다`}
+          title={`우리의 여정은 ${yearsSinceFounding()}년째 진행 중입니다`}
           link={{ href: '/about#history', label: '전체 연혁 보기' }}
         />
 

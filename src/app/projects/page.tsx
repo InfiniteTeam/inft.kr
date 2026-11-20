@@ -8,6 +8,7 @@ import AvatarStack from '@/components/ui/AvatarStack';
 import Button from '@/components/ui/Button';
 import PageHeader from '@/components/ui/PageHeader';
 import ProjectAura from '@/components/ui/ProjectAura';
+import ProjectName from '@/components/ui/ProjectName';
 import SectionHeader from '@/components/ui/SectionHeader';
 import styles from './page.module.scss';
 
@@ -95,7 +96,9 @@ export default function ProjectsPage() {
                   height={72}
                   sizes="72px"
                 />
-                <h2 className={styles.name}>{project.name}</h2>
+                <h2 className={styles.name}>
+                  <ProjectName name={project.name} />
+                </h2>
                 <p className={styles.summary}>{project.summary}</p>
                 <p className={styles.description}>{project.description}</p>
                 <Facts project={project} />

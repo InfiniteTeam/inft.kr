@@ -13,17 +13,10 @@
   letter-spacing: 0;
 }
 
-/* 로고 마크와 팀 이름 한 줄, 그 아래 큰 슬로건 */
+/* 팀 이름 한 줄, 그 아래 큰 슬로건 */
 .team {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
   font-size: var(--text-title);
   color: var(--color-ink-2);
-}
-
-.mark {
-  color: var(--color-muted);
 }
 
 .slogan {

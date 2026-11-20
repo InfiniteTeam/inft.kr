@@ -200,6 +200,14 @@ p {
   text-wrap: pretty;
 }
 
+/* 위첨자: 반 크기 숫자를 글자 윗선에 맞춰 올리고, 줄 높이는 그대로 둡니다. */
+sup {
+  margin-left: 0.04em;
+  font-size: 0.5em;
+  line-height: 0;
+  vertical-align: 0.7em;
+}
+
 ::selection {
   background: var(--color-veil-strong);
   color: var(--color-ink);

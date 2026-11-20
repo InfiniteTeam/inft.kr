@@ -5,6 +5,7 @@ import { findMembers } from '@/data/members';
 import { ArrowUpRight } from '@/components/icons';
 import AvatarStack from '@/components/ui/AvatarStack';
 import ProjectAura from '@/components/ui/ProjectAura';
+import ProjectName from '@/components/ui/ProjectName';
 import styles from './ProjectCard.module.scss';
 
 interface Props {
@@ -33,7 +34,9 @@ export default function ProjectCard({ project, lead, className }: Props) {
       </div>
 
       <div className={styles.body}>
-        <h3 className={styles.name}>{project.name}</h3>
+        <h3 className={styles.name}>
+          <ProjectName name={project.name} />
+        </h3>
         <p className={styles.summary}>{project.summary}</p>
       </div>
 
