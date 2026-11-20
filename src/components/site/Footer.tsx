@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { footerLinks, site } from '@/data/site';
-import { ArrowUpRight } from '@/components/icons';
+import { ArrowUpRight, LogoMark } from '@/components/icons';
 import styles from './Footer.module.scss';
 
 export default function Footer() {
@@ -10,7 +10,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className="container">
         <div className={styles.closing}>
-          <p className={styles.team}>{site.name}</p>
+          <LogoMark size={28} className={styles.mark} />
           <p className={styles.slogan}>{site.slogan}</p>
         </div>
 

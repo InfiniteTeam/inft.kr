@@ -13,10 +13,9 @@
   letter-spacing: 0;
 }
 
-/* 팀 이름 한 줄, 그 아래 큰 슬로건 */
-.team {
-  font-size: var(--text-title);
-  color: var(--color-ink-2);
+/* 심볼 하나, 그 아래 큰 슬로건 */
+.mark {
+  color: var(--color-muted);
 }
 
 .slogan {
